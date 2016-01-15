@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+
+//Default route
 app.get('/', function(req, res){
     res.send('Under Construction!');
 });
