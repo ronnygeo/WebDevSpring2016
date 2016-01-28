@@ -1,5 +1,22 @@
-#first-header{
+.jumbotron{
     background:url("../images/first.jpg");
     background-size: cover;
     width: 100%;
+    color: white;
+    margin-bottom: 0px;
+    height: 100%;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+.first-box-container{
+
+}
+
+.first-boxes{
+    height: 100px;
+    background-color: #888888;
+    -webkit-opacity: 0.5;
 }
