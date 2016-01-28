@@ -66,14 +66,16 @@
 
     <div class="jumbotron">
     <h1>RONNY MATHEW</h1>
-    <h2>I WORK WITH <span>WEB</span> <span>SOFTWARE</span> <span>DATA</span></h2>
+    <h2><div id="role"></div></h2>
     <p>I'm a Software Engineer currently honing my skills at Northeastern University, Boston.</p>
-    <!--p><a class="btn btn-primary btn-lg">Learn more</a></p-->
+
     <div class="row" id="first-content">
             <div class="col-sm-4 col-md-4 first-boxes">Content</div>
             <div class="col-sm-4 col-md-4 col-md-offset-1 first-boxes">Content</div>
             <div class="col-sm-4 col-md-4 col-md-offset-1 first-boxes">Content</div>
         </div>
+
+        <p><a class="btn btn-primary btn-lg">Scroll Down..</a></p>
 </div>
 
     </div>
@@ -92,7 +94,33 @@
 
 </div></div>
 
-<script src="https://code.jquery.com/jquery-1.12.0.min.js" />
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="js/theater.min.js"></script>
+
+<script>
+    let theater = theaterJS();
+
+    theater
+            .on('type:start, erase:start', function () {
+                // add a class to actor's dom element when he starts typing/erasing
+                let roles = theater.getCurrentActor();
+                roles.$element.classList.add('is-typing')
+            })
+            .on('type:end, erase:end', function () {
+                // and then remove it when he's done
+                let roles = theater.getCurrentActor();
+                roles.$element.classList.remove('is-typing')
+            });
+
+    theater
+            .addActor('role');
+
+    theater
+            .addScene('I WORK WITH :WEB', 400)
+            .addScene('WEB:SOFTWARE', 400)
+            .addScene('SOFTWARE:DATA', 200, '.', 200, '.', 200, '. ')
+            .addScene(theater.replay);
+</script>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
