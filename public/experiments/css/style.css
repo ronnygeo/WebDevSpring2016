@@ -1,3 +1,7 @@
+* {
+    font-size: 1em;
+}
+
 .jumbotron{
     background:url("../images/first.jpg");
     background-size: cover;
@@ -15,14 +19,6 @@
 
 .first-box-container{
 
-}
-
-.first-boxes{
-    height: 100px;
-    background-color: #888888;
-    -webkit-opacity: 0.5;
-    box-sizing: border-box;
-    color: white;
 }
 
 @media (max-width: 870px){
@@ -50,4 +46,40 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
+}
+
+footer {
+    height: 20vh;
+    padding: 1vmin;
+    background-color: #2e2e2e;
+    color: #cacaca;
+}
+
+.links {
+    width: 100vw;
+    background-color: deepskyblue;
+    color: cadetblue;
+    padding: 20vmin;
+}
+
+.links a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 3em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #cacaca;
+    padding-top: 5vw;
+    -webkit-transition: ease-out 1s;
+}
+
+.section-break {
+    height: 30vh;
+}
+
+.page-break {
+    height: 10vh;
 }

@@ -10,10 +10,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" />
 </head>
-<body>
+<body data-spy="scroll" data-target="#nav">
 
 
-<nav class="navbar navbar-default">
+<nav id="nav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
@@ -27,11 +27,11 @@
 
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">About <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Experience</a></li>
+                <li class="active"><a href="#about-me">About <span class="sr-only">(current)</span></a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
+                    <a href="#projects" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Realtime Data Analytics</a></li>
                         <li><a href="#">Cupboards</a></li>
@@ -42,9 +42,9 @@
                         <li><a href="#">Ruby on Rails Project</a></li>
                     </ul>
                 </li>
-               <li><a href="#">Activities</a></li>
-                <li><a href="#">Interests</a></li>
-                <li><a href="#">Links</a></li>
+               <li><a href="#activities">Activities</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#links">Links</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li><a href="#"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;&nbsp;Resume</a></li>
@@ -56,17 +56,17 @@
     <div class="jumbotron">
         <div class="container-fluid">
             <div class="row">
+                <br>
     <h1>RONNY MATHEW</h1>
+                <br>
     <h2>I WORK WITH <span id="role"></span></h2>
-                <br><br>
-    <p style="text-align: right">I'm a Software Engineer currently honing my skills at Northeastern University, Boston. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet sem vulputate, aliquam diam a, tempor sapien. Sed erat ante, imperdiet et sollicitudin et, suscipit dapibus magna. Nulla diam quam, fermentum sit amet enim sit amet, ullamcorper congue risus. Quisque in facilisis nisl, vel viverra nisi.</p>
-<br><br><br>
+<div class="section-break"></div>
     <div class="row" id="first-content">
             <div class="col-sm-4 col-md-4">
-                <div class="first-boxes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
             <div class="col-sm-4 col-md-4">
-                <div class="first-boxes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
-            <div class="col-sm-4 col-md-4"><div class="first-boxes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="col-sm-4 col-md-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
             </div>
     </div>
@@ -75,38 +75,47 @@
 </div>
 
 
+<div id="about-me" class="page">About
+    <p style="text-align: right">I'm a Software Engineer currently honing my skills at Northeastern University, Boston. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet sem vulputate, aliquam diam a, tempor sapien. Sed erat ante, imperdiet et sollicitudin et, suscipit dapibus magna.</p>
+</div>
+<blockquote>
+    <p>If you feel like you are working for someone, you are not doing it right..</p>
+    <small>Me.</small>
+</blockquote>
+<div id="education" class="page">Education</div>
+<div class="page-break"></div>
+<div id="experience" class="page">Experience</div>
+<div class="page-break"></div>
+<div id="projects" class="page">Project</div>
+<div class="page-break"></div>
+<div id="activities" class="page">Activities</div>
 
+<blockquote class="blockquote-reverse">
+    <p>You never know when your visa to this world expires, but before it does, make sure you have done something that people will remember you for.</p>
+    <small>Me.</small>
+</blockquote>
 
-    <blockquote>
-        <p>If you feel like you are working for someone, you are not doing it right..</p>
-        <small>Someone Awesome<cite title="Source Title">Me.</cite></small>
-    </blockquote>
-
-    <blockquote class="blockquote-reverse">
-        <p>You never know when you visa expires to leave this world, but before you do, make sure, you have done something that people will remember you for.</p>
-        <small>Someone Awesome <cite title="Source Title">Me.</cite></small>
-    </blockquote>
-
-<div id="about-me">About</div>
-<div id="education">Education</div>
-<div id="experience">Experience</div>
-<div id="projects">Project</div>
-<div id="activities">Activities</div>
-<div id="interests">Interests</div>
-<div id="links" data-spy="">
+<div id="interests" class="page">Interests</div>
+<div class="page-break"></div>
+<div id="links" class="links">
+    <div class="container">
     Links
-    <a href="https://www.github.com/ronnygeo">Github</a>
-    <a href="https://www.bitbucket.com/ronnygeo">BitBucket</a>
-    <a href="https://www.linkedin.com/in/ronnygeo">LinkedIn</a>
-    <a href="https://www.twitter.com/ronnygeo">Twitter</a>
-    <a href="https://www.facebook.com/ronnygeo">Facebook</a>
-    <a href="https://500px.com/ronnygeo">500px</a>
-    <a href="https://soundcloud.com/ronnie-matt">Soundcloud</a>
-    <a href="https://pinterest.com/ronniematt/">Pinterest</a>
+    <ul>
+    <li><a href="https://www.github.com/ronnygeo" target="_blank">Github</a></li>
+<li><a href="https://www.bitbucket.com/ronnygeo" target="_blank">BitBucket</a></li>
+<li><a href="https://www.linkedin.com/in/ronnygeo" target="_blank">LinkedIn</a></li>
+<li><a href="https://www.twitter.com/ronnygeo" target="_blank">Twitter</a></li>
+<li><a href="https://www.facebook.com/ronnygeo" target="_blank">Facebook</a></li>
+        <li><a href="https://500px.com/ronnygeo" target="_blank">500px</a></li>
+    <li><a href="https://soundcloud.com/ronnie-matt" target="_blank">Soundcloud</a></li>
+    <li><a href="https://pinterest.com/ronniematt/" target="_blank">Pinterest</a></li>
+    </ul>
+</div>
 </div>
 
 
-<footer>Copyright Ronnie Matt 2016.</footer>
+<footer>Copyright Ronnie Matt 2016.
+<p>All Images are clicked by me.</p></footer>
 
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
