@@ -47,7 +47,7 @@
                 <li><a href="#">Links</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-                <li><a href="#"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;Resume</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;&nbsp;Resume</a></li>
             </ul>
         </div>
     </div>
@@ -57,18 +57,18 @@
         <div class="container-fluid">
             <div class="row">
     <h1>RONNY MATHEW</h1>
-    <h2><div id="role"></div></h2>
-    <p>I'm a Software Engineer currently honing my skills at Northeastern University, Boston.</p>
-
+    <h2>I WORK WITH <span id="role"></span></h2>
+                <br><br>
+    <p style="text-align: right">I'm a Software Engineer currently honing my skills at Northeastern University, Boston. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet sem vulputate, aliquam diam a, tempor sapien. Sed erat ante, imperdiet et sollicitudin et, suscipit dapibus magna. Nulla diam quam, fermentum sit amet enim sit amet, ullamcorper congue risus. Quisque in facilisis nisl, vel viverra nisi.</p>
+<br><br><br>
     <div class="row" id="first-content">
             <div class="col-sm-4 col-md-4">
-                <div class="first-boxes">Content</div></div>
+                <div class="first-boxes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
             <div class="col-sm-4 col-md-4">
-                <div class="first-boxes">Content</div></div>
-            <div class="col-sm-4 col-md-4"><div class="first-boxes">Content</div></div>
+                <div class="first-boxes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
+            <div class="col-sm-4 col-md-4"><div class="first-boxes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
         </div>
             </div>
-            <p><a class="btn btn-primary btn-lg" href="#about-me">Scroll Down..</a></p>
     </div>
         <div class="container-fluid">
             </div>
@@ -79,7 +79,7 @@
 
     <blockquote>
         <p>If you feel like you are working for someone, you are not doing it right..</p>
-        <small>Someone Awesome<cite title="Source Title">Mqe.</cite></small>
+        <small>Someone Awesome<cite title="Source Title">Me.</cite></small>
     </blockquote>
 
     <blockquote class="blockquote-reverse">
@@ -113,28 +113,29 @@
 <script src="js/theater.min.js"></script>
 
 <script>
-    var theater = theaterJS();
+    var theater = theaterJS()
+
+//    theater
+//            .on('type:start, erase:start', function () {
+//                theater.getCurrentActor().$element.classList.add('actor__content--typing')
+//            })
+//            .on('type:end, erase:end', function () {
+//                theater.getCurrentActor().$element.classList.remove('actor__content--typing')
+//            })
+//            .on('type:start, erase:start', function () {
+//                if (theater.getCurrentActor().name === 'vader') {
+//                    document.body.classList.add('dark')
+//                } else {
+//                    document.body.classList.remove('dark')
+//                }
+//            })
 
     theater
-            .addActor('role');
+            .addActor('role', { speed: 0.6, accuracy: 0.8 })
+            .addScene('role: SOFTWARE', 400)
+            .addScene('role:DATA')
+            .addScene(theater.replay.bind(theater))
 
-    theater
-            .on('type:start, erase:start', function () {
-                // add a class to actor's dom element when he starts typing/erasing
-                var roles = theater.getCurrentActor();
-                roles.$element.classList.add('is-typing')
-            })
-            .on('type:end, erase:end', function () {
-                // and then remove it when he's done
-                var roles = theater.getCurrentActor();
-                roles.$element.classList.remove('is-typing')
-            });
-
-    theater
-            .addScene('I WORK WITH :WEB', 400)
-            .addScene('WEB:SOFTWARE', 400)
-            .addScene('SOFTWARE:DATA', 200, '.', 200, '.', 200, '. ')
-            .addScene(theater.replay);
 </script>
 
 <!-- Latest compiled and minified JavaScript -->
