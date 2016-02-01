@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,7 @@
     <title>Make a Form!</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" />
 
 </head>
@@ -26,8 +27,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
                 <li><a href="profile.html">Username</a></li>
                 <li><a href="login.html">Logout</a></li>
             </ul>
@@ -41,81 +40,186 @@
             <ul class="nav nav-sidebar">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="profile.html">Profile</a></li>
-                <li class="active"><a href="admin.html">Admin</a></li>
-                <li><a href="forms.html">Forms</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li  class="active"><a href="forms.html">Forms</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">Forms: Registration Form</h2>
+
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="forms.html">Forms</a></li>
+                <li role="presentation" class="active"><a href="#">Fields</a></li>
+            </ul>
+
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" type="text" class="form-control" />
+
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" type="text" class="form-control" />
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                        <label for="dateOfBirth">Date of Birth</label>
+                        <div class="input-group date" id="dateOfBirth" data-provide="datepicker">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                    <label for="roles">Gender</label>
+                    <input class="form-control" type="checkbox" name="roles" value="Admin" id="roles" checked>Admin
+                    <input class="form-control" type="checkbox" name="roles" value="Student">Student
+                    <input class="form-control" type="checkbox" name="roles" value="User" checked>User
+                    </input>
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                    <label>License Agreement:</label>
+                    <form>
+                    <input type="radio" class="form-control" name="license" value="YES" checked>Yes
+                    <input type="radio" class="form-control" value="NO" name="license">No
+                    </form>
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+
+                </div>
+            </div>
 
 
-            <h2 class="sub-header">Admin</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="adminNewUsername" class="form-control" placeholder="Username"></td>
-                        <td><input type="text" id="adminNewPassword" class="form-control" placeholder="Password"></td>
-                        <td>
-                            <input type="text" id="adminNewUserRole" class="form-control" placeholder="Role">
-                        </td>
-                        <td style="white-space: nowrap">
-                            <a href="#" class="btn btn-success">
-                                <scan class="glyphicon glyphicon-ok"></scan>
-                            </a>
-                            <a href="#" class="btn btn-primary">
-                                <scan class="glyphicon glyphicon-plus"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Alice</td>
-                        <td></td>
-                        <td>Student</td>
-                        <td>
-                            <a href="#" class="btn btn-warning">
-                                <scan class="glyphicon glyphicon-pencil"></scan>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <scan class="glyphicon glyphicon-remove"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Bob</td>
-                        <td></td>
-                        <td>Faculty | Admin</td>
-                        <td>
-                            <a href="#" class="btn btn-warning">
-                                <scan class="glyphicon glyphicon-pencil"></scan>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <scan class="glyphicon glyphicon-remove"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Charlie</td>
-                        <td></td>
-                        <td>Student</td>
-                        <td>
-                            <a href="#" class="btn btn-warning">
-                                <scan class="glyphicon glyphicon-pencil"></scan>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <scan class="glyphicon glyphicon-remove"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="row" style="padding-top: 1vh">
+                <div class="col-xs-8">
+                    <label for="addNewField">Add New Field</label>
+                    <select class="form-control" id="addNewField">
+                        <option>Single Line Text</option>
+                        <option>Date</option>
+                        <option>Dropdown</option>
+                        <option>Checkbox</option>
+                        <option>Radio Buttons</option>
+                    </select>
+                </div>
+                <div class="col-xs-4" style="margin:auto">
+                    <a href="#" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+
+
             </div>
 
 
@@ -125,10 +229,10 @@
         </div>
 
     </div>
-</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.min.js"></script>
 </body>
 </html>

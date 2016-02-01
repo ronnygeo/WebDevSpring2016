@@ -104,3 +104,10 @@ body {
     border-radius: 50%;
 }
 
+td {
+    white-space: nowrap;
+}
+
+.align-right {
+    right: 0px !important;
+}

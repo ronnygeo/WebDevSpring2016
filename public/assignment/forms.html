@@ -26,8 +26,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
                 <li><a href="profile.html">Username</a></li>
                 <li><a href="login.html">Logout</a></li>
             </ul>
@@ -46,40 +44,36 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
             <h2 class="sub-header">Forms</h2>
+
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Forms</a></li>
+                <li role="presentation"><a href="form-fields.html">Fields</a></li>
+            </ul>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Role</th>
-                        <th>Action</th>
+                        <th><span class="glyphicon glyphicon-triangle-bottom"></span> Form Name</th>
+                        <th><span class="glyphicon glyphicon-triangle-bottom"></span> Actions</th>
                     </tr>
                     <tr>
-                        <td><input type="text" id="adminNewUsername" class="form-control" placeholder="Username"></td>
-                        <td><input type="text" id="adminNewPassword" class="form-control" placeholder="Password"></td>
                         <td>
-                            <input type="text" id="adminNewUserRole" class="form-control" placeholder="Role">
-                        </td>
-                        <td style="white-space: nowrap">
+                            <input type="text" id="newFormName" class="form-control" placeholder="Name"></td>
+                          <td  class="align-right">
                             <a href="#" class="btn btn-success">
-                                <scan class="glyphicon glyphicon-ok"></scan>
+                                <span class="glyphicon glyphicon-ok"></span>
                             </a>
                             <a href="#" class="btn btn-primary">
-                                <scan class="glyphicon glyphicon-plus"></scan>
+                                <span class="glyphicon glyphicon-plus"></span>
                             </a>
                         </td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Alice</td>
-                        <td></td>
-                        <td>Student</td>
-                        <td>
+                        <td>Registration Form</td>
+                        <td class="align-right">
                             <a href="#" class="btn btn-warning">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
@@ -89,10 +83,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Bob</td>
-                        <td></td>
-                        <td>Faculty | Admin</td>
-                        <td>
+                        <td>Contact List</td>
+                        <td class="align-right">
                             <a href="#" class="btn btn-warning">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
@@ -102,10 +94,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Charlie</td>
-                        <td></td>
-                        <td>Student</td>
-                        <td>
+                        <td>To Do List</td>
+                        <td class="align-right">
                             <a href="#" class="btn btn-warning">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
