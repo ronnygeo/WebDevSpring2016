@@ -152,12 +152,13 @@
 
             <div class="row" style="padding-top: 1vh">
                 <div class="col-xs-8">
-                    <form class="form-group">
-                    <label for="roles">Gender</label><br>
-                    <input type="checkbox" name="roles" value="Admin" id="roles" checked>Admin<br>
-                    <input type="checkbox" name="roles" value="Student">Student<br>
-                    <input type="checkbox" name="roles" value="User" checked>User<br>
-                    </form>
+
+                    <label for="roles">Roles</label><br>
+                    <div class="checkbox" id="roles">
+                    <label><input type="checkbox" name="roles" value="Admin" checked>Admin</label><br>
+                    <label><input type="checkbox" name="roles" value="Student">Student</label><br>
+                    <label><input type="checkbox" name="roles" value="User" checked>User</label><br>
+                    </div>
                 </div>
                 <div class="col-xs-4 button-area">
                     <a href="#" class="btn btn-warning">
@@ -179,9 +180,10 @@
             <div class="row" style="padding-top: 1vh">
                 <div class="col-xs-8">
                     <label>License Agreement:</label>
-                    <form>
-                    <input type="radio" name="license" value="YES" checked>Yes<br>
-                    <input type="radio" id="licenseNo" value="NO" name="license">No<br>
+                    <div class="radio">
+<label>                   <input type="radio" name="license" value="YES" checked>Yes</label> <br>
+                    <label><input type="radio" value="NO" name="license">No</label><br>
+                    </div>
                     </form>
                 </div>
                 <div class="col-xs-4 button-area">
