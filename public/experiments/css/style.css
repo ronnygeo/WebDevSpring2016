@@ -58,7 +58,7 @@ footer {
 .links {
     width: 100vw;
     background-color: deepskyblue;
-    color: cadetblue;
+    color: #f4fff8;
     padding: 20vmin;
 }
 
@@ -73,7 +73,6 @@ footer {
     height: 100vh;
     background-color: #cacaca;
     padding-top: 5vw;
-    -webkit-transition: ease-out 1s;
 }
 
 .section-break {
@@ -82,4 +81,8 @@ footer {
 
 .page-break {
     height: 10vh;
+}
+
+.no-decoration-links {
+    list-style: none;
 }
