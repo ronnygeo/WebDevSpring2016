@@ -8,6 +8,7 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link href="css/dashboard.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 
 </head>
@@ -45,24 +46,25 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="container">
+            <div class="container-fluid">
+                <div class="row">
             <h2 class="sub-header">Forms: Registration Form</h2>
-
+                </div>
+                <div class="row">
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="forms.html">Forms</a></li>
                 <li role="presentation" class="active"><a href="#">Fields</a></li>
             </ul>
-
-            <div class="row" style="padding-top: 1vh">
-                <div class="col-xs-8">
+                </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-8 form-group">
                         <label for="firstName">First Name</label>
                         <input id="firstName" type="text" class="form-control" />
-
                 </div>
-                    <div class="col-xs-2 button-area">
-                        <a href="#" class="btn btn-warning">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                <div class="col-xs-6 col-sm-4 button-area">
+                    <a href="#" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
                         <a href="#" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
@@ -72,25 +74,22 @@
                         <a href="#" class="btn btn-success">
                             <span class="glyphicon glyphicon-menu-hamburger"></span>
                         </a>
-
                     </div>
             </div>
 
-            <div class="row" style="padding-top: 1vh">
-                <div class="col-xs-8">
+            <div class="row">
+                <div class="col-sm-8">
                         <label for="lastName">Last Name</label>
                         <input id="lastName" type="text" class="form-control" />
                 </div>
                 <div class="row">
-                <div class="col-xs-4 button-area">
+                <div class="col-sm-4 button-area">
                     <a href="#" class="btn btn-warning">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a href="#" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
-                </div>
-                    <div class="col-xs-4 button-area">
                     <a href="#" class="btn btn-danger">
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
@@ -102,7 +101,7 @@
             </div>
                 </div>
 
-            <div class="row" style="padding-top: 1vh">
+            <div class="row">
                 <div class="col-xs-8">
                         <label for="dateOfBirth">Date of Birth</label>
                         <div class="input-group date" id="dateOfBirth" data-provide="datepicker">
@@ -134,7 +133,7 @@
                 </div>
             </div>
 
-            <div class="row" style="padding-top: 1vh">
+            <div class="row">
                 <div class="col-xs-8">
                         <label for="gender">Gender</label>
                         <select class="form-control" id="gender">
@@ -163,7 +162,7 @@
                 </div>
             </div>
 
-            <div class="row" style="padding-top: 1vh">
+            <div class="row">
                 <div class="col-xs-8">
 
                     <label for="roles">Roles</label><br>
@@ -194,7 +193,7 @@
                 </div>
             </div>
 
-            <div class="row" style="padding-top: 1vh">
+            <div class="row">
                 <div class="col-xs-8">
                     <label>License Agreement:</label>
                     <div class="radio">
@@ -223,7 +222,7 @@
                 </div>
             </div>
 
-            <div class="row" style="padding-top: 1vh">
+            <div class="row">
                 <div class="col-xs-8">
                     <label for="addNewField">Add New Field</label>
                     <select class="form-control" id="addNewField">
