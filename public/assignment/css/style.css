@@ -10,3 +10,7 @@ td {
     margin:auto;
     white-space: nowrap;
 }
+
+.pad-top {
+    padding-top: 32px !important;
+}
