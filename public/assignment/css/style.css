@@ -14,3 +14,8 @@ td {
 .pad-top {
     padding-top: 32px !important;
 }
+
+.home-box {
+    width: 80vw !important;
+    padding: 10vw;
+}
