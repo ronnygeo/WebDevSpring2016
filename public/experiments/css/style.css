@@ -41,6 +41,7 @@ body {
     padding: 3vmin;
     margin: auto;
     text-align:center;
+    color: #000000;
 }
 
 #about-me {
@@ -58,6 +59,12 @@ body {
     overflow: hidden;
     width: 100vw;
     max-height: 45vh;
+}
+
+#intro #role {
+    color: #ffffff;
+    background-color: rgba(24,240,100,0.8);
+    padding: 0.5vw;
 }
 
 #about-me * {
