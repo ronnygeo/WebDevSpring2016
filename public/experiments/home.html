@@ -14,9 +14,8 @@
 </head>
 <body data-spy="scroll" data-target="#nav">
 
-
 <nav id="nav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid" id="main">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-navbar-collapse-1">
@@ -56,85 +55,109 @@
     </div>
 </nav>
 
-<div class="parallax-window" data-parallax="scroll" data-natural-width="100vw"
-     data-image-src="./images/boston.jpg">
-    <div class="container-fluid" id="intro">
+<!--div id="intro" class="jumbotron parallax-window" data-parallax="scroll" data-natural-width="100vw" data-position-x="left"
+     data-image-src="./images/boston.jpg" -->
 
-        <br><br>
-        <div class="row">
-            <div class="col-sm-5">
-                <br><br>
-
-                <img src="images/me.jpg" width="20vw" class="img-circle"/>
-            </div>
-            <div class="col-sm-7">
+<div id="intro" data-parallax="scroll" data-image-src="images/boston.jpg">
+            <div id="intro-text">
+                <img src="images/me.jpg" width="150px" class="img-circle"/>
                 <h1>RONNY MATHEW</h1>
-                <br>
-                <br>
-                <h2>I WORK WITH <span id="role"></span></h2>
+                <h2>I WORK ON <span id="role"></span></h2>
             </div>
-        </div>
-        <div class="section-break"></div>
-        <div class="row" id="first-content">
-            <div class="col-sm-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-            <div class="col-sm-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-            <div class="col-sm-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
+
+    <div id="about-me">
+        <h1>About Me</h1>
+        <p>I'm a Software Engineer currently honing my skills at Northeastern University, Boston.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet sem vulputate, aliquam diam a,
+            tempor sapien. Sed erat ante, imperdiet et sollicitudin et, suscipit dapibus magna.</p>
     </div>
 
-<div class="container-fluid">
-
-</div>
-<div id="about-me">
-    <h1 class="h1">About</h1>
-    <p style="text-align: right">I'm a Software Engineer currently honing my skills at Northeastern University, Boston.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet sem vulputate, aliquam diam a,
-        tempor sapien. Sed erat ante, imperdiet et sollicitudin et, suscipit dapibus magna.</p>
-</div>
 </div>
 
 
+<div id="education" class="page">
+    <div class="container"><h1>Education</h1>
+    <p>
+        Northeastern University, Boston, MA			             	     	   	                	     Sept 2015 to Present
+        College of Computer and Information Science 			              		   	   Expected graduation: May 2017
+        Candidate for Master of Science in Computer Science							           GPA: 3.83
+        Coursework: Programming Design Paradigms, Algorithms, Foundations of Artificial Intelligence, Web Development
+        Heriot-Watt University (Dubai Campus), Dubai, UAE		                    	             			           Nov 2013
+        Master of Science in Computer Systems Management, Distinction with Honors. 			           GPA: 3.92
+        Coursework: e-Commerce Technologies, Databases, Systems Programming, Network Applications, Mobile Programming
+        University of Kerala, Kerala, India				 	    				           Aug 2010
+        Bachelor of Technology in Electronics and Communication Engineering, First Class.
+    </p></div>
+</div>
 
+<div class="parallax-window" data-parallax="scroll" data-natural-width="100vw" data-positionY="left"
+     data-image-src="./images/northeastern.jpg"></div>
 
+<div id="experience" class="page parallax-window">
+    <div class="container"><h1>Experience</h1>
+    <p>
+        Grey Ocean Analytics, Bengaluru, India	                             Software Engineer	      	                  Feb 2015 to Aug 2015
+        •	Developed modules of an Artificial Intelligence project for the financial sector using Neo4j, Python, SNS and SQS.
+        •	Led a team of five junior developers during the project ensuring high performance and completion before deadline.
+        •	Designed and deployed MongoDB and Neo4j databases on Amazon Web Services EC2.
+        •	Tested a product based on Drupal and guaranteed top user experience by finding and removing minor flaws.
+        Evolvence Capital & Ginza Holdings, Dubai, UAE          	  IT Administrator     		                  Apr 2012 to Dec 2014
+        •	Deployed IT systems and LS Retail with Microsoft Dynamics NAV 2009 for all Retail & Hospitality outlets of the group.
+        •	Developed an eCommerce solution for Ginza using Magento. Maintained five CMS (WordPress) sites of the group.
+        •	Developed and maintained Microsoft SQL Server and MySQL databases for ERP and other systems.
+        •	Installed Linux servers and AV software systems for Interactive Displays and Video Walls at Real Madrid Café.
 
+    </p></div>
+</div>
+
+<div class="parallax-window" data-parallax="scroll" data-natural-width="100vw" data-position-y="left"
+     data-image-src="./images/sunset.jpg">
 <blockquote>
     <p>If you feel like you are working for someone, you are not doing it right..</p>
     <small>Me.</small>
-</blockquote>
+</blockquote></div>
 
 
-<div id="education" class="page parallax-window" data-parallax="scroll" data-natural-width="100vw"
-     data-image-src="./images/northeastern.jpg">
-    <div class="container"><h1>Education</h1></div>
+<div id="projects" class="page">
+    <div class="container"><h1>Project</h1><p>
+        Northeastern University, Boston, MA			       		     	       	  	   Nov 2015 to Dec 2015
+        •	Developed project to Model User Preferences for Location Based Recommendations using python and mongoDB.
+        Heriot-Watt University, Dubai, UAE						           	  	    Jan 2012 to Nov 2013
+        •	Developed and Completed Masters’ Dissertation on Real-time Data Analytics of the Sematic Web using node.js, mongoDB, socket.io, Twitter API which was highly appreciated by professors and peers. (code link through LinkedIn).
+        •	Other Academic Projects: PHP Bookstore, PHP DealOn website, PHP Webmail client, Android Diary Application, Android Quiz Application, Shell programming, Web Browser with C# .NET, Java Applet for message signing.
+        University of Kerala, Kerala, India							            	  June 2008 to Aug 2010
+        •	Acted as Webmaster for IEEE MBCET (IEEE College Chapter) from 2008 to 2009 (Website powered by Joomla).
+        •	Served as Graphic Designer for College Newsletter, ‘The Fourth Module’ and College Magazine ‘Route 66’.
+        Additional Projects
+        •	Worked on a Ruby on Rails eCommerce project for a startup.
+        •	Performed Map Reduce operations on a sample dataset of Twitter using python (Coursera.com).
+        •	Completed projects of Interactive games using Python course, from Rice University, Texas (Coursera.com).
+
+    </p></div>
 </div>
 
-<div id="experience" class="page parallax-window" data-parallax="scroll" data-natural-width="100vw"
+
+<div id="interests" class="page parallax-window" data-parallax="scroll" data-natural-width="100vw"
      data-image-src="./images/bicycle.jpg">
-    <div class="container"><h1>Experience</h1></div>
+    <div class="container-fluid overlay-dark"><h1>Interests</h1>
+        <h2>Music</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris iaculis semper condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras commodo facilisis enim ac ullamcorper. Fusce sed tincidunt justo. Integer scelerisque laoreet luctus. Ut condimentum, magna in porttitor convallis, sapien nibh fringilla risus, a dictum tortor lectus ut dolor.</p>
+    <h2>Photography</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris iaculis semper condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras commodo facilisis enim ac ullamcorper. Fusce sed tincidunt justo. Integer scelerisque laoreet luctus. Ut condimentum, magna in porttitor convallis, sapien nibh fringilla risus, a dictum tortor lectus ut dolor.</p>
+    <h2>Travel</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris iaculis semper condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras commodo facilisis enim ac ullamcorper. Fusce sed tincidunt justo. Integer scelerisque laoreet luctus. Ut condimentum, magna in porttitor convallis, sapien nibh fringilla risus, a dictum tortor lectus ut dolor.</p>
 </div>
-<div id="projects" class="page parallax-window" data-parallax="scroll" data-natural-width="100vw"
-     data-image-src="./images/sunset.jpg">
-    <div class="container"><h1>Project</h1></div>
-</div>
-<blockquote class="blockquote-reverse">
+    </div>
+
+<blockquote class="blockquote-reverse bg-light" style="margin-bottom: 0">
     <p>You never know when your visa to this world expires, but before it does, make sure you have done something that
         people will remember you for.</p>
     <small>Me.</small>
 </blockquote>
 
-<div id="interests" class="page parallax-window" data-parallax="scroll" data-positionY="left" data-natural-width="100vw"
-     data-image-src="./images/mountains.jpg">
-    <div class="container-fluid"><h1>Interests</h1></div>
-</div>
-
-<div class="page parallax-window" data-parallax="scroll" data-positionY="left" data-natural-width="100vw"
+<div class="page parallax-window" data-parallax="scroll" data-natural-width="100vw"
      data-image-src="./images/tunnel.jpg">
-    <div id="links" class="links">
-        <div class="container">
+    <div class="my-links">
             <div class="row">
                 <h1>Connect with me on:</h1>
             </div>
@@ -167,13 +190,13 @@
   <i class="fa fa-pinterest fa-stack-1x"></i>
 </span>Pinterest</a></li>
             </ul>
-        </div>
     </div>
 </div>
 
 <footer>Copyright Ronnie Matt 2016.
     <p>All Images are clicked by me.</p>
 </footer>
+
 
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -193,8 +216,8 @@
     window.sr = ScrollReveal({reset: true});
     sr.reveal('#intro', {duration: 2000});
     sr.reveal('.first-content');
-    sr.reveal('#about-me', {duration: 2000});
-    sr.reveal('#education', {duration: 2000});
+    //sr.reveal('#about-me', {duration: 2000});
+    //sr.reveal('#education', {duration: 2000});
     sr.reveal('#experience', {duration: 2000});
     sr.reveal('#projects', {duration: 2000});
     sr.reveal('#interests', {duration: 2000});
@@ -205,5 +228,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.4.2/parallax.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script>
+    $('a').smoothScroll();
+</script>
 </body>
 </html>
