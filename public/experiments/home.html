@@ -204,13 +204,16 @@
 <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.0.9/scrollreveal.min.js"></script>
 
 <script>
-    var theater = theaterJS();
+    (function(){
+        var theater = theaterJS();
 
     theater
             .addActor('role', {speed: 0.6, accuracy: 0.8})
             .addScene('role: WEB', 400)
             .addScene('role: SOFTWARE', 400)
             .addScene('role:DATA')
+            .addScene('role:ANALYTICS')
+            .addScene('role:NLP')
             .addScene(theater.replay.bind(theater));
 
     window.sr = ScrollReveal({reset: true});
@@ -221,7 +224,7 @@
     sr.reveal('#experience', {duration: 2000});
     sr.reveal('#projects', {duration: 2000});
     sr.reveal('#interests', {duration: 2000});
-
+    })();
 </script>
 
 <!-- Latest compiled and minified JavaScript -->
