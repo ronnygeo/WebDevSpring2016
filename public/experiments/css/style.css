@@ -1,24 +1,54 @@
 * {
-  font-size: 1em; }
+  font-size: 1em;
+  font-family: "Titillium Web", sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Overlock", "Titillium Web", san-serif; }
 
 body {
   overflow-x: hidden; }
+
+.top-bar {
+  position: fixed;
+  width: 100vw;
+  z-index: 250;
+  padding: 0.2rem !important; }
+
+.title-bar {
+  position: fixed;
+  width: 100vw;
+  z-index: 250;
+  padding: 0.5rem !important; }
+
+#offCanvasLeft {
+  position: fixed !important; }
 
 #main-container {
   padding: 0 !important;
   overflow: hidden; }
 
+.menu {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh; }
+
+.menu a {
+  color: white; }
+
 .page {
   width: 100vw;
   min-height: 100vh;
-  padding-top: 5vh; }
+  padding-top: 10vh; }
 
 #intro {
   /*background:url("../images/boston.jpg"); */
   /*background-size: cover; */
   width: 100vw;
-  min-height: 95vh;
-  color: white; }
+  min-height: 100vh;
+  color: white;
+  min-width: 100vw !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  overflow: hidden; }
 
 #education {
   position: relative;
@@ -28,7 +58,16 @@ body {
 #intro-text {
   margin: auto;
   text-align: center;
-  color: #000000; }
+  color: #000000;
+  padding: 3vh;
+  width: 90vw;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+#intro-img {
+  box-sizing: border-box;
+  width: 150px;
+  border: black dashed 0.15em;
+  margin-bottom: 1vh; }
 
 #about-me {
   position: relative;
@@ -42,7 +81,7 @@ body {
   transform: skewY(-2deg);
   padding: 3vmin;
   overflow: hidden;
-  width: 100vw; }
+  max-width: 100vw !important; }
 
 #intro #role {
   color: #ffffff;
@@ -63,7 +102,8 @@ body {
   min-width: 50vw;
   color: #f4fff8;
   margin: auto;
-  padding: 2em; }
+  padding: 2em;
+  height: 75vh; }
 
 .my-links a {
   text-decoration: none;

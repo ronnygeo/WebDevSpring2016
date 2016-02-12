@@ -7,20 +7,36 @@
     <title>Ronny Mathew</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Overlock:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300,400' rel='stylesheet' type='text/css'>
     <link href="css/foundation.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
-<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-    <button class="menu-icon" type="button" data-toggle></button>
-    <div class="title-bar-title">Menu</div>
-</div>
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" id="offCanvasWrapper" data-off-canvas-wrapper>
 
-<div class="top-bar" id="main-menu">
-    <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
+        <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+            <div class="title-bar-left">
+                <button id="closeOffCanvas" class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+                <span class="title-bar-title"></span>
+            </div>
+            </div>
+
+        <!-- off-canvas left menu -->
+        <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+            <ul class="vertical dropdown menu" data-dropdown-menu>
+            <li><a href="#about-me">About</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#links">Links</a></li>
+            </ul>
+        </div>
+        <div id="widemenu" class="top-bar">
+            <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Ronny Mathew</li>
         </ul>
     </div>
@@ -32,30 +48,29 @@
             <li><a href="#interests">Interests</a></li>
             <li><a href="#links">Links</a></li>
         </ul>
-    </div>
-</div>
+    </div></div>
 
-            <div id="main-container">
-<div class="parallax-window" data-parallax="scroll" data-ios-fix="true" data-image-src="images/boston.jpg">
-                <div id="intro" class="row column page">
+<div data-off-canvas-content>
+    <div  id="main-container">
+    <div class="parallax-window" data-parallax="scroll" data-ios-fix="true" data-image-src="images/boston.jpg">
+                <div id="intro" class="row column page" data-magellan-target="intro">
                     <div id="intro-text">
                         <!--<div class="row align-center">-->
-                        <img src="images/me.jpg" width="150px"/>
+                        <img src="images/me.jpg" id="intro-img" width="150px"/>
                     <!--</div>-->
                         <h1>RONNY MATHEW</h1>
                         <h2>I WORK ON <span id="role"></span></h2>
                     </div>
 
-                    <div id="about-me" class="row align-bottom">
+                    <div class="row align-bottom" id="about-me">
                         <h1>About Me</h1>
                         <p>I'm a Software Engineer currently honing my skills at Northeastern University, Boston.
                             I have worked on multiple projects on Node.js, HTML5, CSS3, Ruby on Rails and Python.</p>
                     </div>
-
                 </div>
 </div>
 
-                <div id="history" class="page">
+                <div id="history" class="page" data-magellan-target="history">
 
                     <div class="row">
                         <div class="column small-12 medium-6"><h1>Education</h1>
@@ -109,11 +124,11 @@
                         </ul>
                     </div>
                     </div>
-
+                </div>
                     <blockquote>
                         <p>If you feel like you are working for someone, you are not doing it right..</p>
-                        <small>Me.</small>
-                    </blockquote></div>
+                        <cite>Me.</cite>
+                    </blockquote>
 
 
 
@@ -122,7 +137,7 @@
 
 
 
-                <div id="projects" class="page">
+                <div id="projects" class="page" data-magellan-target="projects">
                     <div class="row">
                         <div class="column small-12 medium-6">
                             <h1>Project</h1>
@@ -155,40 +170,80 @@
                         </div>
                 </div>
                     </div>
+
             <div class="parallax-window" data-parallax="scroll" data-ios-fix="true"
                     data-image-src="./images/bicycle.jpg"></div>
 
-                    <div id="interests" class="row column page">
+                    <div id="interests" class="page" data-magellan-target="interests">
                         <!--<div class="bg-dark">-->
-                            <h1>Interests</h1>
-                            <h2>Photography</h2>
-                    <p>I love Photography, capturing Nature at its best is very  all the background images in this page was clicked by me.</p>
-                        <h3>Some of my snaps</h3>
-                        <ul><li>Mountains</li>
-                            <li>Sunset</li>
-                            <li>Boston Harbor</li>
-                            <li>Forest</li></ul>
-                        <h2>Music</h2>
+                    <h1>Interests</h1><br>
+                        <h2>Photography</h2>
+                    <p>I love Photography, capturing nature at its best is my favorite passion. All the background images in this page was clicked by me.</p>
+                            <h5>Some of my snaps</h5>
+                            <div class="row align-middle" id="photos">
+                            <div class="small-3 columns">
+                                <a data-open="modalMountains"><img class="thumbnail" src="./images/mountains.jpg" alt="Mountains"></a>
+                            </div>
+                                <div class="reveal" id="modalMountains" data-reveal>
+                                    <h1>Mountains</h1>
+                                    <img class="img-responsive" src="./images/mountains.jpg"/>
+                                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <div class="small-3 columns">
+                                <a data-open="modalSunset"><img class="thumbnail" src="./images/sunset.jpg" alt="Sunset"/></a>
+                            </div>
+                                <div class="reveal" id="modalSunset" data-reveal>
+                                    <h1>Sunset</h1>
+                                    <img class="img-responsive" src="./images/sunset.jpg"/>
+                                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <div class="small-3 columns">
+                                <a data-open="modalHarbor"><img class="thumbnail" src="./images/harbor.jpg" alt="Boston Harbor"/></a>
+                            </div>
+                                <div class="reveal" id="modalHarbor" data-reveal>
+                                    <h1>Boston Harbor</h1>
+                                    <img class="img-responsive" src="./images/harbor.jpg"/>
+                                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <div class="small-3 columns">
+                                <a data-open="modalForest"><img class="thumbnail" src="./images/forest.jpg" alt="Forest"/></a>
+                            </div>
+                                <div class="reveal" id="modalForest" data-reveal>
+                                    <h1>Forest</h1>
+                                    <img class="img-responsive" src="./images/forest.jpg"/>
+                                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                        </div>
+                        <br><h2>Music</h2>
                     <p>Music is my poison. Music sets the pace of my life, it sometimes even inspires me. If I like a song, I learn its lyrics by the next day.</p>
-                    <h2>Travel</h2>
+                        <br><h2>Travel</h2>
                     <p>New Experiences. That is travelling for me. I have been travelling most of my life. There is almost no place in Dubai and the UAE that I have not visited atleast once. We used to go on Road Trips on almost all the weekends. Most of my snaps are from my travels.</p>
                     </div>
+
                 <blockquote class="blockquote-reverse">
                     <p>You never know when your visa to this world expires, but before it does, make sure you have done something that
                         people will remember you for.</p>
-                    <small>Me.</small>
+                    <cite>Me.</cite>
                 </blockquote>
 
 
 
-                <div id="links" class="page parallax-window" data-ios-fix="true" data-parallax="scroll"
-                     data-image-src="./images/tunnel.jpg">
+                <div class="page parallax-window" data-parallax="scroll"  data-ios-fix="true"
+                     data-image-src="./images/tunnel.jpg"></div>
 
-</div>
-                    <div class="my-links">
+<div id="links" class="my-links" data-magellan-target="links">
                         <div class="row">
                             <h1>Connect with me on:</h1>
                         </div>
+                        <div class="row align-center">
                         <ul class="no-decoration-links">
                             <li><a href="https://www.github.com/ronnygeo" target="_blank">
                 <span class="fa-stack fa-lg">
@@ -218,18 +273,22 @@
   <i class="fa fa-pinterest fa-stack-1x"></i>
 </span>Pinterest</a></li>
                         </ul>
+                        </div>
                     </div>
-
 
                 <footer>Copyright Ronnie Matt 2016.
                 </footer>
-
-            </div>
+</div>
+</div>
+        </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="js/theater.min.js"></script>
 <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.0.9/scrollreveal.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.4.2/parallax.min.js"></script>
+<script src="js/smoothscroll.js"></script>
 <script>
         (function(){
             var theater = theaterJS();
@@ -245,25 +304,20 @@
 
             window.sr = ScrollReveal({reset: true});
             sr.reveal('#intro', {duration: 1000});
-            sr.reveal('.first-content');
             sr.reveal('#history', {duration: 1000});
             sr.reveal('#projects', {duration: 1000});
-            sr.reveal('#interests', {duration: 1000});
-            sr.reveal('#links', {duration: 1000});
+            //sr.reveal('#interests', {duration: 500});
+            //sr.reveal('#photos', {duration: 2000});
+            //sr.reveal('#links', {duration: 1000});
         })();
+        $(document).foundation();
+        $('a').smoothScroll();
+        $('#offCanvasLeft').click(function(){
+//            $("#closeOffCanvas").click();
+            $('#offCanvasLeft').removeClass('is-open');
+            $('#offCanvasWrapper').removeClass('is-off-canvas-open').removeClass('is-open-left');
+        });
 </script>
-
-<!-- Latest compiled and minified JavaScript -->
-        <!--<script src="js/vendor/what-input.min.js"></script>-->
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.4.2/parallax.min.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script>
-    $(document).foundation();
-    $('a').smoothScroll();
-</script>
-
 </body>
 </html>
 
