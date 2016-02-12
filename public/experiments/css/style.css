@@ -12,7 +12,8 @@ body {
   position: fixed;
   width: 100vw;
   z-index: 250;
-  padding: 0.2rem !important; }
+  padding: 0.2rem !important;
+  margin-bottom: 5vh; }
 
 .title-bar {
   position: fixed;
@@ -27,11 +28,11 @@ body {
   padding: 0 !important;
   overflow: hidden; }
 
-.menu {
+#ocMenu {
   background-color: rgba(0, 0, 0, 0.8);
   height: 100vh; }
 
-.menu a {
+#ocMenu a {
   color: white; }
 
 .page {
