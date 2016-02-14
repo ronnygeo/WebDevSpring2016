@@ -1,110 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Form Maker</title>
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/dashboard.css" rel="stylesheet" />
-    <link href="../css/style.css" rel="stylesheet" />
-
-</head>
-
-<body>
-
-<!--Header-->
-
-<div class="container-fluid">
-    <div class="row">
-<!-- sidebar -->
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-                <h2 class="h2 sub-header">Admin</h2>
-            <h3 class="h3">Users</h3>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th><span class="glyphicon glyphicon-triangle-bottom"></span> Username</th>
-                        <th><span class="glyphicon glyphicon-triangle-bottom"></span> Password</th>
-                        <th><span class="glyphicon glyphicon-triangle-bottom"></span> Role</th>
-                        <th><span class="glyphicon glyphicon-triangle-bottom"></span> Actions</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="adminNewUsername" class="form-control" placeholder="Username"></td>
-                        <td><input type="text" id="adminNewPassword" class="form-control" placeholder="Password"></td>
-                        <td>
-                            <input type="text" id="adminNewUserRole" class="form-control" placeholder="Role">
-                        </td>
-                        <td style="white-space: nowrap">
-                            <a href="#" class="btn btn-success">
-                                <scan class="glyphicon glyphicon-ok"></scan>
-                            </a>
-                            <a href="#" class="btn btn-primary">
-                                <scan class="glyphicon glyphicon-plus"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Alice</td>
-                        <td></td>
-                        <td>Student</td>
-                        <td>
-                            <a href="#" class="btn btn-warning">
-                                <scan class="glyphicon glyphicon-pencil"></scan>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <scan class="glyphicon glyphicon-remove"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Bob</td>
-                        <td></td>
-                        <td>Faculty | Admin</td>
-                        <td>
-                            <a href="#" class="btn btn-warning">
-                                <scan class="glyphicon glyphicon-pencil"></scan>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <scan class="glyphicon glyphicon-remove"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Charlie</td>
-                        <td></td>
-                        <td></td>
-                       <td>
-                            <a href="#" class="btn btn-warning">
-                                <scan class="glyphicon glyphicon-pencil"></scan>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <scan class="glyphicon glyphicon-remove"></scan>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-
-
-
-            </div>
-
+<h2 class="h2 sub-header">Admin</h2>
+<h3 class="h3">Users</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th><span class="glyphicon glyphicon-triangle-bottom"></span> Username</th>
+            <th><span class="glyphicon glyphicon-triangle-bottom"></span> Password</th>
+            <th><span class="glyphicon glyphicon-triangle-bottom"></span> Role</th>
+            <th><span class="glyphicon glyphicon-triangle-bottom"></span> Actions</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="adminNewUsername" class="form-control" placeholder="Username"></td>
+            <td><input type="text" id="adminNewPassword" class="form-control" placeholder="Password"></td>
+            <td>
+                <input type="text" id="adminNewUserRole" class="form-control" placeholder="Role">
+            </td>
+            <td style="white-space: nowrap">
+                <a href="#" class="btn btn-success">
+                    <scan class="glyphicon glyphicon-ok"></scan>
+                </a>
+                <a href="#" class="btn btn-primary">
+                    <scan class="glyphicon glyphicon-plus"></scan>
+                </a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Alice</td>
+            <td></td>
+            <td>Student</td>
+            <td>
+                <a href="#" class="btn btn-warning">
+                    <scan class="glyphicon glyphicon-pencil"></scan>
+                </a>
+                <a href="#" class="btn btn-danger">
+                    <scan class="glyphicon glyphicon-remove"></scan>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td></td>
+            <td>Faculty | Admin</td>
+            <td>
+                <a href="#" class="btn btn-warning">
+                    <scan class="glyphicon glyphicon-pencil"></scan>
+                </a>
+                <a href="#" class="btn btn-danger">
+                    <scan class="glyphicon glyphicon-remove"></scan>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Charlie</td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="#" class="btn btn-warning">
+                    <scan class="glyphicon glyphicon-pencil"></scan>
+                </a>
+                <a href="#" class="btn btn-danger">
+                    <scan class="glyphicon glyphicon-remove"></scan>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-    </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</body>
-</html>
