@@ -3,7 +3,8 @@
  */
 
 (function(){
-    app.controller('MainController', [$scope, function($scope){
-
+    'use strict';
+    angular.module("FormBuilderApp")
+    .controller('MainController', ['$scope', function($scope){
     }]);
 })();

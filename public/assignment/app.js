@@ -3,5 +3,6 @@
  */
 
 (function(){
-    var app = angular.module("FormBuilderApp", ['ngRoute']);
+    'use strict';
+    angular.module("FormBuilderApp", ['ngRoute']);
 })();
