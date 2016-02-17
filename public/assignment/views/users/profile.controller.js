@@ -4,7 +4,7 @@
 (function(){
     'use strict';
     angular.module("FormBuilderApp")
-        .controller("RegisterController", [$scope, function($scope){
+        .controller("RegisterController", ['$scope', function($scope){
 
         }]);
 })();

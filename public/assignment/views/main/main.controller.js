@@ -2,9 +2,10 @@
  * Created by ronnygeo on 2/16/16.
  */
 
-(function(){
+var MainController = (function(){
     'use strict';
     angular.module("FormBuilderApp")
-    .controller('MainController', ['$scope', function($scope){
+    .controller('MainController', ['$scope', '$location', function($scope, $location){
+        $scope.$location = $location;
     }]);
 })();

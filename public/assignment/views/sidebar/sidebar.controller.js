@@ -4,7 +4,6 @@
 (function(){
     'use strict';
     angular.module('FormBuilderApp')
-    .controller('SidebarController', ['$scope', '$location', function($scope, $location){
-        $scope.$location = '$location';
+    .controller('SidebarController', ['$scope', function($scope){
     }])
 })();

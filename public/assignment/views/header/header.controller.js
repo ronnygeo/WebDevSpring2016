@@ -4,7 +4,6 @@
 (function(){
     'use strict';
     angular.module('FormBuilderApp')
-        .controller('HeaderController', ['$scope', '$location', function($scope, $location){
-            $scope.$location = $location;
+        .controller('HeaderController', ['$scope', function($scope){
         }]);
 })();
