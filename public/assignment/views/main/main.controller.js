@@ -5,7 +5,12 @@
 var MainController = (function(){
     'use strict';
     angular.module("FormBuilderApp")
-    .controller('MainController', ['$scope', '$location', function($scope, $location){
+    .controller('MainController', MainController);
+
+    var MainController = function($scope, $location){
         $scope.$location = $location;
-    }]);
+        $scope.isLocation = function(loc){
+            return loc === $location.url;
+        };
+    };
 })();

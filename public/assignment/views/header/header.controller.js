@@ -4,6 +4,15 @@
 (function(){
     'use strict';
     angular.module('FormBuilderApp')
-        .controller('HeaderController', ['$scope', function($scope){
-        }]);
+        .controller('HeaderController', HeaderController);
+
+    var HeaderController = function($scope){
+
+        $scope.isActive = function(loc){
+            if ($location.url == loc)
+                return 'active';
+        };
+
+        };
+
 })();

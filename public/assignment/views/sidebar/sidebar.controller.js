@@ -4,6 +4,10 @@
 (function(){
     'use strict';
     angular.module('FormBuilderApp')
-    .controller('SidebarController', ['$scope', function($scope){
-    }])
+    .controller('SidebarController', SidebarController);
+
+    var SidebarController = function($scope){
+
+    };
+
 })();
