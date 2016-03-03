@@ -4,7 +4,15 @@
 (function(){
     'use strict';
     angular.module("FormBuilderApp")
-        .controller("LoginController", ['$scope', function($scope){
+        .controller("LoginController", LoginController);
 
-        }]);
+    var LoginController = function(UserService, $scope){
+        $scope.username = "";
+        $scope.password = "";
+        var user = UserService.findUserByCredentials($scope.username, $scope.password);
+        if (user) {
+            $rootScope.user = user;
+            $location.url = '/profile';
+        }
+        };
 })();

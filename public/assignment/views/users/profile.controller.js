@@ -4,7 +4,18 @@
 (function(){
     'use strict';
     angular.module("FormBuilderApp")
-        .controller("RegisterController", ['$scope', function($scope){
+        .controller("ProfileController", ProfileController);
 
-        }]);
+    var ProfileController = function($scope, UserService){
+        $scope.user = $rootScope.user;
+        //$scope.username = user.username;
+        //$scope.password = user.password;
+        //$scope.firstname = user.firstname;
+        //$scope.lastname = user.lastname;
+        //$scope.email = user.email;
+
+        $scope.update = function () {
+            UserService.updateUser($scope.user);
+        }
+    };
 })();
