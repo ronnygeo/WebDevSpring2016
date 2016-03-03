@@ -6,7 +6,7 @@
     angular.module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    var RegisterController = function (UserService, $location, $scope) {
+    function RegisterController(UserService, $location, $scope) {
         $scope.username = "";
         $scope.password = "";
         $scope.verifyPassword = "";

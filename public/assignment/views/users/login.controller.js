@@ -6,7 +6,7 @@
     angular.module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    var LoginController = function(UserService, $scope){
+    function LoginController(UserService, $scope){
         $scope.username = "";
         $scope.password = "";
         var user = UserService.findUserByCredentials($scope.username, $scope.password);

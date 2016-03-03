@@ -6,7 +6,7 @@
     angular.module('FormBuilderApp')
         .controller('HeaderController', HeaderController);
 
-    var HeaderController = function($scope){
+    function HeaderController($scope){
 
         $scope.isActive = function(loc){
             if ($location.url == loc)

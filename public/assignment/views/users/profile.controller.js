@@ -6,7 +6,7 @@
     angular.module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    var ProfileController = function($scope, UserService){
+    function ProfileController($scope, UserService){
         $scope.user = $rootScope.user;
         //$scope.username = user.username;
         //$scope.password = user.password;

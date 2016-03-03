@@ -4,7 +4,9 @@
 (function(){
     'use strict';
     angular.module("FormBuilderApp")
-        .controller("AdminController", ['$scope', function($scope){
+        .controller("AdminController", AdminController);
 
-        }]);
+    function AdminController($scope){
+
+        }
 })();

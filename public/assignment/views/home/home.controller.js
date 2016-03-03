@@ -4,6 +4,9 @@
 (function(){
     'use strict';
     angular.module("FormBuilderApp")
-    .controller('HomeController', ['$scope', function($scope){
-    }]);
+    .controller('HomeController', HomeController);
+
+    function HomeController($scope){
+
+    };
 })();
