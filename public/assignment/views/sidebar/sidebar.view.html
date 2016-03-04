@@ -1,8 +1,8 @@
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-            <li ng-class="{'active': $scope.isLocation('/')}"><a href="#/">Home</a></li>
-            <li ng-show="user && user._id" ng-class="{'active': $scope.isLocation('/profile')}"><a href="#/profile">Profile</a></li>
-            <li ng-show="user && user._id && user.roles.indexOf('admin') !== -1" ng-class="{'active': $scope.isLocation('/admin')}"><a href="#/admin">Admin</a></li>
-            <li ng-show="user && user._id" ng-class="{'active': $scope.isLocation('/forms')}"><a href="#/forms">Forms</a></li>
+            <li ng-class="isActive('/')"><a href="#/">Home</a></li>
+            <li ng-show="user && user._id" ng-class="isActive('/profile')"><a href="#/profile">Profile</a></li>
+            <li ng-show="user && user._id && user.roles !== undefined && user.roles.indexOf('admin') !== -1" ng-class="isActive('/admin')"><a href="#/admin">Admin</a></li>
+            <li ng-show="user && user._id" ng-class="isActive('/forms')"><a href="#/forms">Forms</a></li>
         </ul>
     </div>

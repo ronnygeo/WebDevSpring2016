@@ -3,6 +3,7 @@
  */
 
 (function(){
+    'use strict';
     angular.module("FormBuilderApp")
         .factory('FormService', FormService);
 
@@ -22,7 +23,7 @@
             findAllFormsForUser: findAllFormsForUser,
             deleteFormbyId: deleteFormById,
             updateFormById: updateFormById
-    };
+        };
         return api;
 
         //Accepts parameters user id, form object, and callback function
@@ -30,8 +31,7 @@
         //Adds property called userId equal to user id parameter
         //Adds new form to local array of forms
         //Calls back with new form
-
-            function createFormForUser(userId, form, callback) {
+        function createFormForUser(userId, form, callback) {
             form._id = (new Date).getTime();
             form.userId = userId;
             forms.push(form);
@@ -43,8 +43,7 @@
         //Adds property called userId equal to user id parameter
         //Adds new form to local array of forms
         //Calls back with new form
-
-            function findAllFormsForUser(userId, callback) {
+        function findAllFormsForUser(userId, callback) {
             var found = [];
             for (var f of forms) {
                 if (f.userId === userId)
@@ -57,7 +56,6 @@
         //Iterates over array of forms looking for form whose id is form id parameter
         //If found, removes form from current array of forms
         //Calls back with remaining array of forms
-
         function deleteFormById(formId, callback) {
             for (var i=0; i < forms.length; i++){
                 if (forms[i]._id === formId) {
@@ -67,19 +65,18 @@
             }
             return callback(forms);
         }
-
         //Accepts parameter form id, new form object, and callback function
         //Iterates over array of forms looking for form whose id is form id parameter
         //If found, updates form object with new form values
         //Calls back with update form
 
         function updateFormById(formId, newForm, callback) {
-                for (var i=0; i < forms.length; i++){
-                    if (forms[i]._id === formId){
-                        newForm._id = formId;
-                        forms[i] = newForm;
-                    }
+            for (var i=0; i < forms.length; i++){
+                if (forms[i]._id === formId){
+                    newForm._id = formId;
+                    forms[i] = newForm;
                 }
+            }
             return callback(newForm);
         }
     }

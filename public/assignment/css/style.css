@@ -19,3 +19,7 @@ td {
     width: 80vw !important;
     padding: 10vw;
 }
+
+#login-alert {
+    display: none;
+}

@@ -1,7 +1,7 @@
 /**
  * Created by ronnygeo on 2/14/16.
  */
-(function(){
+(function () {
     'use strict';
     angular.module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
@@ -18,7 +18,7 @@
             //var user = {username: $scope.username, password: $scope.password, email: $scope.email};
             UserService.createUser($scope.user, render);
         }
-        function render(data){
+        function render(data) {
         $rootScope.user = data;
         $location.url('/profile/');
         }

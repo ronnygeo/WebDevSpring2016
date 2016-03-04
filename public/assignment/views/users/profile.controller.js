@@ -1,13 +1,14 @@
 /**
  * Created by ronnygeo on 2/14/16.
  */
-(function(){
+(function () {
     'use strict';
     angular.module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
     ProfileController.$inject = ['$scope', '$rootScope', 'UserService'];
-    function ProfileController($scope, $rootScope, UserService){
+
+    function ProfileController($scope, $rootScope, UserService) {
         $scope.user = $rootScope.user;
 
         $scope.update = function () {
@@ -15,8 +16,8 @@
             UserService.updateUser($scope.user._id, $scope.user, render);
         };
 
-        function render(data){
-            //console.log(data);
+        function render(data) {
+            console.log(data.roles);
         }
     }
 })();

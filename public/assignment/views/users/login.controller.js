@@ -1,14 +1,14 @@
 /**
  * Created by ronnygeo on 2/14/16.
  */
-(function(){
+(function () {
     'use strict';
     angular.module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
     LoginController.$inject = ['UserService','$location','$scope', '$rootScope'];
 
-    function LoginController(UserService, $location, $scope, $rootScope){
+    function LoginController(UserService, $location, $scope, $rootScope) {
         $scope.login =login;
 
         function login() {
@@ -16,10 +16,13 @@
             UserService.findUserByCredentials($scope.username, $scope.password, render);
     }
 
-        function render(data){
+        function render(data) {
             if (data !== null){
             $rootScope.user = data;
             $location.url('/profile/');
+            }
+            else {
+                $('#login-alert').show();
             }
             //console.log($rootScope.user);
         }

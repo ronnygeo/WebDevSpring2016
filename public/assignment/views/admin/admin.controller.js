@@ -1,13 +1,13 @@
 /**
  * Created by ronnygeo on 2/14/16.
  */
-(function(){
+(function () {
     'use strict';
     angular.module("FormBuilderApp")
         .controller("AdminController", AdminController);
 
     AdminController.$inject = ['$scope', 'UserService'];
-    function AdminController($scope, UserService){
+    function AdminController($scope, UserService) {
         $scope.user = {};
 
         //Event Handlers
@@ -18,7 +18,7 @@
 
         UserService.findAllUsers(render);
 
-        function render(data){
+        function render(data) {
             $scope.users = [];
             $scope.users = data;
             $scope.user = {};
@@ -30,18 +30,18 @@
             });
         }
 
-        function updateUser(){
+        function updateUser() {
             UserService.updateUser($scope.user._id, $scope.user, function(){
                 $scope.user = {};
             })
         }
 
         //Add to the edit boxes.
-        function selectUser(index){
+        function selectUser(index) {
             $scope.user = $scope.users[index];
         }
 
-        function removeUser(index){
+        function removeUser(index) {
             UserService.deleteUserById($scope.users[index]._id, render);
         }
         }

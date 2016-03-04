@@ -1,12 +1,12 @@
 /**
  * Created by ronnygeo on 2/14/16.
  */
-(function(){
+(function () {
     'use strict';
     angular.module("FormBuilderApp")
     .controller('HomeController', HomeController);
 
-    function HomeController($scope){
+    function HomeController($scope) {
 
     }
 })();
