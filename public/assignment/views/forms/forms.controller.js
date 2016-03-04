@@ -23,7 +23,7 @@
         }
 
         function updateForm(){
-            FormService.updateFormById($scope.form._id, $scope.form, function (data){
+            FormService.updateFormById($scope.form._id, $scope.form, function (){
                 $scope.form = {};
             });
         }
@@ -37,18 +37,17 @@
 
         function deleteForm(index){
             FormService.deleteFormbyId($scope.forms[index]._id, function (data){
-                $scope.forms = data;
+                $scope.forms = [];
+                for (var d of data){
+                    if (d.userId === $rootScope.user._id)
+                    $scope.forms.push(d);
+                }
             });
         }
 
         function renderList(data){
-            console.log($scope.forms);
-            $scope.forms = [];
+            //console.log($scope.forms);
             $scope.forms = data;
-        }
-
-        function clearInput(){
-            $scope.form = {};
         }
 
     }
