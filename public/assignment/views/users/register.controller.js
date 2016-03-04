@@ -6,7 +6,7 @@
     angular.module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    RegisterController.$inject = ['UserService', '$location', '$scope', '$rootScope'];
+    RegisterController.$inject = ['UserService', '$location', '$rootScope', '$scope'];
 
     function RegisterController(UserService, $location, $rootScope, $scope) {
         $scope.user = {};

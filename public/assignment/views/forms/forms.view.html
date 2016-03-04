@@ -15,49 +15,27 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="newFormName" class="form-control" placeholder="Form Name"></td>
+                    <input type="text" id="newFormName" ng-model="form.title" class="form-control" placeholder="Form Name"></td>
                 <td  class="align-right">
-                    <a href="#" class="btn btn-success">
+                    <button class="btn btn-success" ng-click="updateForm()">
                         <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                    <a href="#" class="btn btn-primary">
+                    </button>
+                    <button class="btn btn-primary" ng-click="addForm()">
                         <span class="glyphicon glyphicon-plus"></span>
-                    </a>
+                    </button>
                 </td>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><a href="fields.view.html">Registration Form</a></td>
+            <tr ng-repeat="form in forms">
+                <td>{{form.title}}</td>
                 <td class="align-right">
-                    <a href="#" class="btn btn-warning">
+                    <button href="#" class="btn btn-warning" ng-click="selectForm($index)">
                         <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <a href="#" class="btn btn-danger">
+                    </button>
+                    <button href="#" class="btn btn-danger" ng-click="deleteForm($index)">
                         <span class="glyphicon glyphicon-remove"></span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="fields.view.html">Contact List</a></td>
-                <td class="align-right">
-                    <a href="#" class="btn btn-warning">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <a href="#" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="fields.view.html">To Do List</a></td>
-                <td class="align-right">
-                    <a href="#" class="btn btn-warning">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <a href="#" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </a>
+                    </button>
                 </td>
             </tr>
             </tbody>

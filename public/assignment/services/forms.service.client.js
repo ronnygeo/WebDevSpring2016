@@ -4,7 +4,7 @@
 
 (function(){
     angular.module("FormBuilderApp")
-    .factory("FormService", FormService);
+        .factory('FormService', FormService);
 
     function FormService() {
         var forms = [];
@@ -12,7 +12,8 @@
         forms = [
             {"_id": "000", "title": "Contacts", "userId": 123},
             {"_id": "010", "title": "ToDo",     "userId": 123},
-            {"_id": "020", "title": "CDs",      "userId": 234}
+            {"_id": "020", "title": "CDs",      "userId": 234},
+            {"_id": "020", "title": "Textbooks", "userId": 234}
         ];
 
 
@@ -37,18 +38,15 @@
                 if (f.userId === userId)
                     found.push(f);
             }
-            callback(found);
+            return callback(found);
         }
 
         function deleteFormById(formId, callback) {
-            var i = 0;
             for (i=0; i < forms.length; i++){
                 if (forms[i]._id === formId) {
+                    forms.splice(i, 1);
                     break;
                 }
-            }
-            if (i !== 0) {
-                forms.splice(i, 1);
             }
             return callback(forms);
         }
