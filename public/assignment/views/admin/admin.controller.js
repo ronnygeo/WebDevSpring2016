@@ -9,34 +9,40 @@
     AdminController.$inject = ['$scope', 'UserService'];
     function AdminController($scope, UserService){
         $scope.user = {};
+
         //Event Handlers
-        $scope.edit = edit;
-        $scope.remove = remove;
-        $scope.add = add;
-        $scope.update = update;
+        $scope.selectUser = selectUser;
+        $scope.removeUser = removeUser;
+        $scope.addUser = addUser;
+        $scope.updateUser = updateUser;
 
         UserService.findAllUsers(render);
-        function render(data){
-            $scope.users = data;
-        }
 
-        function add() {
-            UserService.createUser($scope.user, render);
+        function render(data){
+            $scope.users = [];
+            $scope.users = data;
             $scope.user = {};
         }
 
-        function update() {}
+        function addUser() {
+            UserService.createUser($scope.user, function(data){
+               $scope.user = {};
+            });
+        }
+
+        function updateUser(){
+            UserService.updateUser($scope.user._id, $scope.user, function(){
+                $scope.user = {};
+            })
+        }
 
         //Add to the edit boxes.
-        function edit(index){
+        function selectUser(index){
             $scope.user = $scope.users[index];
-            $scope.user = {};
         }
 
-        function remove(index){
-            $scope.user = $scope.users[index];
-            UserService.deleteUserById($scope.user._id, render)
-            $scope.user = {};
+        function removeUser(index){
+            UserService.deleteUserById($scope.users[index]._id, render);
         }
         }
 })();

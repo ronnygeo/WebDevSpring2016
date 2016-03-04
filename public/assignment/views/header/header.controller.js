@@ -11,11 +11,7 @@
         //Event Handlers
         $scope.logout = logout;
 
-        $scope.$location = $location;
-        $scope.isActive = function(loc){
-            if ($location.url == loc)
-                return 'active';
-        };
+        //$scope.$location = $location;
 
         function logout(){
             delete $rootScope.user;

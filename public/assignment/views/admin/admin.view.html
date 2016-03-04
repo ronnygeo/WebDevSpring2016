@@ -16,10 +16,10 @@
                 <input type="text" ng-model="user.roles" id="adminNewUserRole" class="form-control" placeholder="Role">
             </td>
             <td style="white-space: nowrap">
-                <button ng-click="update()" class="btn btn-success">
+                <button ng-click="updateUser()" class="btn btn-success">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
-                <button ng-click="add()" class="btn btn-primary">
+                <button ng-click="addUser()" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
             </td>
@@ -31,10 +31,10 @@
             <td>{{user.password}}</td>
             <td>{{user.roles}}</td>
             <td>
-                <button ng-click="edit($index)" class="btn btn-warning">
+                <button ng-click="selectUser($index)" class="btn btn-warning">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button ng-click="remove($index)" class="btn btn-danger">
+                <button ng-click="removeUser($index)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
             </td>

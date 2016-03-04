@@ -12,9 +12,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li ng-hide="user && user._id" ng-class="isActive('/register')"><a href="#/register">Register</a></li>
-                <li ng-hide="user && user._id" ng-class="{'active': $location.url == '/login'}"><a href="#/login">Login</a></li>
-                <li ng-show="user && user._id" ng-class="{'active': $location.url == '/profile'}"><a href="#/profile">{{user.username || uppercase}}</a></li>
-                <li ng-show="user && user._id && user.roles.indexOf('admin') !== -1" ng-class="{'active': $scope.isLocation('/admin')}"><a href="#/admin">Admin</a></li>
+                <li ng-hide="user && user._id" ng-class="isActive('/login')"><a href="#/login">Login</a></li>
+                <li ng-show="user && user._id" ng-class="isActive('/profile')"><a href="#/profile">{{user.username || uppercase}}</a></li>
+                <li ng-show="user && user._id && user.roles.indexOf('admin') !== -1" ng-class="isActive('/admin')"><a href="#/admin">Admin</a></li>
                 <li ng-show="user && user._id" ng-click="logout()"><a href="">Logout</a></li>
             </ul>
         </div>
