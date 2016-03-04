@@ -10,59 +10,33 @@
             <th><span class="glyphicon glyphicon-triangle-bottom"></span> Actions</th>
         </tr>
         <tr>
-            <td><input type="text" id="adminNewUsername" class="form-control" placeholder="Username"></td>
-            <td><input type="text" id="adminNewPassword" class="form-control" placeholder="Password"></td>
+            <td><input type="text" ng-model="user.username" id="adminNewUsername" class="form-control" placeholder="Username"></td>
+            <td><input type="text" ng-model="user.password" id="adminNewPassword" class="form-control" placeholder="Password"></td>
             <td>
-                <input type="text" id="adminNewUserRole" class="form-control" placeholder="Role">
+                <input type="text" ng-model="user.roles" id="adminNewUserRole" class="form-control" placeholder="Role">
             </td>
             <td style="white-space: nowrap">
-                <a href="#" class="btn btn-success">
-                    <scan class="glyphicon glyphicon-ok"></scan>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <scan class="glyphicon glyphicon-plus"></scan>
-                </a>
+                <button ng-click="update()" class="btn btn-success">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+                <button ng-click="add()" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
             </td>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Alice</td>
-            <td></td>
-            <td>Student</td>
+        <tr ng-repeat="user in users">
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.roles}}</td>
             <td>
-                <a href="#" class="btn btn-warning">
-                    <scan class="glyphicon glyphicon-pencil"></scan>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <scan class="glyphicon glyphicon-remove"></scan>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>Bob</td>
-            <td></td>
-            <td>Faculty | Admin</td>
-            <td>
-                <a href="#" class="btn btn-warning">
-                    <scan class="glyphicon glyphicon-pencil"></scan>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <scan class="glyphicon glyphicon-remove"></scan>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>Charlie</td>
-            <td></td>
-            <td></td>
-            <td>
-                <a href="#" class="btn btn-warning">
-                    <scan class="glyphicon glyphicon-pencil"></scan>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <scan class="glyphicon glyphicon-remove"></scan>
-                </a>
+                <button ng-click="edit($index)" class="btn btn-warning">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button ng-click="remove($index)" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
             </td>
         </tr>
         </tbody>
