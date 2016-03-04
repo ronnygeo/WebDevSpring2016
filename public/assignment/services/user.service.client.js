@@ -4,13 +4,9 @@
 (function(){
     angular.module("FormBuilderApp")
         .factory('UserService', UserService);
-    var UserService = function(){
+
+    function UserService(){
         var users = [];
-        var findUserByCredentials;
-        var findAllUsers;
-        var createUser;
-        var deleteUserById;
-        var updateUser;
         var api;
 
         users = [
@@ -27,38 +23,40 @@
         ];
 
         api = {
-            "findUserByCredentials": findUserByCredentials,
-            "findAllUsers": findAllUsers,
-            "createUser": createUser,
-            "deleteUserById": deleteUserById,
-            "updateUser": updateUser
+            findUserByCredentials: findUserByCredentials,
+            findAllUsers: findAllUsers,
+            createUser: createUser,
+            deleteUserById: deleteUserById,
+            updateUser: updateUser
         };
         return api;
 
-        findUserByCredentials = function (username, password, callback) {
-            for (user in users) {
+        function findUserByCredentials(username, password, callback) {
+            for (var user of users) {
+                //console.log(user.username);
                 if ((user.username === username) && (user.password === password)){
+                    //console.log('success');
                     return callback (user);
                 }
+
             }
             return callback(null);
-        };
+        }
 
-        findAllUsers = function (callback) {
-            return callback(users);
-        };
+        function findAllUsers(callback) {
+            callback(users);
+        }
 
-        createUser = function (user, callback) {
+        function createUser(user, callback) {
             if (user) {
-                var newUser = {};
-                newUser = user;
-                newUser._id = (new Date).getTime();
-                users.append();
-                return callback(newUser);
+                user._id = (new Date).getTime();
+                console.log(user);
+                users.push(user);
+                callback(user);
             }
-        };
+        }
 
-        deleteUserById = function (userId, callback) {
+        function deleteUserById(userId, callback) {
             if (userId) {
                 var index;
                 for (var i = 0; i < users.length; i++){
@@ -69,24 +67,26 @@
                     }
                 }
                 users.splice(i, 1);
-                return callback(users);
+                callback(users);
             }
-        };
+        }
 
-        updateUser = function (userId, user, callback) {
+        function updateUser(userId, user, callback) {
+            var index;
             for (var i = 0; i < users.length; i++){
-                if (userId === users[i].userId)
+                if (userId === users[i]._id)
                 {
                     index = i;
                     break;
                 }
             }
 
-            for (key in user){
+            for (var key in user){
                 users[index][key] = user[key];
             }
-            return callback(user);
-        };
-    };
+            //console.log(users[index]);
+            callback(user);
+        }
+    }
 
 })();

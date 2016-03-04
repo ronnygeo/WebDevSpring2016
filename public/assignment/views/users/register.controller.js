@@ -6,17 +6,21 @@
     angular.module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController(UserService, $location, $scope) {
-        $scope.username = "";
-        $scope.password = "";
-        $scope.verifyPassword = "";
-        $scope.email = "";
+    RegisterController.$inject = ['UserService', '$location', '$scope', '$rootScope'];
 
-        $scope.register = function () {
-            var user = {"username": $scope.username, "password": $scope.password, "email": $scope.email};
-            UserService.createUser(user);
-            $rootScope = UserService.findUserByCredentials($scope.username, $scope.password);
-        };
-        $location.url = '/profile';
-        };
+    function RegisterController(UserService, $location, $rootScope, $scope) {
+        $scope.user = {};
+
+        //Event Handlers
+        $scope.register = register;
+
+        function register() {
+            //var user = {username: $scope.username, password: $scope.password, email: $scope.email};
+            UserService.createUser($scope.user, render);
+        }
+        function render(data){
+        $rootScope.user = data;
+        $location.url('/profile/');
+        }
+    }
 })();

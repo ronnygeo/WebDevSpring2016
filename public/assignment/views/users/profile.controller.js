@@ -6,16 +6,17 @@
     angular.module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope, UserService){
+    ProfileController.$inject = ['$scope', '$rootScope', 'UserService'];
+    function ProfileController($scope, $rootScope, UserService){
         $scope.user = $rootScope.user;
-        //$scope.username = user.username;
-        //$scope.password = user.password;
-        //$scope.firstname = user.firstname;
-        //$scope.lastname = user.lastname;
-        //$scope.email = user.email;
 
         $scope.update = function () {
-            UserService.updateUser($scope.user);
+            //console.log($scope.user);
+            UserService.updateUser($scope.user._id, $scope.user, render);
+        };
+
+        function render(data){
+            //console.log(data);
         }
-    };
+    }
 })();

@@ -10,16 +10,16 @@
     </div>
     <div class="form-group">
         <label for="inputFirstName">First Name</label>
-        <input type="text" id="inputFirstName" ng-model="user.firstname" class="form-control" placeholder="First Name" required>
+        <input type="text" id="inputFirstName" ng-model="user.firstName" class="form-control" placeholder="First Name" required>
     </div>
     <div class="form-group">
         <label for="inputLastName">Last Name</label>
-        <input type="text" id="inputLastName" ng-model="user.lastname" class="form-control" placeholder="Last Name" required>
+        <input type="text" id="inputLastName" ng-model="user.lastName" class="form-control" placeholder="Last Name" required>
     </div>
     <div class="form-group">
         <label for="inputEmail">Email address</label>
         <input type="email" id="inputEmail" ng-model="user.email" class="form-control" placeholder="Email address" required>
     </div>
     <br>
-    <a href="profile.view.html" class="btn btn-lg btn-primary btn-block" ng-click="update()">Update</a>
+    <button class="btn btn-lg btn-primary btn-block" ng-click="update()">Update</button>
 </form>
