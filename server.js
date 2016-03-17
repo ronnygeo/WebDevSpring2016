@@ -25,4 +25,5 @@ app.get('/json/projects', function(req, res){
     res.json(projects);
 });
 
+require("./public/assignment/server/app.js")(app);
 app.listen(port, ipaddress);
