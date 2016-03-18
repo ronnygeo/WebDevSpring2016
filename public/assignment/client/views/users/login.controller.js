@@ -13,7 +13,7 @@
 
         function login() {
             //console.log($scope.username+$scope.password);
-            UserService.findUserByCredentials($scope.username, $scope.password, render);
+            UserService.findUserByCredentials($scope.username, $scope.password).then(render);
     }
 
         function render(data) {

@@ -6,9 +6,9 @@
     angular.module("FormBuilderApp")
         .controller("FormController", FormController);
 
-    FormController.$inject = ['$rootScope','$scope','FormService'];
+    FormController.$inject = ['$rootScope','$scope','FormService', '$location'];
 
-    function FormController($rootScope, $scope, FormService) {
+    function FormController($rootScope, $scope, FormService, $location) {
         $scope.form = {};
 
         //Event Handlers
@@ -16,33 +16,44 @@
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
-        FormService.findAllFormsForUser($rootScope.user._id, renderList);
+        $scope.openField = openField;
+
+        FormService.findAllFormsForUser($rootScope.user._id)
+            .then(renderList);
 
         function selectForm(index) {
             $scope.form = $scope.forms[index];
         }
 
         function updateForm() {
-            FormService.updateFormById($scope.form._id, $scope.form, function (){
+            FormService.updateFormById($scope.form._id, $scope.form)
+                .then(function (){
                 $scope.form = {};
             });
         }
 
         function addForm() {
-            FormService.createFormForUser($rootScope.user._id, $scope.form, function (data){
+            FormService.createFormForUser($rootScope.user._id, $scope.form)
+                .then(function (data){
                 $scope.forms.push(data);
                 $scope.form = {};
             });
         }
 
         function deleteForm(index) {
-            FormService.deleteFormById($scope.forms[index]._id, function (data){
+            FormService.deleteFormById($scope.forms[index]._id)
+                .then(function (data){
                 $scope.forms = [];
                 for (var d of data){
                     if (d.userId === $rootScope.user._id)
                     $scope.forms.push(d);
                 }
             });
+        }
+
+        function openField(form) {
+            var id = form._id;
+            $location.url('/form/'+id+'/fields');
         }
 
         function renderList(data) {

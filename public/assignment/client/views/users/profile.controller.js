@@ -13,7 +13,8 @@
 
         $scope.update = function () {
             //console.log($scope.user);
-            UserService.updateUser($scope.user._id, $scope.user, render);
+            UserService.updateUser($scope.user._id, $scope.user).
+                then(render);
         };
 
         function render(data) {

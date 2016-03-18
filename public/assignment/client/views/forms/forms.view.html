@@ -28,12 +28,12 @@
             </thead>
             <tbody>
             <tr ng-repeat="form in forms">
-                <td>{{form.title}}</td>
+                <td><a ng-click="openField(form)">{{form.title}}</a></td>
                 <td class="align-right">
-                    <button href="#" class="btn btn-warning" ng-click="selectForm($index)">
+                    <button class="btn btn-warning" ng-click="selectForm($index)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button href="#" class="btn btn-danger" ng-click="deleteForm($index)">
+                    <button class="btn btn-danger" ng-click="deleteForm($index)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>

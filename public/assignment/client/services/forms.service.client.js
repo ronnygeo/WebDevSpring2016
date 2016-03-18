@@ -7,10 +7,12 @@
     angular.module("FormBuilderApp")
         .factory('FormService', FormService);
 
-    function FormService() {
+    FormService.$inject = ['$http'];
+    function FormService($http) {
         var api = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
+            findById: findById,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById
         };
@@ -32,6 +34,10 @@
         //Calls back with new form
         function findAllFormsForUser(userId) {
             return $http.get('/api/assignment/user/'+userId+'/form');
+        }
+
+        function findById(formId) {
+            return $http.get('/api/assignment/form/'+formId);
         }
 
         //Accepts parameter form id and callback function

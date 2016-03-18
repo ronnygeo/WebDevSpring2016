@@ -7,168 +7,29 @@
 
 <div class="table-responsive">
     <table class="table">
-        <tr><td>
-            <label for="firstName">First Name</label>
-            <input id="firstName" type="text" class="form-control" placeholder="First Name" />
-        </td>
-            <td class="pad-top">
-                <a href="#" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a href="#" class="btn btn-success">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <label for="lastName">Last Name</label>
-                <input id="lastName" type="text" class="form-control" placeholder="Last Name"/>
-            </td>
-            <td class="pad-top">
-                <a href="#" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a href="#" class="btn btn-success">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <label for="dateOfBirth">Date of Birth</label>
-                <div class="input-group date" id="dateOfBirth" data-provide="datepicker">
-                    <input type="text" class="form-control">
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
-
-            </td>
-            <td class="pad-top">
-                <a href="#" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a href="#" class="btn btn-success">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="gender">Gender</label>
-                <select class="form-control" id="gender">
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-            </td>
-            <td class="pad-top">
-                <a href="#" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a href="#" class="btn btn-success">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-
-                <label for="roles">Roles</label><br>
-                <div class="checkbox" id="roles">
-                    <label><input type="checkbox" name="roles" value="Admin" checked>Admin</label><br>
-                    <label><input type="checkbox" name="roles" value="Student">Student</label><br>
-                    <label><input type="checkbox" name="roles" value="User" checked>User</label><br>
-                </div>
-            </td>
-            <td class="pad-top">
-                <a href="#" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a href="#" class="btn btn-success">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-
-            </td>
-
-        </tr>
-
-        <tr>
-            <td>
-                <label>License Agreement:</label>
-                <div class="radio">
-                    <label>                   <input type="radio" name="license" value="YES" checked>Yes</label> <br>
-                    <label><input type="radio" value="NO" name="license">No</label><br>
-                </div>
-                </form>
-            </td>
-            <td class="pad-top">
-                <a href="#" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a href="#" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a href="#" class="btn btn-success">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-            </td>
+        <tr ng-repeat="field in model.fields">
+            <form-field info="field"></form-field>
         </tr>
 
         <tr>
             <td>
                 <label for="addNewField">Add New Field</label>
-                <select class="form-control" id="addNewField">
-                    <option>Single Line Text</option>
-                    <option>Date</option>
-                    <option>Dropdown</option>
-                    <option>Checkboxes</option>
-                    <option>Radio Buttons</option>
-                    <option>Paragraph Text</option>
+                <select class="form-control" id="addNewField" ng-model="model.fieldType">
+                    <option value="text">Single Line Text Field</option>
+                    <option value="textarea">Multi Line Text Field</option>
+                    <option value="date">Date Field</option>
+                    <option value="options">Dropdown Field</option>
+                    <option value="checkboxes">Checkboxes Field</option>
+                    <option value="radios">Radio Buttons Field</option>
                 </select>
             </td>
+
             <td class="pad-top">
-                <a href="#" class="btn btn-primary">
+                <button ng-click="addField()" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>
-                </a>
+                </button>
             </td>
         </tr>
     </table>
 </div>
+

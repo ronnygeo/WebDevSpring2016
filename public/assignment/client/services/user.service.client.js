@@ -6,7 +6,8 @@
     angular.module("FormBuilderApp")
         .factory('UserService', UserService);
 
-    function UserService(){
+    UserService.$inject = ['$http'];
+    function UserService($http){
         var api;
 
         api = {

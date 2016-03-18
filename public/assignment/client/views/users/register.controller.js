@@ -16,7 +16,7 @@
 
         function register() {
             //var user = {username: $scope.username, password: $scope.password, email: $scope.email};
-            UserService.createUser($scope.user, render);
+            UserService.createUser($scope.user).then(render);
         }
         function render(data) {
         $rootScope.user = data;
