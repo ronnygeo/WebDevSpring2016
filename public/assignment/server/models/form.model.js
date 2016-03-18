@@ -10,11 +10,13 @@ module.exports = function () {
         create: create,
         findAll: findAll,
         findById: findById,
+        findByUserId: findByUserId,
         update: update,
         delete: del,
         findFormByTitle: findFormByTitle
     };
     return api;
+
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(form) {
         form._id = "ID_" + (new Date()).getTime();
@@ -35,6 +37,17 @@ module.exports = function () {
             }
         }
         return null;
+    }
+
+    //findByUserId: finds all the forms by the particular user
+    function findByUserId(userId) {
+        var collection = [];
+        for (form of forms) {
+            if (form.userId === userId){
+                collection.push(form);
+            }
+        }
+        return collection;
     }
 
     //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
