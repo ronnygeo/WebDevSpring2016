@@ -4,7 +4,7 @@
 'use strict';
 var mock = require("./user.mock.json");
 
-module.exports = function (app) {
+module.exports = function () {
     var api = {
         create: create,
         findAll: findAll,
@@ -16,17 +16,19 @@ module.exports = function (app) {
 
     };
     return api;
-
+    //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(user) {
         user._id = "ID_" + (new Date()).getTime();
         mock.push(user);
-        return user;
+        return mock;
     }
 
+    //FindAll - should take no arguments, and return the corresponding collection
     function findAll() {
-
+        return mock;
     }
 
+    //FindById - should take an ID as an argument, find an instance object in the corresponding collection whose ID property is equal to the ID argument, return the instance found, null otherwise
     function findById(id) {
         for(var u in mock) {
             if( mock[u]._id === id ) {
@@ -36,25 +38,44 @@ module.exports = function (app) {
         return null;
     }
 
+    //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
     function update(id, obj) {
-
+        var user = findById(id);
+        if (user) {
+        for (var key in user) {
+            user[key] = obj[key];
+        }
+        }
+        return user;
     }
-
+    //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
     function del(id) {
-
+        for (var i = 0; i < mock.length; i++){
+            if (id === mock[i]._id)
+            {
+                mock.splice(i, 1);
+                break;
+            }
+        }
+        return mock;
     }
 
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByUsername(username) {
-
+        for (var user of mock) {
+            if (user.username == username) {
+                return user;
+            }
+        }
+        return null;
     }
 
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByCredentials(credentials) {
-        for(var u in mock) {
-            if( mock[u].username === credentials.username &&
-                mock[u].password === credentials.password) {
-                return mock[u];
+        for(var u of mock) {
+            if( u.username === credentials.username &&
+                u.password === credentials.password) {
+                return u;
             }
         }
         return null;
