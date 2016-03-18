@@ -16,6 +16,7 @@ module.exports = function () {
 
     };
     return api;
+    
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(user) {
         user._id = "ID_" + (new Date()).getTime();
