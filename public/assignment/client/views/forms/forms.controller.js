@@ -36,7 +36,7 @@
         }
 
         function deleteForm(index) {
-            FormService.deleteFormbyId($scope.forms[index]._id, function (data){
+            FormService.deleteFormById($scope.forms[index]._id, function (data){
                 $scope.forms = [];
                 for (var d of data){
                     if (d.userId === $rootScope.user._id)
