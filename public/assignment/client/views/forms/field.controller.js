@@ -5,9 +5,9 @@
     angular.module('FormBuilderApp')
         .controller('FieldController', FieldController);
 
-    FieldController.$inject = ['$rootScope', '$scope', 'FieldService', '$routeParams'];
+    FieldController.$inject = ['$rootScope', '$scope', 'FieldService', '$routeParams', '$uibModal'];
 
-    function FieldController($rootScope, $scope, FieldService, $routeParams) {
+    function FieldController($rootScope, $scope, FieldService, $routeParams, $uibModal) {
         formId = $routeParams.formId;
         userId = $rootScope.user._id;
         $scope.model = {};
@@ -20,8 +20,24 @@
         $scope.editField = editField;
         $scope.removeField = removeField;
         $scope.addField = addField;
+        $scope.rearrange = rearrange;
+        $scope.open = open;
+        
+        function open(size, field) {
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: './views/forms/dialogContent.html',
+                // controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    info: field
+                }
+            });
+        }
 
         function editField() {
+            // $dialog.dialog({}).open('modalContent.html');
             // If the field type is a Single Line of Text the popup should allow users to enter:
             //     Label
             // Placeholder
@@ -43,9 +59,16 @@
 
         function removeField(field) {
             FieldService.deleteFieldFromForm(formId, field._id).then(function (data) {
-                console.log(data.data);
+                // console.log(data.data);
                 $scope.model.fields = data.data;
-        });
+            });
+        }
+        
+        function rearrange() {
+            FieldService.rearrangeFields(formId, $scope.model.fields).then(function (data) {
+                console.log($scope.model.fields);
+                $scope.model.fields = data.data;
+            });
         }
 
         function addField() {

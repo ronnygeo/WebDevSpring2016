@@ -12,7 +12,8 @@ module.exports = function () {
         getFormFieldById: getFormFieldById,
         deleteFormField: deleteFormField,
         createFormField: createFormField,
-        updateFormField: updateFormField
+        updateFormField: updateFormField,
+        updateAllFormFields: updateAllFormFields
     };
     return api;
 
@@ -139,4 +140,12 @@ module.exports = function () {
         }
         return null;
     }
+
+    function updateAllFormFields(formId, obj) {
+        var form = findById(formId);
+        // console.log(obj);
+        form.fields = obj;
+        // console.log(form.fields);
+        return obj;
+        }
 };

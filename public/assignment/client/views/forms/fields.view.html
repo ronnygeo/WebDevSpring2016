@@ -5,28 +5,28 @@
     <li role="presentation" class="active"><a href="#">Fields</a></li>
 </ul>
 
-<div class="table-responsive" ng-controller="FieldController">
-        <div class="row" ng-repeat="field in model.fields">
-            <form-field info="field"></form-field>
-        </div>
-        <div class="row">
-            <div class="col-sm-8">
-                <label for="addNewField">Add New Field</label>
-                <select class="form-control" id="addNewField" ng-model="model.fieldType">
-                    <option value="text">Single Line Text Field</option>
-                    <option value="textarea">Multi Line Text Field</option>
-                    <option value="date">Date Field</option>
-                    <option value="options">Dropdown Field</option>
-                    <option value="checkboxes">Checkboxes Field</option>
-                    <option value="radios">Radio Buttons Field</option>
-                </select>
-            </div>
+<div class="table-responsive" ui-sortable ng-model="model.fields">
+    <div class="row" ng-repeat="field in model.fields">
+        <form-field info="field"></form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <label for="addNewField">Add New Field</label>
+        <select class="form-control" id="addNewField" ng-model="model.fieldType">
+            <option value="text">Single Line Text Field</option>
+            <option value="textarea">Multi Line Text Field</option>
+            <option value="date">Date Field</option>
+            <option value="options">Dropdown Field</option>
+            <option value="checkboxes">Checkboxes Field</option>
+            <option value="radios">Radio Buttons Field</option>
+        </select>
+    </div>
 
-            <div class="col-sm-4" style="white-space:nowrap">
-                <button ng-click="addField()" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
-        </div>
+    <div class="col-sm-4" style="white-space:nowrap">
+        <button ng-click="addField()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
 </div>
 

@@ -24,6 +24,8 @@ module.exports = function (app, formModel) {
     // updates a field object whose id is equal to the fieldId path parameter and belonging to a form object whose id is equal to the formId path parameter so that its properties are the same as the property values of the field object embedded in the request's body
     app.put('/api/assignment/form/:formId/field/:fieldId', updateFormField);
 
+    app.put('/api/assignment/form/:formId/field', updateAllFormFields);
+
     function getFormFields(req, res) {
         var formId = req.params.formId;
         res.json(formModel.getFormFields(formId));
@@ -50,4 +52,11 @@ module.exports = function (app, formModel) {
         var field = req.body;
         res.json(formModel.updateFormField(formId, fieldId, field));
     }
+
+    function updateAllFormFields(req, res) {
+        var formId = req.params.formId;
+        var fields = req.body;
+        res.json(formModel.updateAllFormFields(formId, fields));
+    }
+
 };
