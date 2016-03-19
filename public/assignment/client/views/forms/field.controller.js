@@ -24,7 +24,7 @@
         $scope.open = open;
 
         $scope.sortableOptions = {
-            // handle: '> .myHandle',
+            handle: '.myHandle',
             update: function(e, ui) {
                 rearrange();
             }
