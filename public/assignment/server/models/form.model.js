@@ -19,6 +19,7 @@ module.exports = function () {
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(form) {
         form._id = "ID_" + (new Date()).getTime();
+        form.options = [];
         forms.push(form);
         return forms;
     }
@@ -101,20 +102,29 @@ module.exports = function () {
 
     function deleteFormField(formId, fieldId) {
         var form = findById(formId);
-        var fields = form.fields;
-        for (var i = 0; i < fields; i++) {
-            if (fields[i]._id === fieldId) {
+        // console.log(form);
+        for (var i = 0; i < form.fields.length; i++) {
+            // console.log(fieldId);
+            // console.log(form.fields[i]);
+            if (form.fields[i]._id == fieldId) {
+                // console.log(form.fields[i]);
                 form.fields.splice(i, 1);
             }
         }
-        return form;
+        // console.log(form.fields);
+        return form.fields;
     }
 
     function createFormField(formId, field) {
         var form = findById(formId);
         field._id = "ID_" + (new Date()).getTime();
+        if (form.fields) {
         form.fields.push(field);
-        return form;
+        } else {
+            form.fields = [];
+            form.fields.push(field);
+        }
+        return form.fields;
     }
 
     function updateFormField(formId, fieldId, obj) {
@@ -124,8 +134,9 @@ module.exports = function () {
                 for (var key in obj) {
                     field[key] = obj[key];
                 }
+                return field;
             }
         }
-        return form;
+        return null;
     }
 };

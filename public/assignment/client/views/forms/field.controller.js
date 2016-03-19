@@ -11,6 +11,7 @@
         formId = $routeParams.formId;
         userId = $rootScope.user._id;
         $scope.model = {};
+        $scope.model.fields = [];
         FieldService.getFieldsForForm(formId).then(function(data){
             // console.log(data);
             $scope.model.fields = data.data;
@@ -42,8 +43,9 @@
 
         function removeField(field) {
             FieldService.deleteFieldFromForm(formId, field._id).then(function (data) {
+                console.log(data.data);
                 $scope.model.fields = data.data;
-            });
+        });
         }
 
         function addField() {

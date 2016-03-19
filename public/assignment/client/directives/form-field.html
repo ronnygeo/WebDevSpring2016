@@ -14,41 +14,40 @@
     </div>
     <div ng-switch-when="OPTIONS">
         <label for="inputOptions">{{info.label}}</label>
-        <select  ng-model="info" class="form-control" id="inputOptions">
+        <select name="repeatSelect" id="inputOptions" class="form-control" ng-model="info.selected">
             <option ng-repeat="option in info.options" value="{{option.value}}">{{option.label}}</option>
         </select>
     </div>
     <div ng-switch-when="CHECKBOXES">
         <label for="inputCheckbox">{{info.label}}</label>
-        <div class="checkbox" id="inputCheckbox" ng-model="info">
-        <label><input ng-repeat="option in info.options" type="checkbox" value="{{option.value}}" name={{info._id}} />{{option.label}}</label>
-        <br>
+        <div ng-repeat="option in info.options" class="checkbox" id="inputCheckbox">
+            <label><input type="checkbox" ng-model="myCountry.selected[country.id]" ng-true-value="'{{option.value}}'" ng-false-value="''">{{option.label}}</label>
         </div>
+        <br>
     </div>
     <div ng-switch-when="RADIOS">
         <label for="inputRadio">{{info.label}}</label>
-        <div class="radio" id="inputRadio" ng-model="info">
-            <label><input ng-repeat="option in info.options" type="radio" value="{{option.value}}" name={{info._id}} /> {{option.label}}</label>
-            <br>
+        <div ng-repeat="option in info.options" class="radio" id="inputRadio">
+            <label><input type="radio" ng-model="myCountry.selected[country.id]" ng-true-value="'{{option.value}}'" ng-false-value="''">{{option.label}}</label>
         </div>
-    </div>
-
+        <br>
+        </div>
     <div ng-switch-default>
         <label for="inputDefault">{{info.label}}</label>
         <input id="inputDefault" type="{{ info.type | lowercase }}" class="form-control" placeholder="{{info.type}}" />
     </div>
 </div>
-<div class="col-sm-4 align-right" style="white-space: nowrap">
-    <button ng-click="editField(info)" class="btn btn-warning">
+<div class="col-sm-4 align-right" style="white-space: nowrap" ng-controller="FieldController">
+    <a href="" ng-click="editField(info)" class="btn btn-warning">
         <span class="glyphicon glyphicon-pencil"></span>
-    </button>
-    <a href='' class="btn btn-primary">
+    </a>
+    <button class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span>
-    </a>
-    <button ng-click="removeField(info)" class="btn btn-danger">
-        <span class="glyphicon glyphicon-remove"></span>
     </button>
-    <a href='' class="btn btn-success">
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    <a href="" ng-click="removeField(info)" class="btn btn-danger">
+        <span class="glyphicon glyphicon-remove"></span>
     </a>
+    <button class="btn btn-success">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
 </div>

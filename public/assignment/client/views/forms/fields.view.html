@@ -5,8 +5,8 @@
     <li role="presentation" class="active"><a href="#">Fields</a></li>
 </ul>
 
-<div class="table-responsive">
-        <div class="row" ng-repeat="field in model.fields track by field._id">
+<div class="table-responsive" ng-controller="FieldController">
+        <div class="row" ng-repeat="field in model.fields">
             <form-field info="field"></form-field>
         </div>
         <div class="row">

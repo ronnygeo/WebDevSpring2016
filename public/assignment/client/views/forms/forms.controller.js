@@ -35,9 +35,15 @@
         function addForm() {
             // console.log($scope.form);
             FormService.createFormForUser($rootScope.user._id, $scope.form)
-                .then(function (){
-                $scope.forms.push($scope.form);
-                $scope.form = {};
+                .then(function (data){
+
+                    $scope.forms = [];
+                    for (var d of data.data) {
+                        if ($rootScope.user._id === d.userId){
+                            $scope.forms.push(d);
+                        }
+                    }
+                    $scope.form = {};
             });
         }
 
