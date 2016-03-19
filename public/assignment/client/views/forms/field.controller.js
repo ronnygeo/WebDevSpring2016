@@ -34,16 +34,17 @@
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
+                controller: 'DialogController',
                 templateUrl: './views/forms/dialogContent.html',
-                // controller: 'ModalInstanceCtrl',
                 size: size,
                 resolve: {
                     field: function (){
                     return field;
-                },
-                    scope: $scope
                 }
+                },
+                scope: $scope
                 // scope: {
+                //     info: field
                 //     info: field
                 // }
             });
@@ -79,13 +80,14 @@
         
         function rearrange() {
             FieldService.rearrangeFields(formId, $scope.model.fields).then(function (data) {
-                console.log($scope.model.fields);
+                // console.log($scope.model.fields);
                 $scope.model.fields = data.data;
             });
         }
 
         function addField() {
             var fieldType = $scope.model.fieldType;
+            console.log(fieldType);
             if (fieldType === "textarea") {
                 var field = {"_id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
             }

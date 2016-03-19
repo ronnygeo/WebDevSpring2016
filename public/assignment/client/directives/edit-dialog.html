@@ -1,0 +1,46 @@
+<div class="row" ng-model="info">
+    <div class="col-sm-12" ng-switch="info.type">
+    <div ng-switch-when="TEXT">
+        <label for="inputTextLabel">Label</label>
+        <input id="inputTextLabel" ng-model="info.label" type="text" class="form-control"  placeholder="{{info.label}}"/>
+        <label for="inputTextPH">Placeholder</label>
+        <input id="inputTextPH" ng-model="info.placeholder" type="text" class="form-control"  placeholder="{{info.placeholder}}"/>
+    </div>
+    <div ng-switch-when="TEXTAREA">
+        <label for="inputTextAreaLabel">Label</label>
+        <input id="inputTextAreaLabel" ng-model="info.label" type="text" class="form-control"  placeholder="{{info.label}}"/>
+        <label for="inputTextAreaPH">Placeholder</label>
+        <input id="inputTextAreaPH" ng-model="info.placeholder" type="text" class="form-control"  placeholder="{{info.placeholder}}"/>
+    </div>
+    <div ng-switch-when="DATE">
+        <label for="inputDateLabel">Label</label>
+        <input id="inputDateLabel" ng-model="info.label" type="text" class="form-control"  placeholder="{{info.label}}"/>
+    </div>
+    <div ng-switch-when="OPTIONS">
+        <label for="inputOptionsLabel">Label</label>
+        <input id="inputOptionsLabel" ng-model="info.label" type="text" class="form-control" placeholder="{{info.label}}"/>
+        <label for="inputOptionsOptions">Placeholder</label>
+        <textarea id="inputOptionsOptions" ng-model="info.options" class="form-control"  placeholder="{{info.options.toString()}}"></textarea>
+    </div>
+    <div ng-switch-when="CHECKBOXES">
+        <label for="inputCheckbox">{{info.label}}</label>
+        <div ng-repeat="option in info.options" class="checkbox" id="inputCheckbox">
+            <label><input type="checkbox" ng-true-value="'{{option.value}}'" ng-false-value="''">{{option.label}}</label>
+        </div>
+        <br>
+    </div>
+    <div ng-switch-when="RADIOS">
+        <label for="inputRadio">{{info.label}}</label>
+        <div ng-repeat="option in info.options" class="radio" id="inputRadio">
+            <label><input type="radio" ng-true-value="'{{option.value}}'" ng-false-value="''">{{option.label}}</label>
+        </div>
+        <br>
+    </div>
+    <div ng-switch-default>
+        <label for="inputDefaultLabel">Label</label>
+        <input id="inputDefaultLabel" ng-model="info.label" type="text" class="form-control"  placeholder="{{info.label}}"/>
+        <label for="inputDefaultPH">Placeholder</label>
+        <input id="inputDefaultPH" ng-model="info.placeholder" type="text" class="form-control"  placeholder="{{info.placeholder}}"/>
+    </div>
+</div>
+

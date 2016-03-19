@@ -6,7 +6,6 @@
 </ul>
 
 <div class="table-responsive" ui-sortable="sortableOptions" ng-model="model.fields">
-    {{model.fields}}
     <div class="row" ng-repeat="field in model.fields">
         <form-field info="field"></form-field>
     </div>
