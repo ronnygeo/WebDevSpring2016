@@ -26,6 +26,16 @@
         $scope.rearrange = rearrange;
         $scope.open = open;
 
+        $scope.$watch($scope.model.fields, function() {
+            for (var f of $scope.model.fields) {
+                console.log(f);
+                FieldService.updateField($scope.model._id, f._id, f).then(function(data){
+                    f = data.data;
+                })
+            }
+        }, true);
+
+
         $scope.sortableOptions = {
             handle: '.myHandle',
             update: function(e, ui) {
@@ -51,7 +61,7 @@
             // Options
             // These can be entered in a textarea, one option per line
             // You can use the following format: LABEL:VALUE
-
+            // console.log(field);
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 controller: 'DialogController',
@@ -60,9 +70,30 @@
                 resolve: {
                     info: function (){
                     return field;
-                }
                 },
-                scope: $scope
+                    model: function(){
+                        return $scope.model;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (optionsData){
+                if (optionsData) {
+                    options = [];
+                    opt = optionsData.split('\n');
+                    for (var o of opt){
+                        data = o.split(':');
+                        label = data[0];
+                        value = data[1];
+                        options.push({"label": label, "value": value});
+                    }
+                    field.options = options;
+                }
+
+                FieldService.rearrangeFields($scope.model._id, $scope.model.fields).then(function(data){
+                    $scope.model.fields = data.data;
+                })
+
             });
         }
 
