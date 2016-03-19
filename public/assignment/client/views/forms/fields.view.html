@@ -1,17 +1,35 @@
-<h2 class="sub-header">Forms: Registration Form</h2>
+<h2 class="sub-header">Form: {{model.title}}</h2>
 
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="#/forms">Forms</a></li>
     <li role="presentation" class="active"><a href="#">Fields</a></li>
 </ul>
 
-<div class="table-responsive" ui-sortable="sortableOptions" ng-model="model.fields">
-    <div class="row" ng-repeat="field in model.fields">
-        <form-field info="field"></form-field>
+<div class="table-responsive">
+    <table class="table" ui-sortable="sortableOptions" ng-model="model.fields">
+        <div class="row" ng-repeat="field in model.fields">
+        <div class="col-xs-7" ng-switch="info.type">
+            <form-field info="field"></form-field>
+        </div>
+        <div class="col-xs-5" style="padding-top:15px; white-space: nowrap">
+            <a href="" ng-click="editField('lg', field)" class="btn btn-warning">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href='' ng-click="addField()" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+            <a href="" ng-click="removeField(field)" class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <div class="myHandle btn btn-success">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </div>
+        </div>
     </div>
+    </table>
 </div>
 <div class="row">
-    <div class="col-sm-8">
+<div class="col-xs-10">
         <label for="addNewField">Add New Field</label>
         <select class="form-control" id="addNewField" ng-model="model.fieldType">
             <option value="text">Single Line Text Field</option>
@@ -22,11 +40,9 @@
             <option value="radios">Radio Buttons Field</option>
         </select>
     </div>
-
-    <div class="col-sm-4" style="white-space:nowrap">
+    <div class="col-xs-2">
         <button ng-click="addField()" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>
 </div>
-

@@ -5,10 +5,13 @@
     angular.module('FormBuilderApp')
         .controller('FieldController', FieldController);
 
-    FieldController.$inject = ['$rootScope', '$scope', 'FieldService', '$routeParams', '$uibModal'];
+    FieldController.$inject = ['$rootScope', '$scope', 'FieldService', 'FormService', '$routeParams', '$uibModal'];
 
-    function FieldController($rootScope, $scope, FieldService, $routeParams) {
+    function FieldController($rootScope, $scope, FieldService, FormService, $routeParams, $uibModal) {
         formId = $routeParams.formId;
+        FormService.findById(formId).then(function(data){
+            $scope.model = data.data;
+        });
         userId = $rootScope.user._id;
         $scope.model = {};
         $scope.model.fields = [];

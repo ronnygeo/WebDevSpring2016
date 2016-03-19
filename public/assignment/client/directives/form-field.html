@@ -1,5 +1,4 @@
-<div class="col-sm-8" ng-switch="info.type">
-    <!--{{info.type}}-->
+<div ng-switch="info.type">
     <div ng-switch-when="TEXT">
        <label for="inputText">{{info.label}}</label>
         <input id="inputText" type="text" class="form-control" placeholder="{{info.placeholder}}" />
@@ -14,7 +13,7 @@
     </div>
     <div ng-switch-when="OPTIONS">
         <label for="inputOptions">{{info.label}}</label>
-        <select name="repeatSelect" id="inputOptions" class="form-control" ng-model="info.selected">
+        <select name="repeatSelect" id="inputOptions" class="form-control">
             <option ng-repeat="option in info.options" value="{{option.value}}">{{option.label}}</option>
         </select>
     </div>
@@ -37,17 +36,4 @@
         <input id="inputDefault" type="{{ info.type | lowercase }}" class="form-control" placeholder="{{info.type}}" />
     </div>
 </div>
-<div class="col-sm-4 align-right" style="white-space: nowrap">
-    <a href="" ng-click="editField('lg', info)" class="btn btn-warning">
-        <span class="glyphicon glyphicon-pencil"></span>
-    </a>
-    <a href='' ng-click="addField()" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus"></span>
-    </a>
-    <a href="" ng-click="removeField(info)" class="btn btn-danger">
-        <span class="glyphicon glyphicon-remove"></span>
-    </a>
-    <div class="myHandle btn btn-success">
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </div>
-</div>
+
