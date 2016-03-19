@@ -107,7 +107,9 @@
         }
         
         function rearrange() {
+            // console.log("Rearrange");
             FieldService.rearrangeFields(formId, vm.model.fields).then(function (data) {
+                // console.log(data);
                     vm.model.fields = data.data;
             });
         }
