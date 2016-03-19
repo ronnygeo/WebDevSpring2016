@@ -1,12 +1,12 @@
-<td>
-<div ng-switch={{info.type}}>
+<div class="col-sm-8" ng-switch="info.type">
+    <!--{{info.type}}-->
     <div ng-switch-when="TEXT">
         <label for="inputText">{{info.label}}</label>
-        <input id="inputText" type="text" class="form-control" placeholder={{info.placeholder}} />
+        <input id="inputText" type="text" class="form-control" placeholder="{{info.placeholder}}" />
     </div>
     <div ng-switch-when="TEXTAREA">
         <label for="inputTextArea">{{info.label}}</label>
-        <textarea id="inputTextArea" class="form-control" placeholder={{info.placeholder}}></textarea>
+        <textarea id="inputTextArea" class="form-control" placeholder="{{info.placeholder}}"></textarea>
     </div>
     <div ng-switch-when="DATE">
         <label for="inputDate">{{info.label}}</label>
@@ -34,23 +34,21 @@
     </div>
 
     <div ng-switch-default>
-        <label for="inputDefault">{{}}</label>
-        <input id="inputDefault" type="{{ info.type | lowercase }}" class="form-control" placeholder="First Name" />
+        <label for="inputDefault">{{info.label}}</label>
+        <input id="inputDefault" type="{{ info.type | lowercase }}" class="form-control" placeholder="{{info.type}}" />
     </div>
 </div>
-</td>
-
-<td class="pad-top">
+<div class="col-sm-4 align-right" style="white-space: nowrap">
     <button ng-click="editField(info)" class="btn btn-warning">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>
-    <a href="#" class="btn btn-primary">
+    <a href='' class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span>
     </a>
     <button ng-click="removeField(info)" class="btn btn-danger">
         <span class="glyphicon glyphicon-remove"></span>
     </button>
-    <a href="#" class="btn btn-success">
+    <a href='' class="btn btn-success">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
     </a>
-</td>
+</div>

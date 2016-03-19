@@ -16,13 +16,13 @@ module.exports = function (app, userModel) {
     // responds with a single user whose id property is equal to the id path parameter
     app.get('/api/assignment/user/:id', getUser);
 
-    // GET /api/assignment/user?username=username
-    //     responds with a single user whose username property is equal to the username path parameter
-    app.get('/api/assignment/user?username=username', getUserByUsername);
-
-    // GET /api/assignment/user?username=alice&password=wonderland
-    //     responds with a single user whose username property is equal to the username path parameter and its password is equal to the password path parameter
-    app.get('/api/assignment/user?username=alice&password=wonderland', getUserByCredentials);
+    // // GET /api/assignment/user?username=username
+    // //     responds with a single user whose username property is equal to the username path parameter
+    // app.get('/api/assignment/user?username=username', getUserByUsername);
+    //
+    // // GET /api/assignment/user?username=alice&password=wonderland
+    // //     responds with a single user whose username property is equal to the username path parameter and its password is equal to the password path parameter
+    // app.get('/api/assignment/user?username=alice&password=wonderland', getUserByCredentials);
 
     // PUT /api/assignment/user/:id
     // updates an existing user whose id property is equal to the id path parameter. The new properties are set to the values in the user object embedded in the HTTP request. Responds with an array of all users
@@ -34,38 +34,44 @@ module.exports = function (app, userModel) {
 
     function createUser(req, res) {
         var user = req.body;
-        res.send(userModel.create(user));
+        res.json(userModel.create(user));
     }
 
     function getUsers(req, res) {
-        res.send(userModel.findAll());
+        if (req.query.username && req.query.password) {
+            getUserByCredentials(req, res);
+        } else if (req.query.username) {
+            getUserByUsername(req, res);
+        } else {
+        res.json(userModel.findAll());
+        }
     }
 
     function getUser(req, res) {
         var id = req.params.id;
-        res.send(userModel.findById(id));
+        res.json(userModel.findById(id));
     }
 
     function getUserByUsername(req, res) {
         var username = req.query.username;
-        res.send(userModel.findUserByUsername(username));
+        res.json(userModel.findUserByUsername(username));
     }
 
     function getUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        res.send(userModel.findUserByCredentials({username: username, password: password}));
+        res.json(userModel.findUserByCredentials({username: username, password: password}));
     }
 
     function updateUser(req, res) {
         var id = req.params.id;
         var user = req.body;
-        res.send(userModel.update(id, user));
+        res.json(userModel.update(id, user));
     }
 
     function deleteUser(req, res) {
         var id = req.params.id;
-        res.send(userModel.delete(id));
+        res.json(userModel.delete(id));
     }
 
 };

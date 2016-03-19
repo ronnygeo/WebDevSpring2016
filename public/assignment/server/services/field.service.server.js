@@ -26,28 +26,28 @@ module.exports = function (app, formModel) {
 
     function getFormFields(req, res) {
         var formId = req.params.formId;
-        res.send(formModel.getFormFields(formId));
+        res.json(formModel.getFormFields(formId));
     }
     function getFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.send(formModel.getFormFieldById(formId, fieldId));
+        res.json(formModel.getFormFieldById(formId, fieldId));
     }
     function deleteFormField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.send(formModel.deleteFormField(formId, fieldId));
+        res.json(formModel.deleteFormField(formId, fieldId));
     }
     function createFormField(req, res) {
         var formId = req.params.formId;
         var field = req.body;
-        res.send(formModel.createFormField(formId, field));
+        res.json(formModel.createFormField(formId, field));
     }
 
     function updateFormField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        res.send(formModel.updateFormField(formId, fieldId, field));
+        res.json(formModel.updateFormField(formId, fieldId, field));
     }
 };

@@ -16,9 +16,9 @@
             UserService.findUserByCredentials($scope.username, $scope.password).then(render);
     }
 
-        function render(data) {
-            if (data !== null){
-            $rootScope.user = data;
+        function render(res) {
+            if (res.data){
+            $rootScope.user = res.data;
             $location.url('/profile/');
             }
             else {

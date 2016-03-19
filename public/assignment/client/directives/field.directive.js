@@ -11,7 +11,7 @@
             scope: {
                 info: '='
             },
-            templateUrl: "./form-field.html"
+            templateUrl: "./directives/form-field.html"
         }
     }
 })();

@@ -33,9 +33,10 @@
         }
 
         function addForm() {
+            // console.log($scope.form);
             FormService.createFormForUser($rootScope.user._id, $scope.form)
-                .then(function (data){
-                $scope.forms.push(data);
+                .then(function (){
+                $scope.forms.push($scope.form);
                 $scope.form = {};
             });
         }
@@ -44,7 +45,7 @@
             FormService.deleteFormById($scope.forms[index]._id)
                 .then(function (data){
                 $scope.forms = [];
-                for (var d of data){
+                for (var d of data.data){
                     if (d.userId === $rootScope.user._id)
                     $scope.forms.push(d);
                 }
@@ -56,9 +57,9 @@
             $location.url('/form/'+id+'/fields');
         }
 
-        function renderList(data) {
-            //console.log($scope.forms);
-            $scope.forms = data;
+        function renderList(res) {
+            //console.log(data);
+            $scope.forms = res.data;
         }
 
     }

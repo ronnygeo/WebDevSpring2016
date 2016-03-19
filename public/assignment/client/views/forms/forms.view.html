@@ -3,7 +3,7 @@
 
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#">Forms</a></li>
-        <li role="presentation"><a href="fields.view.html">Fields</a></li>
+        <li role="presentation"><a href="#/form/:id/field">Fields</a></li>
     </ul>
 
     <div class="table-responsive">
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="form in forms">
-                <td><a ng-click="openField(form)">{{form.title}}</a></td>
+                <td><a href="" ng-click="openField(form)">{{form.title}}</a></td>
                 <td class="align-right">
                     <button class="btn btn-warning" ng-click="selectForm($index)">
                         <span class="glyphicon glyphicon-pencil"></span>

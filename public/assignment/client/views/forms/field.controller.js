@@ -6,12 +6,14 @@
         .controller('FieldController', FieldController);
 
     FieldController.$inject = ['$rootScope', '$scope', 'FieldService', '$routeParams'];
+
     function FieldController($rootScope, $scope, FieldService, $routeParams) {
         formId = $routeParams.formId;
-        userId = $routeParams.userId;
+        userId = $rootScope.user._id;
         $scope.model = {};
         FieldService.getFieldsForForm(formId).then(function(data){
-            $scope.model.fields = data;
+            // console.log(data);
+            $scope.model.fields = data.data;
         });
 
         $scope.editField = editField;
@@ -40,7 +42,7 @@
 
         function removeField(field) {
             FieldService.deleteFieldFromForm(formId, field._id).then(function (data) {
-                $scope.model.fields = data;
+                $scope.model.fields = data.data;
             });
         }
 
@@ -77,7 +79,7 @@
             }
 
             FieldService.createFieldForForm(formId, field).then(function (data) {
-                $scope.model.fields = data;
+                $scope.model.fields = data.data;
             });
         }
     }

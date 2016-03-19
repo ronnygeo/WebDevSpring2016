@@ -19,7 +19,7 @@
             UserService.createUser($scope.user).then(render);
         }
         function render(data) {
-        $rootScope.user = data;
+        $rootScope.user = data.data;
         $location.url('/profile/');
         }
     }

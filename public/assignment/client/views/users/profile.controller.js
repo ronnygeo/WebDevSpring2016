@@ -18,7 +18,7 @@
         };
 
         function render(data) {
-            console.log(data.roles);
+            // console.log(data.roles);
         }
     }
 })();

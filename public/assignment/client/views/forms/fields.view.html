@@ -1,18 +1,16 @@
 <h2 class="sub-header">Forms: Registration Form</h2>
 
 <ul class="nav nav-tabs">
-    <li role="presentation"><a href="forms.view.html">Forms</a></li>
+    <li role="presentation"><a href="#/forms">Forms</a></li>
     <li role="presentation" class="active"><a href="#">Fields</a></li>
 </ul>
 
 <div class="table-responsive">
-    <table class="table">
-        <tr ng-repeat="field in model.fields">
+        <div class="row" ng-repeat="field in model.fields track by field._id">
             <form-field info="field"></form-field>
-        </tr>
-
-        <tr>
-            <td>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
                 <label for="addNewField">Add New Field</label>
                 <select class="form-control" id="addNewField" ng-model="model.fieldType">
                     <option value="text">Single Line Text Field</option>
@@ -22,14 +20,13 @@
                     <option value="checkboxes">Checkboxes Field</option>
                     <option value="radios">Radio Buttons Field</option>
                 </select>
-            </td>
+            </div>
 
-            <td class="pad-top">
+            <div class="col-sm-4" style="white-space:nowrap">
                 <button ng-click="addField()" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
 </div>
 

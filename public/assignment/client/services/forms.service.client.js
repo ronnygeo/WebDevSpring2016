@@ -24,6 +24,7 @@
         //Adds new form to local array of forms
         //Calls back with new form
         function createFormForUser(userId, form) {
+            // console.log(form);
             return $http.post('/api/assignment/user/'+userId+'/form', form);
         }
 

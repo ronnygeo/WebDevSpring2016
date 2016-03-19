@@ -1,8 +1,4 @@
-/**
- * Created by ronnygeo on 3/17/16.
- */
-
-module.exports = function (app, formModel) {
+module.exports = function(app, formModel) {
 
     // GET /api/assignment/user/:userId/form
     // returns an array of forms belonging to a user whose id is equal to the userId path parameter
@@ -26,29 +22,29 @@ module.exports = function (app, formModel) {
 
     function getFormsByUserId(req, res) {
         var userId = req.params.userId;
-        res.send(formModel.getFormsByUserId(userId));
+        res.json(formModel.findByUserId(userId));
     }
 
     function getFormById(req, res) {
         var id = req.params.formId;
-        res.send(formModel.findById(id));
+        res.json(formModel.findById(id));
     }
 
     function deleteForm(req, res) {
         var id = req.params.formId;
-        res.send(formModel.delete(id));
+        res.json(formModel.delete(id));
     }
 
     function createForm(req, res) {
         var userId = req.params.userId;
         var form = req.body;
         form.userId = userId;
-        res.send(formModel.create(form));
+        res.json(formModel.create(form));
     }
 
     function updateForm(req, res) {
         var id = req.params.formId;
         var form = req.body;
-        res.send(formModel.update(id, form));
+        res.json(formModel.update(id, form));
     }
 };

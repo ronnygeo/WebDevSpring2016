@@ -1,10 +1,8 @@
 /**
  * Created by ronnygeo on 3/17/16.
  */
-'use strict';
-var mock = require("./user.mock.json");
-
 module.exports = function () {
+    var mock = require("./user.mock.json");
     var api = {
         create: create,
         findAll: findAll,
@@ -12,8 +10,7 @@ module.exports = function () {
         update: update,
         delete: del,
         findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials,
-
+        findUserByCredentials: findUserByCredentials
     };
     return api;
     
@@ -21,7 +18,7 @@ module.exports = function () {
     function create(user) {
         user._id = "ID_" + (new Date()).getTime();
         mock.push(user);
-        return mock;
+        return user;
     }
 
     //FindAll - should take no arguments, and return the corresponding collection
@@ -43,7 +40,7 @@ module.exports = function () {
     function update(id, obj) {
         var user = findById(id);
         if (user) {
-        for (var key in user) {
+        for (var key in obj) {
             user[key] = obj[key];
         }
         }
@@ -81,4 +78,4 @@ module.exports = function () {
         }
         return null;
     }
-    };
+};

@@ -1,11 +1,5 @@
-/**
- * Created by ronnygeo on 3/17/16.
- */
-
-'use strict';
 module.exports = function () {
     var forms = require('./form.mock.json');
-
     var api = {
         create: create,
         findAll: findAll,
@@ -46,12 +40,14 @@ module.exports = function () {
 
     //findByUserId: finds all the forms by the particular user
     function findByUserId(userId) {
+        //console.log(userId);
         var collection = [];
         for (form of forms) {
             if (form.userId === userId){
                 collection.push(form);
             }
         }
+        //console.log(collection);
         return collection;
     }
 
@@ -59,7 +55,7 @@ module.exports = function () {
     function update(id, obj) {
         var form = findById(id);
         if (form) {
-            for (var key in form) {
+            for (var key in obj) {
                 form[key] = obj[key];
             }
         }
@@ -125,7 +121,7 @@ module.exports = function () {
         var form = findById(formId);
         for (var field of form.fields) {
             if (field._id === fieldId) {
-                for (var key in field) {
+                for (var key in obj) {
                     field[key] = obj[key];
                 }
             }
