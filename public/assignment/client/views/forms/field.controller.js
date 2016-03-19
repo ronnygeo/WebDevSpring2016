@@ -5,38 +5,39 @@
     angular.module('FormBuilderApp')
         .controller('FieldController', FieldController);
 
-    FieldController.$inject = ['$rootScope', '$scope', 'FieldService', 'FormService', '$routeParams', '$uibModal'];
+    FieldController.$inject = ['$rootScope','FieldService', 'FormService', '$routeParams', '$uibModal'];
 
-    function FieldController($rootScope, $scope, FieldService, FormService, $routeParams, $uibModal) {
+    function FieldController($rootScope, FieldService, FormService, $routeParams, $uibModal) {
+        var vm = this;
         formId = $routeParams.formId;
         FormService.findById(formId).then(function(data){
-            $scope.model = data.data;
+            vm.model = data.data;
         });
         userId = $rootScope.user._id;
-        $scope.model = {};
-        $scope.model.fields = [];
+        vm.model = {};
+        vm.model.fields = [];
         FieldService.getFieldsForForm(formId).then(function(data){
             // console.log(data);
-            $scope.model.fields = data.data;
+            vm.model.fields = data.data;
         });
 
-        $scope.editField = editField;
-        $scope.removeField = removeField;
-        $scope.addField = addField;
-        $scope.rearrange = rearrange;
-        $scope.open = open;
+        vm.editField = editField;
+        vm.removeField = removeField;
+        vm.addField = addField;
+        vm.rearrange = rearrange;
+        vm.open = open;
+        
+        // vm.$watch(vm.model.fields, function() {
+        //     for (var f of vm.model.fields) {
+        //         console.log(f);
+        //         FieldService.updateField($vm.model._id, f._id, f).then(function(data){
+        //             f = data.data;
+        //         })
+        //     }
+        // }, true);
 
-        $scope.$watch($scope.model.fields, function() {
-            for (var f of $scope.model.fields) {
-                console.log(f);
-                FieldService.updateField($scope.model._id, f._id, f).then(function(data){
-                    f = data.data;
-                })
-            }
-        }, true);
 
-
-        $scope.sortableOptions = {
+        vm.sortableOptions = {
             handle: '.myHandle',
             update: function(e, ui) {
                 rearrange();
@@ -63,17 +64,18 @@
             // You can use the following format: LABEL:VALUE
             // console.log(field);
             var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
+                animation: vm.animationsEnabled,
                 controller: 'DialogController',
+                controllerAs: 'dc',
                 templateUrl: './views/forms/dialogContent.html',
                 size: size,
                 resolve: {
                     info: function (){
                     return field;
-                },
-                    model: function(){
-                        return $scope.model;
-                    }
+                }
+                    // model: function(){
+                    //     return vm.model;
+                    // }
                 }
             });
 
@@ -90,8 +92,8 @@
                     field.options = options;
                 }
 
-                FieldService.rearrangeFields($scope.model._id, $scope.model.fields).then(function(data){
-                    $scope.model.fields = data.data;
+                FieldService.rearrangeFields(vm.model._id, vm.model.fields).then(function(data){
+                    vm.model.fields = data.data;
                 })
 
             });
@@ -100,15 +102,13 @@
 
         function removeField(field) {
             FieldService.deleteFieldFromForm(formId, field._id).then(function (data) {
-                // console.log(data.data);
-                $scope.model.fields = data.data;
+                vm.model.fields = data.data;
             }, function (err) {console.log(err);});
         }
         
         function rearrange() {
-            FieldService.rearrangeFields(formId, $scope.model.fields).then(function (data) {
-                // console.log($scope.model.fields);
-                $scope.model.fields = data.data;
+            FieldService.rearrangeFields(formId, vm.model.fields).then(function (data) {
+                    vm.model.fields = data.data;
             });
         }
 
@@ -116,7 +116,7 @@
             if (f != null) {
                 var fieldType = f.type.toLowerCase();
             } else {
-                var fieldType = $scope.model.fieldType;
+                var fieldType = vm.model.fieldType;
             }
             // console.log(fieldType);
             if (fieldType === "textarea") {
@@ -150,7 +150,7 @@
             }
 
             FieldService.createFieldForForm(formId, field).then(function (data) {
-                $scope.model.fields = data.data;
+                vm.model.fields = data.data;
             }, function (err) {console.log(err);});
         }
     }

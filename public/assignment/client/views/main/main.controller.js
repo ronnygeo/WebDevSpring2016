@@ -7,20 +7,28 @@
     angular.module("FormBuilderApp")
     .controller('MainController', MainController);
 
-    MainController.$inject = ['$scope', '$location'];
+    MainController.$inject = ['$location', '$rootScope'];
 
-    function MainController($scope, $location){
-        $scope.$location = $location;
-
-        $scope.isActive = isActive;
-        $scope.isLocation = isLocation;
+    function MainController($location, $rootScope){
+        var vm = this;
+        vm.$location = $location;
+        vm.logout = logout;
+        vm.isActive = isActive;
+        vm.isLocation = isLocation;
 
         function isLocation(loc) {
             return loc === $location.url;
         }
+
         function isActive(loc) {
             if ($location.url == loc)
                 return 'active';
+        }
+
+        function logout() {
+            delete $rootScope.user;
+            //console.log($rootScope.user);
+            $location.url('/');
         }
     }
 })();

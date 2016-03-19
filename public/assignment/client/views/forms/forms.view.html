@@ -3,7 +3,7 @@
 
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#">Forms</a></li>
-        <li role="presentation"><a href="#/form/:id/field">Fields</a></li>
+        <!--<li role="presentation"><a href="#/form/:id/field">Fields</a></li>-->
     </ul>
 
     <div class="table-responsive">
@@ -15,25 +15,25 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="newFormName" ng-model="form.title" class="form-control" placeholder="Form Name"></td>
+                    <input type="text" id="newFormName" ng-model="fc.form.title" class="form-control" placeholder="Form Name"></td>
                 <td  class="align-right">
-                    <button class="btn btn-success" ng-click="updateForm(form)">
+                    <button class="btn btn-success" ng-click="fc.updateForm(fc.form)">
                         <span class="glyphicon glyphicon-ok"></span>
                     </button>
-                    <button class="btn btn-primary" ng-click="addForm()">
+                    <button class="btn btn-primary" ng-click="fc.addForm()">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </td>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="form in forms">
-                <td><a href="" ng-click="openField(form)">{{form.title}}</a></td>
+            <tr ng-repeat="form in fc.forms">
+                <td><a href="" ng-click="fc.openField(form)">{{form.title}}</a></td>
                 <td class="align-right">
-                    <button class="btn btn-warning" ng-click="selectForm($index)">
+                    <button class="btn btn-warning" ng-click="fc.selectForm($index)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-danger" ng-click="deleteForm($index)">
+                    <button class="btn btn-danger" ng-click="fc.deleteForm($index)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>

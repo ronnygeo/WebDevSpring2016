@@ -7,6 +7,7 @@
     .factory('FieldService', FieldService);
 
     FieldService.$inject = ['$http'];
+    
     function FieldService($http) {
     return {
         createFieldForForm: createFieldForForm,

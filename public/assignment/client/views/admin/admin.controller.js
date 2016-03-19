@@ -6,43 +6,45 @@
     angular.module("FormBuilderApp")
         .controller("AdminController", AdminController);
 
-    AdminController.$inject = ['$scope', 'UserService'];
-    function AdminController($scope, UserService) {
-        $scope.user = {};
+    AdminController.$inject = ['UserService'];
+    function AdminController(UserService) {
+        var vm = this;
+
+        vm.user = {};
 
         //Event Handlers
-        $scope.selectUser = selectUser;
-        $scope.removeUser = removeUser;
-        $scope.addUser = addUser;
-        $scope.updateUser = updateUser;
+        vm.selectUser = selectUser;
+        vm.removeUser = removeUser;
+        vm.addUser = addUser;
+        vm.updateUser = updateUser;
 
-        UserService.findAllUsers(render);
+        UserService.findAllUsers().then(render);
 
         function render(data) {
-            $scope.users = [];
-            $scope.users = data;
-            $scope.user = {};
+            vm.users = [];
+            vm.users = data.data;
+            vm.user = {};
         }
 
         function addUser() {
-            UserService.createUser($scope.user, function(data){
-               $scope.user = {};
+            UserService.createUser(vm.user, function(data){
+                vm.user = {};
             });
         }
 
         function updateUser() {
-            UserService.updateUser($scope.user._id, $scope.user, function(){
-                $scope.user = {};
+            UserService.updateUser(vm.user._id, vm.user, function(){
+                vm.user = {};
             })
         }
 
         //Add to the edit boxes.
         function selectUser(index) {
-            $scope.user = $scope.users[index];
+            vm.user = vm.users[index];
         }
 
         function removeUser(index) {
-            UserService.deleteUserById($scope.users[index]._id, render);
+            UserService.deleteUserById(vm.users[index]._id, render);
         }
         }
 })();

@@ -12,7 +12,8 @@ td {
 }
 
 .pad-top {
-    padding-top: 32px !important;
+    padding-top: 20px !important;
+    white-space: nowrap;
 }
 
 .home-box {

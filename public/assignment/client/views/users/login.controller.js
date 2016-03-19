@@ -6,14 +6,15 @@
     angular.module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    LoginController.$inject = ['UserService','$location','$scope', '$rootScope'];
+    LoginController.$inject = ['UserService','$location', '$rootScope'];
 
-    function LoginController(UserService, $location, $scope, $rootScope) {
-        $scope.login =login;
+    function LoginController(UserService, $location, $rootScope) {
+        var vm = this;
+        vm.login =login;
 
         function login() {
             //console.log($scope.username+$scope.password);
-            UserService.findUserByCredentials($scope.username, $scope.password).then(render);
+            UserService.findUserByCredentials(vm.username, vm.password).then(render);
     }
 
         function render(res) {

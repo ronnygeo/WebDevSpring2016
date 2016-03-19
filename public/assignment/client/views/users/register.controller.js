@@ -6,17 +6,19 @@
     angular.module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    RegisterController.$inject = ['UserService', '$location', '$rootScope', '$scope'];
+    RegisterController.$inject = ['UserService', '$location', '$rootScope'];
 
-    function RegisterController(UserService, $location, $rootScope, $scope) {
-        $scope.user = {};
+    function RegisterController(UserService, $location, $rootScope) {
+        var vm = this;
+
+        vm.user = {};
 
         //Event Handlers
-        $scope.register = register;
+        vm.register = register;
 
         function register() {
-            //var user = {username: $scope.username, password: $scope.password, email: $scope.email};
-            UserService.createUser($scope.user).then(render);
+            //var user = {username: vm.username, password: vm.password, email: vm.email};
+            UserService.createUser(vm.user).then(render);
         }
         function render(data) {
         $rootScope.user = data.data;

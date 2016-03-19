@@ -6,14 +6,16 @@
     angular.module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    ProfileController.$inject = ['$scope', '$rootScope', 'UserService'];
+    ProfileController.$inject = ['$rootScope', 'UserService'];
 
-    function ProfileController($scope, $rootScope, UserService) {
-        $scope.user = $rootScope.user;
+    function ProfileController($rootScope, UserService) {
+        var vm = this;
 
-        $scope.update = function () {
+        vm.user = $rootScope.user;
+
+        vm.update = function () {
             //console.log($scope.user);
-            UserService.updateUser($scope.user._id, $scope.user).
+            UserService.updateUser(vm.user._id, vm.user).
                 then(render);
         };
 

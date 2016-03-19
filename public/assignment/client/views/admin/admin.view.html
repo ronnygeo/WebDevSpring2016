@@ -10,31 +10,31 @@
             <th><span class="glyphicon glyphicon-triangle-bottom"></span> Actions</th>
         </tr>
         <tr>
-            <td><input type="text" ng-model="user.username" id="adminNewUsername" class="form-control" placeholder="Username"></td>
-            <td><input type="text" ng-model="user.password" id="adminNewPassword" class="form-control" placeholder="Password"></td>
+            <td><input type="text" ng-model="admin.user.username" id="adminNewUsername" class="form-control" placeholder="Username"></td>
+            <td><input type="text" ng-model="admin.user.password" id="adminNewPassword" class="form-control" placeholder="Password"></td>
             <td>
-                <input type="text" ng-model="user.roles" id="adminNewUserRole" class="form-control" placeholder="Role">
+                <input type="text" ng-model="admin.user.roles" id="adminNewUserRole" class="form-control" placeholder="Role">
             </td>
             <td style="white-space: nowrap">
-                <button ng-click="updateUser()" class="btn btn-success">
+                <button ng-click="admin.updateUser()" class="btn btn-success">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
-                <button ng-click="addUser()" class="btn btn-primary">
+                <button ng-click="admin.addUser()" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
             </td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in admin.users">
             <td>{{user.username}}</td>
             <td>{{user.password}}</td>
             <td>{{user.roles}}</td>
             <td>
-                <button ng-click="selectUser($index)" class="btn btn-warning">
+                <button ng-click="admin.selectUser($index)" class="btn btn-warning">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button ng-click="removeUser($index)" class="btn btn-danger">
+                <button ng-click="admin.removeUser($index)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
             </td>

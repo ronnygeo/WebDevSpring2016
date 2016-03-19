@@ -1,24 +1,24 @@
-<h2 class="sub-header">Form: {{model.title}}</h2>
+<h2 class="sub-header">Form: {{model.model.title}}</h2>
 
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="#/forms">Forms</a></li>
     <li role="presentation" class="active"><a href="#">Fields</a></li>
 </ul>
 
-<div class="table-responsive" ui-sortable="sortableOptions" ng-model="model.fields">
+<div class="table-responsive" ui-sortable="sortableOptions" ng-model="model.model.fields">
     <table class="table">
-        <div class="row" ng-repeat="field in model.fields">
-        <div class="col-xs-7" ng-switch="info.type">
+        <div class="row" ng-repeat="field in model.model.fields">
+        <div class="col-xs-7">
             <form-field info="field"></form-field>
         </div>
-        <div class="col-xs-5" style="padding-top:15px; white-space: nowrap">
-            <a href="" ng-click="editField('lg', field)" class="btn btn-warning">
+        <div class="col-xs-5 pad-top">
+            <a href="" ng-click="model.editField('lg', field)" class="btn btn-warning">
                 <span class="glyphicon glyphicon-pencil"></span>
             </a>
-            <a href='' ng-click="addField(field)" class="btn btn-primary">
+            <a href='' ng-click="model.addField(field)" class="btn btn-primary">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
-            <a href="" ng-click="removeField(field)" class="btn btn-danger">
+            <a href="" ng-click="model.removeField(field)" class="btn btn-danger">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
             <div class="myHandle btn btn-success">
@@ -31,7 +31,7 @@
 <div class="row">
 <div class="col-xs-10">
         <label for="addNewField">Add New Field</label>
-        <select class="form-control" id="addNewField" ng-model="model.fieldType">
+        <select class="form-control" id="addNewField" ng-model="model.model.fieldType">
             <option value="text">Single Line Text Field</option>
             <option value="textarea">Multi Line Text Field</option>
             <option value="date">Date Field</option>
@@ -41,7 +41,7 @@
         </select>
     </div>
     <div class="col-xs-2">
-        <button ng-click="addField(null)" class="btn btn-primary">
+        <button ng-click="model.addField(null)" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>

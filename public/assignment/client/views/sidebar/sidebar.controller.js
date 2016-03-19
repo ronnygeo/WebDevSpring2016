@@ -7,17 +7,17 @@
     .controller('SidebarController', SidebarController);
 
     SidebarController.$inject = ['$scope', '$location'];
-    function SidebarController($scope, $location) {
-        $scope.isLocation = isLocation;
-        $scope.isActive = isActive;
-        function isLocation(loc) {
-            return loc === $location.url;
-        }
-
-        function isActive(loc) {
-            if ($location.url == loc)
-                return 'active';
-        }
-    }
+     function SidebarController($scope, $location) {
+    //     $scope.isLocation = isLocation;
+    //     $scope.isActive = isActive;
+    //     function isLocation(loc) {
+    //         return loc === $location.url;
+    //     }
+    //
+    //     function isActive(loc) {
+    //         if ($location.url == loc)
+    //             return 'active';
+    //     }
+     }
 
 })();

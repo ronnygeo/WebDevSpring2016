@@ -5,14 +5,12 @@
     angular.module('FormBuilderApp')
         .controller('DialogController', DialogController);
 
-    DialogController.$inject = ['$scope', 'info', 'model', 'FieldService', '$uibModalInstance', '$filter'];
+    DialogController.$inject = ['info', '$uibModalInstance'];
 
-    function DialogController($scope, info, model, FieldService, $uibModalInstance, $filter){
-
+    function DialogController(info, $uibModalInstance) {
+        var vm = this;
         infoCopy = angular.copy(info);
-        $scope.info = infoCopy;
-//        $scope.model = model;
-//        console.log(info.options);
+        vm.info = infoCopy;
 
         if(info.type =='checkboxes' ||info.type =='radios'||info.type =='options'||info.type =='OPTIONS'||info.type =='RADIOS'||info.type =='CHECKBOXES'){
             var data = "";
@@ -20,18 +18,18 @@
                 data += i.label+":"+i.value+"\n";
             }
             // console.log(data);
-            $scope.info.optionsData = data;
+            vm.info.optionsData = data;
         }
 
         // console.log(info);
-        // console.log($scope.optionsData);
-        $scope.update = update;
-        $scope.cancel = cancel;
+        // console.log(vm.optionsData);
+        vm.update = update;
+        vm.cancel = cancel;
 
         function update(){
             // console.log("Update Options.");
-            angular.copy($scope.info, info);
-            $uibModalInstance.close($scope.info.optionsData);
+            angular.copy(vm.info, info);
+            $uibModalInstance.close(vm.info.optionsData);
         }
         
         function cancel() {
