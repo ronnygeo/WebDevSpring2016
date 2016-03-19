@@ -25,8 +25,8 @@
             $scope.form = $scope.forms[index];
         }
 
-        function updateForm() {
-            FormService.updateFormById($scope.form._id, $scope.form)
+        function updateForm(form) {
+            FormService.updateFormById(form._id, $scope.form)
                 .then(function (){
                 $scope.form = {};
             });

@@ -20,7 +20,7 @@
         <label for="inputOptionsLabel">Label</label>
         <input id="inputOptionsLabel" ng-model="info.label" type="text" class="form-control" placeholder="{{info.label}}"/>
         <label for="inputOptionsOptions">Placeholder</label>
-        <textarea id="inputOptionsOptions" ng-model="info.options" class="form-control"  placeholder="{{info.options.toString()}}"></textarea>
+        <textarea id="inputOptionsOptions" ng-model="info.options" ng-list=" | " class="form-control"  placeholder="{{info.options.toString()}}"></textarea>
     </div>
     <div ng-switch-when="CHECKBOXES">
         <label for="inputCheckbox">{{info.label}}</label>

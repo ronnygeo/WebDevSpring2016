@@ -75,7 +75,7 @@
             FieldService.deleteFieldFromForm(formId, field._id).then(function (data) {
                 // console.log(data.data);
                 $scope.model.fields = data.data;
-            });
+            }, function (err) {console.log(err);});
         }
         
         function rearrange() {
@@ -120,7 +120,7 @@
 
             FieldService.createFieldForForm(formId, field).then(function (data) {
                 $scope.model.fields = data.data;
-            });
+            }, function (err) {console.log(err);});
         }
     }
 })();

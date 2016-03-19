@@ -1,11 +1,10 @@
 <div class="col-sm-8" ng-switch="info.type" ng-controller="FieldController">
     <!--{{info.type}}-->
     <div ng-switch-when="TEXT">
-        {{model.fieldType='text'}}
-        <label for="inputText">{{info.label}}</label>
+       <label for="inputText">{{info.label}}</label>
         <input id="inputText" type="text" class="form-control" placeholder="{{info.placeholder}}" />
     </div>
-    <div ng-switch-when="TEXTAREA" ng-init="model.fieldType='textarea'">
+    <div ng-switch-when="TEXTAREA" ng-init="model.fieldType=info.type">
         <label for="inputTextArea">{{info.label}}</label>
         <textarea id="inputTextArea" class="form-control" placeholder="{{info.placeholder}}"></textarea>
     </div>
@@ -33,7 +32,7 @@
         </div>
         <br>
         </div>
-    <div ng-switch-default ng-init="'model.fieldType=info.type'">
+    <div ng-switch-default>
         <label for="inputDefault">{{info.label}}</label>
         <input id="inputDefault" type="{{ info.type | lowercase }}" class="form-control" placeholder="{{info.type}}" />
     </div>

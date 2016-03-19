@@ -58,9 +58,10 @@ module.exports = function () {
         var form = findById(id);
         if (form) {
             for (var key in obj) {
-                form[key] = obj[key];
+                obj[key] = obj[key];
             }
         }
+        console.log(form);
         return form;
     }
 
