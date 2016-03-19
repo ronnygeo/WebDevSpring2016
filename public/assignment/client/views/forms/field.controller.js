@@ -81,9 +81,13 @@
             });
         }
 
-        function addField() {
-            var fieldType = $scope.model.fieldType;
-            console.log(fieldType);
+        function addField(f) {
+            if (f != null) {
+                var fieldType = f.type.toLowerCase();
+            } else {
+                var fieldType = $scope.model.fieldType;
+            }
+            // console.log(fieldType);
             if (fieldType === "textarea") {
                 var field = {"_id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
             }

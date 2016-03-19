@@ -5,8 +5,8 @@
     <li role="presentation" class="active"><a href="#">Fields</a></li>
 </ul>
 
-<div class="table-responsive">
-    <table class="table" ui-sortable="sortableOptions" ng-model="model.fields">
+<div class="table-responsive" ui-sortable="sortableOptions" ng-model="model.fields">
+    <table class="table">
         <div class="row" ng-repeat="field in model.fields">
         <div class="col-xs-7" ng-switch="info.type">
             <form-field info="field"></form-field>
@@ -15,7 +15,7 @@
             <a href="" ng-click="editField('lg', field)" class="btn btn-warning">
                 <span class="glyphicon glyphicon-pencil"></span>
             </a>
-            <a href='' ng-click="addField()" class="btn btn-primary">
+            <a href='' ng-click="addField(field)" class="btn btn-primary">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
             <a href="" ng-click="removeField(field)" class="btn btn-danger">
@@ -41,7 +41,7 @@
         </select>
     </div>
     <div class="col-xs-2">
-        <button ng-click="addField()" class="btn btn-primary">
+        <button ng-click="addField(null)" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>
