@@ -27,15 +27,16 @@
         }
 
         function addUser() {
-            UserService.createUser(vm.user, function(data){
-                vm.user = {};
+            UserService.createUser(vm.user).then(function(data){
+                vm.users.push(data.data);
             });
         }
 
         function updateUser() {
-            UserService.updateUser(vm.user._id, vm.user, function(){
+            // console.log(vm.user);
+            UserService.updateUser(vm.user._id, vm.user).then(function(){
                 vm.user = {};
-            })
+            });
         }
 
         //Add to the edit boxes.
@@ -44,7 +45,7 @@
         }
 
         function removeUser(index) {
-            UserService.deleteUserById(vm.users[index]._id, render);
+            UserService.deleteUserById(vm.users[index]._id).then(render);
         }
         }
 })();
