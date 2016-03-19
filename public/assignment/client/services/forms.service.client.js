@@ -54,7 +54,8 @@
         //Calls back with update form
 
         function updateFormById(formId, newForm) {
-            return $http.get('/api/assignment/form/'+formId, newForm);
+            // console.log(newForm);
+            return $http.put('/api/assignment/form/'+formId, newForm);
         }
     }
 })();

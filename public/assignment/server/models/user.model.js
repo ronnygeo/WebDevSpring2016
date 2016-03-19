@@ -1,7 +1,7 @@
 /**
  * Created by ronnygeo on 3/17/16.
  */
-module.exports = function () {
+module.exports = function (uuid) {
     var mock = require("./user.mock.json");
     var api = {
         create: create,
@@ -16,7 +16,8 @@ module.exports = function () {
     
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(user) {
-        user._id = "ID_" + (new Date()).getTime();
+        //user._id = "ID_" + (new Date()).getTime();
+        user._id = uuid.v1();
         mock.push(user);
         return user;
     }

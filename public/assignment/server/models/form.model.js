@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function (uuid) {
     var forms = require('./form.mock.json');
     var api = {
         create: create,
@@ -19,7 +19,9 @@ module.exports = function () {
 
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(form) {
-        form._id = "ID_" + (new Date()).getTime();
+        //form._id = "ID_" + (new Date()).getTime();
+
+        form._id = uuid.v1();
         form.options = [];
         forms.push(form);
         return forms;
@@ -55,13 +57,16 @@ module.exports = function () {
 
     //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
     function update(id, obj) {
+        // console.log(id);
         var form = findById(id);
+        //console.log(form);
         if (form) {
             for (var key in obj) {
-                obj[key] = obj[key];
+                // console.log(obj[key]);
+                form[key] = obj[key];
             }
         }
-        console.log(form);
+        // console.log(form);
         return form;
     }
 
@@ -119,7 +124,8 @@ module.exports = function () {
 
     function createFormField(formId, field) {
         var form = findById(formId);
-        field._id = "ID_" + (new Date()).getTime();
+        field._id = uuid.v1();
+        //field._id = "ID_" + (new Date()).getTime();
         if (form.fields) {
         form.fields.push(field);
         } else {

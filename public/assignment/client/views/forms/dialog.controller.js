@@ -8,7 +8,7 @@
     DialogController.$inject = ['$rootScope', '$scope', 'FieldService'];
 
     function DialogController($rootScope, $scope, FieldService){
-        // console.log($scope);
+        console.log($scope);
     }
 
 })();

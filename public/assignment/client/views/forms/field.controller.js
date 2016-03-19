@@ -7,7 +7,7 @@
 
     FieldController.$inject = ['$rootScope', '$scope', 'FieldService', '$routeParams', '$uibModal'];
 
-    function FieldController($rootScope, $scope, FieldService, $routeParams, $uibModal) {
+    function FieldController($rootScope, $scope, FieldService, $routeParams) {
         formId = $routeParams.formId;
         userId = $rootScope.user._id;
         $scope.model = {};
@@ -30,27 +30,7 @@
             }
         };
         
-        function open(size, field) {
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                controller: 'DialogController',
-                templateUrl: './views/forms/dialogContent.html',
-                size: size,
-                resolve: {
-                    field: function (){
-                    return field;
-                }
-                },
-                scope: $scope
-                // scope: {
-                //     info: field
-                //     info: field
-                // }
-            });
-        }
-
-        function editField() {
+        function editField(size, field) {
             // $dialog.dialog({}).open('modalContent.html');
             // If the field type is a Single Line of Text the popup should allow users to enter:
             //     Label
@@ -69,7 +49,20 @@
             // These can be entered in a textarea, one option per line
             // You can use the following format: LABEL:VALUE
 
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                controller: 'DialogController',
+                templateUrl: './views/forms/dialogContent.html',
+                size: size,
+                resolve: {
+                    info: function (){
+                    return field;
+                }
+                },
+                scope: $scope
+            });
         }
+
 
         function removeField(field) {
             FieldService.deleteFieldFromForm(formId, field._id).then(function (data) {
