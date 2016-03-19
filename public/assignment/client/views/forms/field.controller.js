@@ -22,6 +22,13 @@
         $scope.addField = addField;
         $scope.rearrange = rearrange;
         $scope.open = open;
+
+        $scope.sortableOptions = {
+            // handle: '> .myHandle',
+            update: function(e, ui) {
+                rearrange();
+            }
+        };
         
         function open(size, field) {
 
@@ -31,8 +38,14 @@
                 // controller: 'ModalInstanceCtrl',
                 size: size,
                 resolve: {
-                    info: field
+                    field: function (){
+                    return field;
+                },
+                    scope: $scope
                 }
+                // scope: {
+                //     info: field
+                // }
             });
         }
 
