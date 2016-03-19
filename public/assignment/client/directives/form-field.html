@@ -1,4 +1,4 @@
-<div class="col-sm-8" ng-switch="info.type" ng-controller="FieldController">
+<div class="col-sm-8" ng-switch="info.type">
     <!--{{info.type}}-->
     <div ng-switch-when="TEXT">
        <label for="inputText">{{info.label}}</label>
@@ -37,7 +37,7 @@
         <input id="inputDefault" type="{{ info.type | lowercase }}" class="form-control" placeholder="{{info.type}}" />
     </div>
 </div>
-<div class="col-sm-4 align-right" style="white-space: nowrap" ng-controller="FieldController">
+<div class="col-sm-4 align-right" style="white-space: nowrap">
     <a href="" ng-click="open('lg', info)" class="btn btn-warning">
         <span class="glyphicon glyphicon-pencil"></span>
     </a>
