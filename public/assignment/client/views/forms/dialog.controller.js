@@ -8,8 +8,9 @@
     DialogController.$inject = ['$scope', 'info', 'model', 'FieldService', '$uibModalInstance', '$filter'];
 
     function DialogController($scope, info, model, FieldService, $uibModalInstance, $filter){
-        $scope.info = info;
-        initialInfo = angular.copy(info);
+
+        infoCopy = angular.copy(info);
+        $scope.info = infoCopy;
 //        $scope.model = model;
 //        console.log(info.options);
 
@@ -28,12 +29,12 @@
         $scope.cancel = cancel;
 
         function update(){
-            console.log("Update Options.");
+            // console.log("Update Options.");
+            angular.copy($scope.info, info);
             $uibModalInstance.close($scope.info.optionsData);
         }
         
         function cancel() {
-            $scope.info =angular.copy(initialInfo);
             $uibModalInstance.dismiss('cancel');
         }
     }

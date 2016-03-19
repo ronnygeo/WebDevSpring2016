@@ -14,20 +14,20 @@
     <div ng-switch-when="OPTIONS">
         <label for="inputOptions">{{info.label}}</label>
         <select name="repeatSelect" id="inputOptions" class="form-control">
-            <option ng-repeat="option in info.options" value="{{option.value}}">{{option.label}}</option>
+            <option ng-repeat="option in info.options" name="{{info._id}}" value="{{option.value}}">{{option.label}}</option>
         </select>
     </div>
     <div ng-switch-when="CHECKBOXES">
         <label for="inputCheckbox">{{info.label}}</label>
         <div ng-repeat="option in info.options" class="checkbox" id="inputCheckbox">
-            <label><input type="checkbox" ng-true-value="'{{option.value}}'" ng-false-value="''">{{option.label}}</label>
+            <label><input type="checkbox" ng-true-value="'{{option.value}}'" name="{{info._id}}" ng-false-value="''">{{option.label}}</label>
         </div>
         <br>
     </div>
     <div ng-switch-when="RADIOS">
         <label for="inputRadio">{{info.label}}</label>
         <div ng-repeat="option in info.options" class="radio" id="inputRadio">
-            <label><input type="radio" ng-true-value="'{{option.value}}'" ng-false-value="''">{{option.label}}</label>
+            <label><input type="radio" ng-true-value="'{{option.value}}'" name="{{info._id}}" ng-false-value="''">{{option.label}}</label>
         </div>
         <br>
         </div>

@@ -26,13 +26,13 @@
         <label for="inputCheckboxesLabel">Label</label>
         <input id="inputCheckboxesLabel" ng-model="info.label" type="text" class="form-control" placeholder="{{info.label}}"/>
         <label for="inputCheckboxesOptions">Options</label>
-        <textarea id="inputCheckboxesOptions" ng-model="$parent.optionsData" class="form-control"></textarea>
+        <textarea id="inputCheckboxesOptions" ng-model="info.optionsData" class="form-control"></textarea>
     </div>
     <div ng-switch-when="RADIOS">
         <label for="inputRadiosLabel">Label</label>
         <input id="inputRadiosLabel" ng-model="info.label" type="text" class="form-control" placeholder="{{info.label}}"/>
         <label for="inputRadiosOptions">Options</label>
-        <textarea id="inputRadiosOptions" ng-model="$parent.optionsData" class="form-control"></textarea>
+        <textarea id="inputRadiosOptions" ng-model="info.optionsData" class="form-control"></textarea>
     </div>
     <div ng-switch-default>
         <label for="inputDefaultLabel">Label</label>
