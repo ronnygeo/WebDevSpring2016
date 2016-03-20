@@ -1,6 +1,3 @@
-/**
- * Created by ronnygeo on 3/17/16.
- */
 module.exports = function (uuid) {
     var mock = require("./user.mock.json");
     var api = {

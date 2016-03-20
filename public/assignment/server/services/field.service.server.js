@@ -1,7 +1,3 @@
-/**
- * Created by ronnygeo on 3/17/16.
- */
-
 module.exports = function (app, formModel) {
 
     // GET /api/assignment/form/:formId/field
