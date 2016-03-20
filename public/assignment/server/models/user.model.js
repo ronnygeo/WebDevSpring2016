@@ -58,7 +58,8 @@ module.exports = function (uuid) {
 
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByUsername(username) {
-        for (var user of mock) {
+        for (var i = 0; i < mock.length; i++) {
+            user = mock[i];
             if (user.username == username) {
                 return user;
             }
@@ -68,9 +69,10 @@ module.exports = function (uuid) {
 
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByCredentials(credentials) {
-        for(var u of mock) {
-            if( u.username === credentials.username &&
-                u.password === credentials.password) {
+        for (var i = 0; i < mock.length; i++) {
+            user = mock[i];
+            if( user.username === credentials.username &&
+                user.password === credentials.password) {
                 return u;
             }
         }

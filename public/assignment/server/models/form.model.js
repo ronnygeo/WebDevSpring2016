@@ -34,7 +34,8 @@ module.exports = function (uuid) {
 
     //FindById - should take an ID as an argument, find an instance object in the corresponding collection whose ID property is equal to the ID argument, return the instance found, null otherwise
     function findById(id) {
-        for(var form of forms) {
+        for (var i = 0; i < forms.length; i++) {
+                form = forms[i];
             if( form._id === id ) {
                 return form;
             }
@@ -46,7 +47,8 @@ module.exports = function (uuid) {
     function findByUserId(userId) {
         //console.log(userId);
         var collection = [];
-        for (form of forms) {
+        for (var i = 0; i < forms.length; i++) {
+            form = forms[i];
             if (form.userId === userId){
                 collection.push(form);
             }
@@ -84,7 +86,8 @@ module.exports = function (uuid) {
 
     //findFormByTitle(title) - returns a single form whose title is equal to title parameter, null otherwise
     function findFormByTitle(title) {
-        for (var form of forms) {
+        for (var i = 0; i < forms.length; i++) {
+            form = forms[i];
             if (form.title === title) {
                 return form;
             }
@@ -99,7 +102,8 @@ module.exports = function (uuid) {
 
     function getFormFieldById(formId, fieldId) {
         var form = findById(formId);
-        for (var field of form.fields) {
+        for (var i = 0; i < form.fields.length; i++) {
+            field = form.fields[i];
             if (field._id === fieldId) {
                 return field;
             }
@@ -137,7 +141,8 @@ module.exports = function (uuid) {
 
     function updateFormField(formId, fieldId, obj) {
         var form = findById(formId);
-        for (var field of form.fields) {
+        for (var i = 0; i < form.fields.length; i++) {
+            field = form.fields[i];
             if (field._id === fieldId) {
                 for (var key in obj) {
                     field[key] = obj[key];
