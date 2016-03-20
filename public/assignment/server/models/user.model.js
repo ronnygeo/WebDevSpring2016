@@ -73,7 +73,7 @@ module.exports = function (uuid) {
             user = mock[i];
             if( user.username === credentials.username &&
                 user.password === credentials.password) {
-                return u;
+                return user;
             }
         }
         return null;
