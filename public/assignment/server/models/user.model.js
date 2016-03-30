@@ -42,7 +42,9 @@ module.exports = function (uuid) {
             user[key] = obj[key];
         }
         }
+        
         return user;
+        
     }
     //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
     function del(id) {
