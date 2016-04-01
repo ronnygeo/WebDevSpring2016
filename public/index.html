@@ -1,50 +1,381 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Web Development: Ronny Mathew</title>
-
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronny Mathew</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300,400' rel='stylesheet' type='text/css'>
+    <link href="css/foundation.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <!--<script type="text/javascript" src="https://raw.githubusercontent.com/LeaVerou/prefixfree/gh-pages/prefixfree.min.js"></script>-->
+    <meta name="description" content="Ronny Mathew's Personal Homepage.">
+    <meta name="keywords" content="Node,node.js,angular,angular.js,HTML,CSS,Sass,JavaScript,Python,Rails,Ruby,Ronny,George,Mathew,ronnygeo">
+    <meta name="author" content="Ronny Mathew">
 </head>
 <body>
-<div class='container'>
-          <hgroup>
-            <h1>Welcome to CS5610: Web Development</h1>
-          </hgroup>
 
-        <div class="row home-box">
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" id="offCanvasWrapper" data-off-canvas-wrapper>
 
-          <div class='col-xs-12'>
-            <div class="home-box">
-                <h2 class="h2">Links</h2><pre>
-                <ul class="list-unstyled">
-                <li><a href="http://dev-gluec.rhcloud.com/" target="_blank">Project</a></li>
-                <li><a href="https://docs.google.com/document/d/18j6HzEjzJiC1irGYCfWUj3g1Q8Me08MpxDmCFw3YyTE/edit?usp=sharing" target="_blank">Project documentation</a></li>
-                <li><a href="assignment/client/">Assignment  - Form Maker</a></li>
-                <li><a href="https://github.com/ronnygeo/WebDevSpring2016" target="_blank">GitHub</a></li>
-                </ul></pre>
+        <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+            <div class="title-bar-left">
+                <button id="closeOffCanvas" class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+                <span class="title-bar-title"></span>
+            </div>
+        </div>
+        <!--<div class="sticky">-->
+        <!-- off-canvas left menu -->
+        <div class="off-canvas sticky position-left" id="offCanvasLeft" data-off-canvas>
+            <ul class="vertical dropdown menu" id="ocMenu" data-dropdown-menu>
+                <li><a href="#intro">About</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#cs5610">CS5610</a></li>
+                <li><a href="#projects">Other Projects</a></li>
+                <li><a href="#links">Links</a></li>
+                <li><a href="#resume">Download Resume</a></li>
+            </ul>
+        </div>
+        <!--</div>-->
+        <div id="widemenu" class="top-bar" data-magellan-target="intro">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="menu-text">Ronny Mathew</li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#interests">Interests</a></li>
+                    <li><a href="#links">Links</a></li>
+                    <!--<li><a href="#resume">Resume</a></li>-->
+                </ul>
+            </div></div>
+
+        <div data-off-canvas-content>
+            <div  id="main-container">
+                <div class="parallax-window" data-parallax="scroll" data-ios-fix="true" data-bleed="50" data-image-src="images/boston.jpg">
+                    <div id="intro" class="row column">
+                        <div id="intro-text">
+                            <img src="images/me.jpg" id="intro-img" width="150px"/>
+                            <h1>RONNY MATHEW</h1>
+                            <h2>I WORK ON <span id="role"></span></h2>
+                        </div>
+
+                        <div class="align-bottom" id="about-me" style="width:100vw">
+                            <h1>About Me</h1>
+                            <p class="text-justify">I'm a Software Engineer currently honing my skills at Northeastern University, Boston.
+                                <br>Key Areas of Expertise: Data Analytics and Management (SQL & NoSQL), Full Stack Web Development (MEAN & Rails) and Software Engineering (Python, C++).</p>
+                        </div>
+                    </div>
                 </div>
-              <h2>Currently Active Routes</h2>
-              <pre>
-                <ul class="list-unstyled">
-                    <li><a href="/">/</a> - index.html </li>
-              <li><a href="/hello">/hello</a> - hello world example </li>
-              <li><a href="/json/projects">/json/projects</a> - Projects API sample</li>
-                    <li><h5 class="h5">Assignments</h5></li>
-                    <li><a href="/assignment/home.html">Assignment - Form Maker</a></li>
-                    <li><h5 class="h5">Experiments</h5></li>
-                    <li><a href="/experiments/home.html">Experiments - Home Page</a></li>
-              </ul></pre>
+
+                <div id="history" class="page" data-magellan-target="history">
+
+                    <div class="row">
+                        <div class="column small-12 large-6" id="education"><h1>Education</h1>
+                            <h3>Northeastern University</h3>
+                            <h4>Boston, MA</h4>
+                            <h4>College of Computer and Information Science</h4>
+                            <h5>Candidate for Master of Science in Computer Science</h5>
+                            <h6>Sept 2015 to Present</h6>
+                            <h6>Courses</h6>
+                            <ul>
+                                <li>Programming Design Paradigms</li>
+                                <li>Algorithms</li>
+                                <li>Foundations of Artificial Intelligence</li>
+                                <li>Web Development</li>
+                            </ul>
+                            <h3>Heriot-Watt University</h3>
+                            <h4>Dubai, UAE</h4>
+                            <h5>Master of Science in Computer Systems Management, Distinction with Honors. 	</h5>
+                            <h6>January 2012 to November 2013</h6>
+                            <h6>Courses</h6>
+                            <ul><li>eCommerce Technologies
+                            </li>
+                                <li>Databases</li>
+                                <li>Systems Programming</li>
+                                <li>Network Applications</li>
+                                <li>Mobile Programming</li>
+                            </ul>
+
+                            <h3>University of Kerala</h3>
+                            <h4>Kerala, India</h4>
+                            <h5>Bachelor of Technology in Electronics and Communication Engineering, First Class.</h5>
+                            <h6>October 2006 to Aug 2010</h6>
+                        </div>
+
+                        <div class="column small-12 large-6" id="experience">
+                            <h1>Experience</h1>
+                            <h3>Northeastern University</h3>
+                            <h4>Boston, MA</h4>
+                            <h5>Research Assistant</h5>
+                            <h6>Feb 2016 to Present</h6>
+                            <ul class="text-justify">
+                                <li>Evaluating the social influences on different cultures by applying Machine Learning Algorithms using Python.</li>
+                                <li>Created a data extraction layer to get data from the Yelp dataset within MongoDB with MapReduce.</li>
+                            </ul>
+                            <h3>Grey Ocean Analytics</h3>
+                            <h4>Bengaluru, India</h4>
+                            <h5>Software Engineer</h5>
+                            <h6>Feb 2015 to Aug 2015</h6>
+                            <ul class="text-justify">
+                                <li>Developed modules of an Artificial Intelligence project for the financial sector using Neo4j, Python, SNS and SQS.</li>
+                                <li>Led a team of five junior developers during the project ensuring high performance and completion before deadline.</li>
+                                <li>Designed and deployed MongoDB and Neo4j databases on Amazon Web Services EC2.</li>
+                                <li>Tested a product based on Drupal and guaranteed top user experience by finding and removing minor flaws.</li>
+                            </ul>
+                            <h3>Evolvence Capital & Ginza Holdings</h3>
+                            <h4>Dubai, UAE</h4>
+                            <h5>IT Administrator</h5>
+                            <h6>Apr 2012 to Dec 2014</h6>
+                            <ul class="text-justify">
+                                <li>Deployed IT systems and LS Retail with Microsoft Dynamics NAV 2009 for all Retail & Hospitality outlets of the group.</li>
+                                <li>Developed an eCommerce solution for Ginza using Magento. Maintained five CMS (WordPress) sites of the group.</li>
+                                <li>Developed and maintained Microsoft SQL Server and MySQL databases for ERP and other systems.</li>
+                                <li>Installed Linux servers and AV software systems for Interactive Displays and Video Walls at Real Madrid Café.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <blockquote>
+                    <p>If you feel like you are working for someone, you are not doing it right..</p>
+                    <cite>Me.</cite>
+                </blockquote>
+
+
+
+                <div class="parallax-window" data-parallax="scroll" data-ios-fix="true" data-natural-width="100vw" data-positionY="left"
+                     data-image-src="./images/northeastern.jpg">
+                </div>
+
+
+
+                <div id="projects" class="page" data-magellan-target="projects">
+                    <div class="row">
+                        <div class="column small-12 large-6">
+                            <h1>Projects</h1>
+                            <h3>Northeastern University</h3>
+                            <h5>Boston, MA</h5>
+                            <h6>Nov 2015 to Dec 2015</h6>
+                            <ul>
+                                <li>Developed project to <a href="http://rohitbegani.github.io/FAIproject-CS5100/" target="_blank">Model User Preferences for Location Based Recommendations</a> using python and mongoDB.</li>
+                            </ul>
+
+                            <h6>Jan 2016 to April 2016</h6>
+                            <ul>
+                                <li><a href="http://webdevelopment-mathewronny.rhcloud.com/assignment/client/#/" target="_blank">Form Maker Application</a> using Node.js, MongoDB and Angular.JS.</li>
+                                <li><a href="http://dev-gluec.rhcloud.com/" target="_blank">GlueC</a>: A Web Application to manage all sorts of eCommerce Inventory Management using Node.js, MongoDB and Angular.JS (MEAN stack App).</li>
+
+                            </ul>
+
+                            <h3>Heriot-Watt University</h3>
+                            <h5>Dubai, UAE</h5>
+                            <h6>Jan 2012 to Nov 2013</h6>
+                            <ul class="text-justify">
+                                <li>Developed and Completed Masters’ Dissertation on <a href="http://aws.ronnygeo.xyz:8081/" target="_blank">Real-time Data Analytics of the Sematic Web</a> using node.js, mongoDB, socket.io, Twitter API. Currently extending this project to include Advanced Analytics.</li>
+                                <li>Other Academic Projects: <a href="http://aws.ronnygeo.xyz/mybooks" target="_blank">PHP Bookstore</a>, PHP DealOn website, PHP Webmail client, Android Diary Application, Android Quiz Application, Shell programming, Web Browser with C# .NET, Java Applet for message signing.</li>
+                            </ul>
+                        </div>
+                        <div class="column small-12 large-6">
+                            <h3>Minor Projects</h3>
+                            <h4>University of Kerala</h4>
+                            <h5>India</h5>
+                            <h6>June 2008 to Aug 2010</h6>
+                            <ul class="text-justify">
+                                <li>Acted as Webmaster for IEEE MBCET (IEEE College Chapter) from 2008 to 2009 (Website powered by Joomla).</li>
+                                <li>Served as Graphic Designer for College Newsletter, ‘The Fourth Module’ and College Magazine ‘Route 66’.</li>
+                            </ul>
+
+                            <h3>Additional Projects</h3>
+                            <ul class="text-justify">
+                                <li>Worked on a Ruby on Rails <a href="http://aws.ronnygeo.xyz:3000/" target="_blank">eCommerce project</a> for a startup.</li>
+                                <li>Performed Map Reduce operations on a sample dataset of Twitter using python (Coursera.com).</li>
+                                <li>Completed projects of Interactive games using Python course, from Rice University, Texas (Coursera.com).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="parallax-window" data-parallax="scroll" data-ios-fix="true"-->
+                     <!--data-image-src="./images/bicycle.jpg"></div>-->
+
+                <div id="skills" class="parallax-window page" data-parallax="scroll" data-ios-fix="true" data-bleed="10" data-image-src="images/tunnel.jpg" data-magellan-target="skills">
+                    <h1>Technology</h1>
+
+                    <div class="row align-spaced align-stretch" data-equalizer>
+                        <div class="column small-12 medium-3 skill-box" data-equalizer-watch>
+                            <!--<div class="skill-box">-->
+                                <i class="devicon-python-plain-wordmark"></i>
+                        <!--</div>-->
+                        </div>
+                        <div class="column small-12 medium-3 skill-box align-middle" data-equalizer-watch>
+                            <i class="devicon-javascript-plain"></i>
+                        </div>
+                        <div class="column  small-12 medium-3 skill-box skill-box-bigger-font" data-equalizer-watch>
+                            <i class="devicon-nodejs-plain-wordmark"></i>
+                        </div>
+                        <div class="column small-12 medium-3 skill-box skill-box-bigger-font" data-equalizer-watch>
+                            <i class="devicon-angularjs-plain-wordmark"></i>
+                        </div>
+                        <div class="column small-12 medium-3 skill-box" data-equalizer-watch>
+                            <i class="devicon-html5-plain-wordmark"></i>&nbsp;<i class="devicon-css3-plain-wordmark"></i>
+                        </div>
+                        <div class="column small-12 medium-3 skill-box" data-equalizer-watch>
+                            <i class="devicon-rails-plain-wordmark"></i>
+                        </div>
+                        <div class="column small-12 medium-3 skill-box" data-equalizer-watch>
+                            <i class="devicon-mongodb-plain-wordmark"></i>
+                        </div>
+                        <div class="column small-12 medium-3 skill-box" data-equalizer-watch>
+                            <i class="devicon-mysql-plain-wordmark"></i>&nbsp;<i class="devicon-postgresql-plain-wordmark"></i>
+                        </div>
+                        <div class="column skill-box small-12 medium-3" data-equalizer-watch>
+                            <i class="devicon-cplusplus-plain"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="interests" class="page" data-magellan-target="interests">
+                    <!--<div class="bg-dark">-->
+                    <h1>Interests</h1><br>
+                    <h2>Photography</h2>
+                    <p class="text-justify">There are so many wonderful things around us that we take for granted.
+                        Through photography, I hope to bring these to attention, so that everyone can appreciate its beauty. The photos you find on this site are some of my work. If you are a fellow photographer, connect with me on 500px.</p>
+                    <div class="row align-middle" id="photos">
+                        <div class="small-3 columns" id="image-thumb-1">
+                            <a data-open="modalMountains"><img class="thumbnail" src="./images/mountains.jpg" alt="Mountains"></a>
+                        </div>
+
+                        <div class="small-3 columns" id="image-thumb-2">
+                            <a data-open="modalSunset"><img class="thumbnail" src="./images/sunset.jpg" alt="Sunset"/></a>
+                        </div>
+
+                        <div class="small-3 columns" id="image-thumb-3">
+                            <a data-open="modalHarbor"><img class="thumbnail" src="./images/harbor.jpg" alt="Boston Harbor"/></a>
+                        </div>
+
+                        <div class="small-3 columns" id="image-thumb-4">
+                            <a data-open="modalBridge"><img class="thumbnail" src="./images/bridge.jpg" alt="Boston bridge in the Sunset"/></a>
+                        </div>
+                    </div>
+                    <br><h2>Music</h2>
+                    <p class="text-justify">Music is one of the things that I cannot live without. It sets the pace of my day and sometimes even inspires me. If I like a song, I learn the lyrics by the next day. I'm also an occasional singer, connect with me on SoundCloud to listen to some of my tracks.</p>
+                    <br><h2>Travel</h2>
+                    <p class="text-justify">New Places, New Experiences. I have been travelling most of my life. It is difficult to find a place that I haven't been to in the cities that I have lived in. Most of my snaps are from my travels.</p>
+                    <!--<div class="row align-center"><div id="map"></div></div>-->
+                </div>
+
+
+
+            <div class="parallax-window" id="image-after">
+                <!--<blockquote class="blockquote-reverse">-->
+                <!--<p>You never know when your visa to this world expires, but before it does, make sure you have done something that-->
+                    <!--people will remember you for.</p>-->
+                <!--<cite>Me.</cite>-->
+            <!--</blockquote>-->
             </div>
 
+                <div id="links" class="my-links" data-magellan-target="links">
+                    <div class="row">
+                        <h1>Connect with me</h1>
+                    </div>
+                    <div class="row align-center">
+                        <ul class="no-decoration-links">
+                            <li><a href="https://www.github.com/ronnygeo" target="_blank">
+                <span class="fa-stack fa-lg">
+  <i class="fa fa-github fa-stack-1x"></i>
+</span>
+                                Github<br></a></li>
+                            <li><a href="https://www.bitbucket.com/ronnygeo" target="_blank">
+                <span class="fa-stack fa-lg">
+  <i class="fa fa-bitbucket fa-stack-1x"></i>
+</span>BitBucket</a></li>
+                            <li><a href="https://www.linkedin.com/in/ronnygeo" target="_blank"><span class="fa-stack fa-lg">
+  <i class="fa fa-linkedin fa-stack-1x"></i>
+</span>LinkedIn</a></li>
+                            <li><a href="https://www.twitter.com/ronnygeo" target="_blank"><span class="fa-stack fa-lg">
+  <i class="fa fa-twitter fa-stack-1x"></i>
+</span>Twitter</a></li>
+                            <li><a href="https://www.facebook.com/ronnygeo" target="_blank"><span class="fa-stack fa-lg">
+  <i class="fa fa-facebook fa-stack-1x"></i>
+</span>Facebook</a></li>
+                            <li><a href="https://500px.com/ronnygeo" target="_blank"><span class="fa-stack fa-lg">
+  <i class="fa fa-500px fa-stack-1x"></i>
+</span>500px</a></li>
+                            <li><a href="https://soundcloud.com/ronnie-matt" target="_blank"><span class="fa-stack fa-lg">
+  <i class="fa fa-soundcloud fa-stack-1x"></i>
+</span>Soundcloud</a></li>
+                            <li><a href="https://pinterest.com/ronniematt/" target="_blank"><span class="fa-stack fa-lg">
+  <i class="fa fa-pinterest fa-stack-1x"></i>
+</span>Pinterest</a></li>
+                        </ul>
+                    </div>
+</div>
+
+<div id="resume">
+    <a href="https://drive.google.com/file/d/0B9h95MO2TSBVMDhkaGRtOFVQU1k/view?usp=sharing" target="_blank">
+<div>
+
+        <span class="fa fa-cloud-download fa-stack-2x">&nbsp;<span id="resume-text">Download Resume</span></span>
+</div></a>
+</div>
+                <footer>Copyright Ronnie Matt 2016.
+                </footer>
+            </div>
         </div>
     </div>
-
-        <footer>
-          <div class="well">Copyright, Ronny Mathew</div>
-        </footer>
 </div>
+
+<div class="reveal" id="modalMountains" data-reveal>
+    <br><img class="img-responsive" src="./images/mountains.jpg"/>
+    <h4 class="text-center">Sunrise at the Mountains</h4>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="reveal" id="modalSunset" data-reveal>
+    <br>
+    <img class="img-responsive" src="./images/sunset.jpg"/>
+    <h4 class="text-center">After the Storm</h4>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="reveal" id="modalHarbor" data-reveal>
+    <br>
+    <img class="img-responsive" src="./images/harbor.jpg"/>
+    <h4 class="text-center">Boston Harbor</h4>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="reveal" id="modalBridge" data-reveal>
+    <br>
+    <img class="img-responsive" src="./images/bridge.jpg"/>
+    <h4 class="text-center">Bridge in the Sunset</h4>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js"></script>
+<script src="js/theater.min.js"></script>
+<script src="https://cdn.jsdelivr.net/scrollreveal.js/3.0.9/scrollreveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.4.2/parallax.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>-->
+<script src="js/script.js"></script>
 </body>
 </html>
+
