@@ -34,7 +34,7 @@ app.get('/json/projects', function(req, res){
 });
 
 // create a default connection string
-var connectionString = 'mongodb://127.0.0.1:27017/cs5610fall2015exmpl1';
+var connectionString = 'mongodb://127.0.0.1:27017/cs5610assignment';
 
 // use remote connection string
 // if running in remote server
@@ -48,8 +48,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 // connect to the database
 var db = mongoose.connect(connectionString);
-// db.getCollection();
 
-require("./public/assignment/server/app.js")(app);
+require("./public/assignment/server/app.js")(app, mongoose, db);
 
 app.listen(port, ipaddress);

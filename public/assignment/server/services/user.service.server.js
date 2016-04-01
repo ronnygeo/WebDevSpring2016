@@ -30,7 +30,9 @@ module.exports = function (app, userModel) {
 
     function createUser(req, res) {
         var user = req.body;
-        res.json(userModel.create(user));
+        userModel.create(user).then(function (data) {
+            res.json(data);
+        });
     }
 
     function getUsers(req, res) {
@@ -39,35 +41,42 @@ module.exports = function (app, userModel) {
         } else if (req.query.username) {
             getUserByUsername(req, res);
         } else {
-        res.json(userModel.findAll());
+        userModel.findAll().then(function(data){
+            res.json(data);
+        });
         }
     }
 
     function getUser(req, res) {
         var id = req.params.id;
-        res.json(userModel.findById(id));
+        userModel.findById(id).then(function (data) {
+            res.json(data);
+        });
     }
 
     function getUserByUsername(req, res) {
         var username = req.query.username;
-        res.json(userModel.findUserByUsername(username));
+        userModel.findUserByUsername(username).then(function (data) {res.json(data);});
     }
 
     function getUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        res.json(userModel.findUserByCredentials({username: username, password: password}));
+        userModel.findUserByCredentials({username: username, password: password}).then(function(data) {res.json(data);
+        });
     }
 
     function updateUser(req, res) {
         var id = req.params.id;
         var user = req.body;
-        res.json(userModel.update(id, user));
+        userModel.update(id, user).then(function(data) {
+            res.json(data);
+        });
     }
 
     function deleteUser(req, res) {
         var id = req.params.id;
-        res.json(userModel.delete(id));
+        userModel.delete(id).then(function (data) {res.json();});
     }
 
 };

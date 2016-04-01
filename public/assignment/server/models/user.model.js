@@ -1,5 +1,11 @@
-module.exports = function (uuid) {
-    var mock = require("./user.mock.json");
+module.exports = function (mongoose) {
+    var q = require('q');
+    // load user schema
+    var UserSchema = require("./user.schema.server.js")(mongoose);
+    var UserModel = mongoose.model('User', UserSchema);
+
+    // var mock = require("./user.mock.json");
+
     var api = {
         create: create,
         findAll: findAll,
@@ -14,70 +20,103 @@ module.exports = function (uuid) {
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
     function create(user) {
         //user._id = "ID_" + (new Date()).getTime();
-        user._id = uuid.v1();
-        mock.push(user);
-        return user;
-    }
+        var deferred = q.defer();
+        var user = new UserModel({username: user.username,
+            password: user.password,
+            emails: [user.email]});
+
+        user.save(function (err, data){
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
+            }
+        });
+        return deferred.promise;
+    };
 
     //FindAll - should take no arguments, and return the corresponding collection
     function findAll() {
-        return mock;
+        var deferred = q.defer();
+        UserModel.find(function (err, data) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
+            }
+        });
+        return deferred.promise;
     }
 
     //FindById - should take an ID as an argument, find an instance object in the corresponding collection whose ID property is equal to the ID argument, return the instance found, null otherwise
     function findById(id) {
-        for(var u in mock) {
-            if( mock[u]._id === id ) {
-                return mock[u];
+        var deferred = q.defer();
+        UserModel.findById(id, function(err, data) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
     //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
     function update(id, obj) {
-        var user = findById(id);
-        if (user) {
-        for (var key in obj) {
-            user[key] = obj[key];
-        }
-        }
+        var deferred = q.defer();
         
-        return user;
-        
+        UserModel.update({ _id: id}, {
+                password: obj.password,
+                firstName : obj.firstName,
+                lastName: obj.lastName,
+                emails: obj.emails
+            },
+            function (err, data) {
+            if (err) {
+                deferred.reject(err);
+                    } else {
+                        deferred.resolve(data);
+                    }
+        });
+        return deferred.promise;
     }
+    
     //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
     function del(id) {
-        for (var i = 0; i < mock.length; i++){
-            if (id === mock[i]._id)
-            {
-                mock.splice(i, 1);
-                break;
+        var deferred = q.defer();
+        
+        UserModel.delete({_id: id}, function (err) {
+            if (err) {
+                deferred.reject(err);
             }
-        }
-        return mock;
+            deferred.resolve(findAll());
+            return deferred.promise;
+        });
     }
 
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByUsername(username) {
-        for (var i = 0; i < mock.length; i++) {
-            user = mock[i];
-            if (user.username == username) {
-                return user;
+        var deferred = q.defer();
+        UserModel.findOne({username: username}, function (err, data) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByCredentials(credentials) {
-        for (var i = 0; i < mock.length; i++) {
-            user = mock[i];
-            if( user.username === credentials.username &&
-                user.password === credentials.password) {
-                return user;
+        var deferred = q.defer();
+        UserModel.findOne({username: credentials.username, password: credentials.password}, function (err, data) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 };
