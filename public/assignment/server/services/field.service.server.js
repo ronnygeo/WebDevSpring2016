@@ -43,7 +43,7 @@ module.exports = function (app, fieldModel) {
     function createFormField(req, res) {
         var formId = req.params.formId;
         var field = req.body;
-        formModel.createFormField(formId, field).then(function (data) {
+        fieldModel.createFormField(formId, field).then(function (data) {
             res.json(data);
         });
     }
@@ -52,7 +52,7 @@ module.exports = function (app, fieldModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        fieldmModel.updateFormField(formId, fieldId, field).then(function (data) {
+        fieldModel.updateFormField(formId, fieldId, field).then(function (data) {
             res.json(data);
         });
     }
