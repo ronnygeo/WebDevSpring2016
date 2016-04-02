@@ -9,7 +9,7 @@
     AdminController.$inject = ['UserService'];
     function AdminController(UserService) {
         var vm = this;
-
+        vm.users = [];
         vm.user = {};
 
         //Event Handlers
@@ -21,7 +21,6 @@
         UserService.findAllUsers().then(render);
 
         function render(data) {
-            vm.users = [];
             vm.users = data.data;
             vm.user = {};
         }
@@ -29,6 +28,7 @@
         function addUser() {
             UserService.createUser(vm.user).then(function(data){
                 vm.users.push(data.data);
+                vm.user = {};
             });
         }
 
@@ -45,7 +45,9 @@
         }
 
         function removeUser(index) {
-            UserService.deleteUserById(vm.users[index]._id).then(render);
+            UserService.deleteUserById(vm.users[index]._id).then(function () {
+                vm.users.splice(index, 1);
+            });
         }
         }
 })();

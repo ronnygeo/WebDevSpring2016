@@ -63,7 +63,9 @@ module.exports = function (mongoose) {
     function update(id, obj) {
         var deferred = q.defer();
         var email = obj.email;
-        var user = UserModel.findById(id);
+        if (!(email in obj.emails)){
+        obj.emails.push(email);
+        }
         UserModel.update({ _id: id}, obj,
             function (err, data) {
             if (err) {
@@ -78,14 +80,13 @@ module.exports = function (mongoose) {
     //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
     function del(id) {
         var deferred = q.defer();
-        
-        UserModel.remove({_id: id}, function (err) {
+        UserModel.remove({_id: id}, function (err, data) {
             if (err) {
                 deferred.reject(err);
             }
-            deferred.resolve(findAll());
-            return deferred.promise;
+            deferred.resolve(data);
         });
+        return deferred.promise;
     }
 
     //returns a single user whose username is equal to username parameter, null otherwise

@@ -12,6 +12,8 @@
         var vm = this;
 
         vm.user = $rootScope.user;
+        // console.log("in scope: ", vm.user);
+        vm.user.email = vm.user.emails[0];
 
         vm.update = function () {
             //console.log($scope.user);
@@ -20,6 +22,8 @@
         };
 
         function render(data) {
+            // $rootScope.user = data.data;
+            // console.log("returned:", data);
             // console.log(data.roles);
         }
     }
