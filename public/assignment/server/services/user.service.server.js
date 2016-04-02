@@ -69,6 +69,7 @@ module.exports = function (app, userModel) {
     function updateUser(req, res) {
         var id = req.params.id;
         var user = req.body;
+        user.remove('_id');
         userModel.update(id, user).then(function(data) {
             res.json(data);
         });
