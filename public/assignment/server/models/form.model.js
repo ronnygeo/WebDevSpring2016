@@ -1,163 +1,118 @@
-module.exports = function (uuid) {
-    var forms = require('./form.mock.json');
+module.exports = function (mongoose) {
+    // var forms = require('./form.mock.json');
+
+    var q = require('q');
+    var FormSchema = require("./form.schema.server.js")(mongoose);
+    var FormModel = mongoose.model('Form', FormSchema);
+
+    // var FieldModel = require("./field.model.server.js")(mongoose, formId);
+
     var api = {
         create: create,
         findAll: findAll,
         findById: findById,
+        findFormByTitle: findFormByTitle,
         findByUserId: findByUserId,
         update: update,
-        delete: del,
-        findFormByTitle: findFormByTitle,
-        getFormFields: getFormFields,
-        getFormFieldById: getFormFieldById,
-        deleteFormField: deleteFormField,
-        createFormField: createFormField,
-        updateFormField: updateFormField,
-        updateAllFormFields: updateAllFormFields
+        delete: del
     };
     return api;
 
     //Create - should accept an instance object, add it to a corresponding collection, and return the collection
-    function create(form) {
-        //form._id = "ID_" + (new Date()).getTime();
-
-        form._id = uuid.v1();
-        form.options = [];
-        forms.push(form);
-        return forms;
+    function create(data) {
+        var deferred = q.defer();
+        // console.log(data);
+        // var form = new FormModel({title: data.title, userId: data.userId});
+            FormModel.create(data, function (err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    // console.log(doc);
+                    deferred.resolve(doc);
+                }
+            });
+        // forms.push(form);
+        return deferred.promise;
     }
 
     //FindAll - should take no arguments, and return the corresponding collection
     function findAll() {
-        return forms;
-    }
-
-    //FindById - should take an ID as an argument, find an instance object in the corresponding collection whose ID property is equal to the ID argument, return the instance found, null otherwise
-    function findById(id) {
-        for (var i = 0; i < forms.length; i++) {
-                form = forms[i];
-            if( form._id === id ) {
-                return form;
+        var deferred = q.defer();
+        FormModel.find(function(err, data) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
-    }
-
-    //findByUserId: finds all the forms by the particular user
-    function findByUserId(userId) {
-        //console.log(userId);
-        var collection = [];
-        for (var i = 0; i < forms.length; i++) {
-            form = forms[i];
-            if (form.userId === userId){
-                collection.push(form);
-            }
-        }
-        //console.log(collection);
-        return collection;
-    }
-
-    //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
-    function update(id, obj) {
-        // console.log(id);
-        var form = findById(id);
-        //console.log(form);
-        if (form) {
-            for (var key in obj) {
-                // console.log(obj[key]);
-                form[key] = obj[key];
-            }
-        }
-        // console.log(form);
-        return form;
-    }
-
-    //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
-    function del(id) {
-        for (var i = 0; i < forms.length; i++){
-            if (id === forms[i]._id)
-            {
-                forms.splice(i, 1);
-                break;
-            }
-        }
-        return forms;
+        });
+        return deferred.promise;
     }
 
     //findFormByTitle(title) - returns a single form whose title is equal to title parameter, null otherwise
     function findFormByTitle(title) {
-        for (var i = 0; i < forms.length; i++) {
-            form = forms[i];
-            if (form.title === title) {
-                return form;
+        var deferred = q.defer();
+
+        FormModel.findOne({title: title}, function(err, data) {
+            if (err){
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
-    function getFormFields(formId) {
-        var form = findById(formId);
-        return form.fields;
-    }
+    //FindById - should take an ID as an argument, find an instance object in the corresponding collection whose ID property is equal to the ID argument, return the instance found, null otherwise
+    function findById(id) {
+        var deferred = q.defer();
 
-    function getFormFieldById(formId, fieldId) {
-        var form = findById(formId);
-        for (var i = 0; i < form.fields.length; i++) {
-            field = form.fields[i];
-            if (field._id === fieldId) {
-                return field;
+        FormModel.findById(id, function (err, data) {
+            if (err){
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
-    function deleteFormField(formId, fieldId) {
-        var form = findById(formId);
-        // console.log(form);
-        for (var i = 0; i < form.fields.length; i++) {
-            // console.log(fieldId);
-            // console.log(form.fields[i]);
-            if (form.fields[i]._id == fieldId) {
-                // console.log(form.fields[i]);
-                form.fields.splice(i, 1);
+    //findByUserId: finds all the forms by the particular user
+    function findByUserId(userId) {
+        var deferred = q.defer();
+        FormModel.find({userId: userId}, function (err, data){
+            if (err){
+                deferred.reject(err);
+            } else {
+                // console.log(data);
+                deferred.resolve(data);
             }
-        }
-        // console.log(form.fields);
-        return form.fields;
+        });
+        return deferred.promise;
     }
 
-    function createFormField(formId, field) {
-        var form = findById(formId);
-        field._id = uuid.v1();
-        //field._id = "ID_" + (new Date()).getTime();
-        if (form.fields) {
-        form.fields.push(field);
-        } else {
-            form.fields = [];
-            form.fields.push(field);
-        }
-        return form.fields;
-    }
+    //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
+    function update(id, obj) {
+        var deferred = q.defer();
 
-    function updateFormField(formId, fieldId, obj) {
-        var form = findById(formId);
-        for (var i = 0; i < form.fields.length; i++) {
-            field = form.fields[i];
-            if (field._id === fieldId) {
-                for (var key in obj) {
-                    field[key] = obj[key];
-                }
-                return field;
+        FormModel.update({_id: id}, {$set: obj}, function (err, data){
+            if (err){
+                deferred.reject(err);
+            } else {
+                deferred.resolve(data);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
-    function updateAllFormFields(formId, obj) {
-        var form = findById(formId);
-        // console.log(obj);
-        form.fields = obj;
-        // console.log(form.fields);
-        return obj;
-        }
+    //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
+    function del(id) {
+        var deferred = q.defer();
+        FormModel.remove(id, function (err, data) {
+            if (err) {
+                deferred.reject(err);
+            }
+            else deferred.resolve(data);
+        });
+        return deferred.promise;
+    }
 };

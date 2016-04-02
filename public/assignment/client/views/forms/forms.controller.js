@@ -65,6 +65,7 @@
 
         function renderList(res) {
             //console.log(data);
+            console.log(res.data);
             vm.forms = res.data;
         }
 

@@ -22,29 +22,33 @@ module.exports = function(app, formModel) {
 
     function getFormsByUserId(req, res) {
         var userId = req.params.userId;
-        res.json(formModel.findByUserId(userId));
+        formModel.findByUserId(userId).then(function(data) {res.json(data);
+        });
     }
 
     function getFormById(req, res) {
         var id = req.params.formId;
-        res.json(formModel.findById(id));
+        formModel.findById(id).then(function (data) {res.json(data);
+        });
     }
 
     function deleteForm(req, res) {
         var id = req.params.formId;
-        res.json(formModel.delete(id));
+        formModel.delete(id).then(function (data) {res.json(data);});
     }
 
     function createForm(req, res) {
         var userId = req.params.userId;
         var form = req.body;
         form.userId = userId;
-        res.json(formModel.create(form));
+        formModel.create(form).then(function(data){res.json(data)
+        });
     }
 
     function updateForm(req, res) {
         var id = req.params.formId;
         var form = req.body;
-        res.json(formModel.update(id, form));
+        formModel.update(id, form).then(function(data){res.json(data);
+        });
     }
 };

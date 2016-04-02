@@ -1,4 +1,4 @@
-module.exports = function (app, formModel) {
+module.exports = function (app, fieldModel) {
 
     // GET /api/assignment/form/:formId/field
     // returns an array of fields belonging to a form object whose id is equal to the formId path parameter
@@ -24,35 +24,45 @@ module.exports = function (app, formModel) {
 
     function getFormFields(req, res) {
         var formId = req.params.formId;
-        res.json(formModel.getFormFields(formId));
+        fieldModel.getFormFields(formId).then(function(data){res.json(data);});
     }
     function getFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.json(formModel.getFormFieldById(formId, fieldId));
+        fieldModel.getFormFieldById(formId, fieldId).then(function(data){
+            res.json(data);
+        });
     }
     function deleteFormField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.json(formModel.deleteFormField(formId, fieldId));
+        fieldModel.deleteFormField(formId, fieldId).then(function (data){
+            res.json(data);
+        });
     }
     function createFormField(req, res) {
         var formId = req.params.formId;
         var field = req.body;
-        res.json(formModel.createFormField(formId, field));
+        formModel.createFormField(formId, field).then(function (data) {
+            res.json(data);
+        });
     }
 
     function updateFormField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        res.json(formModel.updateFormField(formId, fieldId, field));
+        fieldmModel.updateFormField(formId, fieldId, field).then(function (data) {
+            res.json(data);
+        });
     }
 
     function updateAllFormFields(req, res) {
         var formId = req.params.formId;
         var fields = req.body;
-        res.json(formModel.updateAllFormFields(formId, fields));
+        fieldModel.updateAllFormFields(formId, fields).then(function (data) {
+            res.json(data);
+        });
     }
 
 };

@@ -6,8 +6,8 @@ module.exports = function (mongoose) {
     var FieldModel = require('./field.schema.server.js')(mongoose);
     // use mongoose to declare a user schema
     var FormSchema = mongoose.Schema({
-        userId: String,
         title: {type: String, default: "New Form"},
+        userId: String,
         fields: [FieldModel],
         created: {type: Date, default: Date.now},
         updated: {type: Date, default: Date.now}

@@ -3,7 +3,6 @@ module.exports = function (mongoose) {
     // load user schema
     var UserSchema = require("./user.schema.server.js")(mongoose);
     var UserModel = mongoose.model('User', UserSchema);
-
     // var mock = require("./user.mock.json");
 
     var api = {
@@ -21,11 +20,10 @@ module.exports = function (mongoose) {
     function create(user) {
         //user._id = "ID_" + (new Date()).getTime();
         var deferred = q.defer();
-        var user = new UserModel({username: user.username,
-            password: user.password,
-            emails: [user.email]});
-
-        user.save(function (err, data){
+        var email = user.email;
+        user.emails = [];
+        user.emails.push(email);
+        UserModel.create(user, function (err, data){
             if (err) {
                 deferred.reject(err);
             } else {
@@ -64,13 +62,9 @@ module.exports = function (mongoose) {
     //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
     function update(id, obj) {
         var deferred = q.defer();
-        
-        UserModel.update({ _id: id}, {
-                password: obj.password,
-                firstName : obj.firstName,
-                lastName: obj.lastName,
-                emails: obj.emails
-            },
+        var email = obj.email;
+        var user = UserModel.findById(id);
+        UserModel.update({ _id: id}, obj,
             function (err, data) {
             if (err) {
                 deferred.reject(err);
@@ -85,7 +79,7 @@ module.exports = function (mongoose) {
     function del(id) {
         var deferred = q.defer();
         
-        UserModel.delete({_id: id}, function (err) {
+        UserModel.remove({_id: id}, function (err) {
             if (err) {
                 deferred.reject(err);
             }
