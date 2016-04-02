@@ -49,6 +49,7 @@ module.exports = function(app, formModel) {
     function updateForm(req, res) {
         var id = req.params.formId;
         var form = req.body;
+        delete form._id
         formModel.update(id, form).then(function(data){res.json(data);
         });
     }
