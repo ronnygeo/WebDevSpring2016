@@ -22,8 +22,8 @@ module.exports = function (mongoose) {
             if (err) {
                 deferred.reject(err);
             } else {
-                if (!data.fields)
-                    data.fields = []
+                // if (!data.fields)
+                //     data.fields = []
                 deferred.resolve(data.fields);
             }
         });
