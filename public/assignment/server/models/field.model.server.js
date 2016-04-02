@@ -1,11 +1,10 @@
 module.exports = function (mongoose) {
 
     var q = require('q');
-    var FormSchema = require("./form.schema.server.js")(mongoose);
     var FormModel = mongoose.model('Form');
 
     var FieldSchema = require("./field.schema.server.js")(mongoose);
-    var FieldModel = mongoose.model('Field', FormSchema);
+    var FieldModel = mongoose.model('Field', FieldSchema);
 
     var api = {
         getFormFields: getFormFields,
@@ -23,7 +22,6 @@ module.exports = function (mongoose) {
             if (err) {
                 deferred.reject(err);
             } else {
-                console.log(data);
                 if (!data.fields)
                     data.fields = []
                 deferred.resolve(data.fields);
@@ -40,19 +38,12 @@ module.exports = function (mongoose) {
                     if (err) {
                         deferred.reject(err);
                     } else {
-                        console.log(field)
+                        // console.log(field)
                         deferred.resolve(field);
                     }
                 });
             }
         });
-        // var form = findById(formId);
-        // for (var i = 0; i < form.fields.length; i++) {
-        //     field = form.fields[i];
-        //     if (field._id === fieldId) {
-        //         return field;
-        //     }
-        // }
         return deferred.promise;
     }
 
@@ -65,6 +56,7 @@ module.exports = function (mongoose) {
                 for (var i = 0; i < form.fields.length; i++) {
                     if (form.fields[i]._id == fieldId) {
                         form.fields.splice(i, 1);
+
                     }
                 }
                 form.save(function (err, data) {
@@ -76,29 +68,25 @@ module.exports = function (mongoose) {
                 });
             }
         });
-        // console.log(form.fields);
         return deferred.promise;
     }
 
     function createFormField(formId, field) {
         var deferred = q.defer();
-        console.log("client:", field);
+        // console.log("client:", field);
         FormModel.findById(formId, function(err, form) {
             if (err) {
                 deferred.reject(err);
             } else {
-                if (!form.hasOwnProperty("options")) {
+                if (!form.hasOwnProperty("options") && form.type in ['TEXT', 'TEXTAREA', 'EMAIL', 'PASSWORD', 'OPTIONS', 'DATE', 'RADIOS', 'CHECKBOXES']) {
                     form.options = [];
-                    console.log("No options!");
                 }
-                var newField = FieldModel(field);
+                var newField = new FieldModel(field);
                 form.fields.push(newField);
-                console.log(form.fields)
                 form.save(function (err, data) {
                     if (err) {
                         deferred.reject(err);
                     } else {
-                     console.log(data.fields);
                         deferred.resolve(data.fields);
                     }
                 });
