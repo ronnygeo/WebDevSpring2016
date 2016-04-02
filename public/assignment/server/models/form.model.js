@@ -107,7 +107,8 @@ module.exports = function (mongoose) {
     //Delete - should accept an ID as an argument, remove the instance object from the corresponding collection whose ID property s equal to the ID argument
     function del(id) {
         var deferred = q.defer();
-        FormModel.remove(id, function (err, data) {
+        console.log(id);
+        FormModel.remove({_id: id}, function (err, data) {
             if (err) {
                 deferred.reject(err);
             }

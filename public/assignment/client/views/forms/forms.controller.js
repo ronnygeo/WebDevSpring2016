@@ -36,25 +36,16 @@
         function addForm() {
             FormService.createFormForUser($rootScope.user._id, vm.form)
                 .then(function (data){
-
-                    vm.forms = [];
-                    for (var d of data.data) {
-                        if ($rootScope.user._id === d.userId){
-                            vm.forms.push(d);
-                        }
-                    }
+                    // console.log(data);
+                    vm.forms.push(data.data);
                     vm.form = {};
             });
         }
 
         function deleteForm(index) {
             FormService.deleteFormById(vm.forms[index]._id)
-                .then(function (data){
-                    vm.forms = [];
-                for (var d of data.data){
-                    if (d.userId === $rootScope.user._id)
-                        vm.forms.push(d);
-                }
+                .then(function (){
+                    vm.forms.splice(index, 1);
             });
         }
 
@@ -65,7 +56,6 @@
 
         function renderList(res) {
             //console.log(data);
-            console.log(res.data);
             vm.forms = res.data;
         }
 

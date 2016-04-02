@@ -82,21 +82,23 @@ module.exports = function (mongoose) {
 
     function createFormField(formId, field) {
         var deferred = q.defer();
+        console.log("client:", field);
         FormModel.findById(formId, function(err, form) {
             if (err) {
                 deferred.reject(err);
             } else {
                 if (!form.hasOwnProperty("options")) {
                     form.options = [];
+                    console.log("No options!");
                 }
                 var newField = FieldModel(field);
                 form.fields.push(newField);
-
+                console.log(form.fields)
                 form.save(function (err, data) {
                     if (err) {
                         deferred.reject(err);
                     } else {
-                        // console.log(data);
+                     console.log(data.fields);
                         deferred.resolve(data.fields);
                     }
                 });
@@ -129,6 +131,7 @@ module.exports = function (mongoose) {
     }
 
     function updateAllFormFields(formId, obj) {
+
         var deferred = q.defer();
         FormModel.findById(formId, function(err, form) {
             if (err) {
@@ -139,7 +142,6 @@ module.exports = function (mongoose) {
                     if (err) {
                         deferred.reject(err);
                     } else {
-                        // console.log(data)
                         deferred.resolve(data.fields);
                     }
                 });
