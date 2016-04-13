@@ -17,8 +17,14 @@
         vm.register = register;
 
         function register() {
-            //var user = {username: vm.username, password: vm.password, email: vm.email};
-            UserService.createUser(vm.user).then(render);
+
+            if(vm.user.password != vm.verifyPassword || !vm.user.password || !vm.verifyPassword)
+            {
+                $scope.error = "Your passwords don't match";
+            }
+            else {
+                UserService.register(vm.user).then(render);
+            }
         }
         function render(data) {
         $rootScope.user = data.data;

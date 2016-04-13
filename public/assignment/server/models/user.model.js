@@ -1,5 +1,6 @@
 module.exports = function (mongoose) {
     var q = require('q');
+    var bcrypt = require('bcrypt-nodejs');
     // load user schema
     var UserSchema = require("./user.schema.server.js")(mongoose);
     var UserModel = mongoose.model('User', UserSchema);
@@ -23,6 +24,8 @@ module.exports = function (mongoose) {
         var email = user.email;
         user.emails = [];
         user.emails.push(email);
+        var pwd = bcrypt.hashSync(user.password);
+        user.password = pwd;
         UserModel.create(user, function (err, data){
             if (err) {
                 deferred.reject(err);
@@ -71,6 +74,7 @@ module.exports = function (mongoose) {
             if (err) {
                 deferred.reject(err);
                     } else {
+                console.log(data);
                         deferred.resolve(data);
                     }
         });
@@ -105,11 +109,16 @@ module.exports = function (mongoose) {
     //returns a single user whose username is equal to username parameter, null otherwise
     function findUserByCredentials(credentials) {
         var deferred = q.defer();
-        UserModel.findOne({username: credentials.username, password: credentials.password}, function (err, data) {
+        UserModel.findOne({username: credentials.username}, function (err, data) {
             if (err) {
                 deferred.reject(err);
             } else {
+                // console.log(data, credentials);
+                if (bcrypt.compareSync(credentials.password, data.password)) {
                 deferred.resolve(data);
+                } else {
+                    deferred.reject(404);
+                }
             }
         });
         return deferred.promise;

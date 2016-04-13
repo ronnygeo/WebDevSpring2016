@@ -11,10 +11,13 @@
     function LoginController(UserService, $location, $rootScope) {
         var vm = this;
         vm.login =login;
-
+        var user = {};
+        
         function login() {
             //console.log($scope.username+$scope.password);
-            UserService.findUserByCredentials(vm.username, vm.password).then(render);
+            user.username = vm.username;
+            user.password = vm.password;
+            UserService.login(user).then(render);
     }
 
         function render(res) {

@@ -2,14 +2,28 @@
 var express = require('express');
 var app = express();
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var port = process.env.OPENSHIFT_NODEJS_PORT || 3001;
 var bodyParser    = require('body-parser');
 var multer        = require('multer');
 var mongoose = require('mongoose');
+var passport      = require('passport');
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
+var mongoose      = require('mongoose');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+multer();
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(express.static(__dirname + '/public'));
 
@@ -49,6 +63,6 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 // connect to the database
 var db = mongoose.connect(connectionString);
 
-require("./public/assignment/server/app.js")(app, mongoose, db);
+require("./public/assignment/server/app.js")(app, mongoose, passport);
 
 app.listen(port, ipaddress);

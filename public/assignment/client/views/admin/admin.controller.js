@@ -18,7 +18,7 @@
         vm.addUser = addUser;
         vm.updateUser = updateUser;
 
-        UserService.findAllUsers().then(render);
+        UserService.adminFindAllUsers().then(render, function (err) {console.log(err);});
 
         function render(data) {
             vm.users = data.data;
@@ -26,15 +26,15 @@
         }
 
         function addUser() {
-            UserService.createUser(vm.user).then(function(data){
+            UserService.adminCreateUser(vm.user).then(function(data){
                 vm.users.push(data.data);
                 vm.user = {};
             });
         }
 
         function updateUser() {
-            // console.log(vm.user);
-            UserService.updateUser(vm.user._id, vm.user).then(function(){
+            console.log(vm.user);
+            UserService.adminUpdateUser(vm.user._id, vm.user).then(function(){
                 vm.user = {};
             });
         }
@@ -45,7 +45,7 @@
         }
 
         function removeUser(index) {
-            UserService.deleteUserById(vm.users[index]._id).then(function () {
+            UserService.adminDeleteUserById(vm.users[index]._id).then(function () {
                 vm.users.splice(index, 1);
             });
         }

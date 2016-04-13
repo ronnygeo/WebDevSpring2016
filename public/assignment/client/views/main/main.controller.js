@@ -7,9 +7,9 @@
     angular.module("FormBuilderApp")
     .controller('MainController', MainController);
 
-    MainController.$inject = ['$location', '$rootScope'];
+    MainController.$inject = ['$location', '$rootScope', 'UserService'];
 
-    function MainController($location, $rootScope){
+    function MainController($location, $rootScope, UserService){
         var vm = this;
         vm.$location = $location;
         vm.logout = logout;
@@ -26,9 +26,11 @@
         }
 
         function logout() {
+            UserService.logout().then(function(){
             delete $rootScope.user;
             //console.log($rootScope.user);
             $location.url('/');
+            });
         }
     }
 })();
