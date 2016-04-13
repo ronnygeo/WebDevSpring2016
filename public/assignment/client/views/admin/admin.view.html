@@ -4,14 +4,19 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th ng-click="order('username')"><span class="glyphicon glyphicon-triangle-bottom" ng-show="admin.predicate === 'name'" ng-class="{reverse:admin.reverse}"></span> Username</th>
-            <th ng-click="order('password')"><span class="glyphicon glyphicon-triangle-bottom" ng-show="admin.predicate === 'name'" ng-class="{reverse:admin.reverse}"></span> Password</th>
-            <th ng-click="order('role')"><span class="glyphicon glyphicon-triangle-bottom" ng-show="admin.predicate === 'name'" ng-class="{reverse:admin.reverse}"></span> Role</th>
-            <th><span class="glyphicon glyphicon-triangle-bottom"></span> Actions</th>
+            <th ng-click="admin.order('username')"><span class="glyphicon glyphicon-chevron-down" ng-show="admin.predicate == 'username' && admin.reverse==false" ng-class="{reverse:admin.reverse}"></span><span class="glyphicon glyphicon-chevron-up" ng-show="admin.predicate == 'username' && admin.reverse"></span> Username</th>
+            <th ng-click="admin.order('password')"><span class="glyphicon glyphicon-chevron-down" ng-show="admin.predicate == 'password' && admin.reverse==false" ng-class="{reverse:admin.reverse}"></span><span class="glyphicon glyphicon-chevron-up" ng-show="admin.predicate == 'password' && admin.reverse"></span> Password</th>
+            <th ng-click="admin.order('firstName')"><span class="glyphicon glyphicon-chevron-down" ng-show="admin.predicate == 'firstName' && admin.reverse==false" ng-class="{reverse:admin.reverse}"></span><span class="glyphicon glyphicon-chevron-up" ng-show="admin.predicate == 'firstName' && admin.reverse"></span> First Name</th>
+            <th ng-click="admin.order('lastName')"><span class="glyphicon glyphicon-chevron-down" ng-show="admin.predicate == 'lastName' && admin.reverse==false" ng-class="{reverse:admin.reverse}"></span><span class="glyphicon glyphicon-chevron-up" ng-show="admin.predicate == 'lastName' && admin.reverse"></span> Last Name</th>
+            <th ng-click="admin.order('role')"><span class="glyphicon glyphicon-chevron-down" ng-show="admin.predicate == 'role' && admin.reverse==false"></span><span class="glyphicon glyphicon-chevron-up" ng-show="admin.predicate == 'role' && admin.reverse"></span> Role</th>
+            <th></span> Actions</th>
         </tr>
         <tr>
             <td><input type="text" ng-model="admin.user.username" id="adminNewUsername" class="form-control" placeholder="Username"></td>
             <td><input type="text" ng-model="admin.user.password" id="adminNewPassword" class="form-control" placeholder="Password"></td>
+            <td><input type="text" ng-model="admin.user.firstName" id="adminFirstName" class="form-control" placeholder="First Name"></td>
+            <td><input type="text" ng-model="admin.user.lastName" id="adminLastName" class="form-control" placeholder="Last Name"></td>
+
             <td>
                 <input type="text" ng-model="admin.user.roles" id="adminNewUserRole" class="form-control" placeholder="Role">
             </td>
@@ -29,6 +34,8 @@
         <tr ng-repeat="u in admin.users | orderBy:admin.predicate:admin.reverse">
             <td>{{u.username}}</td>
             <td>{{u.password}}</td>
+            <td>{{u.firstName}}</td>
+            <td>{{u.lastName}}</td>
             <td>{{u.roles}}</td>
             <td>
                 <button ng-click="admin.selectUser($index)" class="btn btn-warning">

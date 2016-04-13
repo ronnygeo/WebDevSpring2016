@@ -35,6 +35,7 @@
         }
 
         function addUser() {
+            vm.user.roles = convertRoles(vm.user.roles);
             UserService.adminCreateUser(vm.user).then(function(data){
                 vm.users.push(data.data);
                 vm.user = {};
@@ -42,7 +43,7 @@
         }
 
         function updateUser() {
-            console.log(vm.user);
+            vm.user.roles = convertRoles(vm.user.roles);
             UserService.adminUpdateUser(vm.user._id, vm.user).then(function(){
                 vm.user = {};
             });
@@ -57,6 +58,10 @@
             UserService.adminDeleteUserById(vm.users[index]._id).then(function () {
                 vm.users.splice(index, 1);
             });
+        }
+
+        function convertRoles(a) {
+            return a.split(",");
         }
         }
 })();
