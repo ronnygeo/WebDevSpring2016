@@ -12,11 +12,20 @@
         vm.users = [];
         vm.user = {};
 
+        vm.predicate = '';
+        vm.reverse = false;
+
         //Event Handlers
         vm.selectUser = selectUser;
         vm.removeUser = removeUser;
         vm.addUser = addUser;
         vm.updateUser = updateUser;
+        vm.order = order;
+
+        function order(predicate) {
+            vm.reverse = (vm.predicate === predicate) ? !vm.reverse : false;
+            vm.predicate = predicate;
+        };
 
         UserService.adminFindAllUsers().then(render, function (err) {console.log(err);});
 
