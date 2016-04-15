@@ -44,7 +44,9 @@
 
         function updateUser() {
             vm.user.roles = convertRoles(vm.user.roles);
-            UserService.adminUpdateUser(vm.user._id, vm.user).then(function(){
+
+            UserService.adminUpdateUser(vm.user._id, vm.user).then(function(data){
+                //console.log(data.data);
                 vm.user = {};
             });
         }
