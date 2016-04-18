@@ -69,14 +69,17 @@ module.exports = function (mongoose) {
         if (!(email in obj.emails)){
         obj.emails.push(email);
         }
-        UserModel.update({ _id: id}, obj,
-            function (err, data) {
-            if (err) {
+        UserModel.findById(id).then(function (oldUser) {
+            // console.log(data.password);
+            if (obj.password !== oldUser.password || !bcrpyt.compareSync(obj.password, oldUser.password)) {
+                obj.password = bcrypt.hashSync(obj.password);
+                // console.log(data.password);
+            }
+            UserModel.update({ _id: id}, obj).then(function(data){
+                deferred.resolve(obj);
+            }, function (err) {
                 deferred.reject(err);
-                    } else {
-                console.log(data);
-                        deferred.resolve(data);
-                    }
+            });
         });
         return deferred.promise;
     }
