@@ -35,12 +35,19 @@
             .when('/forms',{
                 controller: 'FormController',
                 templateUrl: "views/forms/forms.view.html",
-                controllerAs: 'fc'
+                controllerAs: 'fc',
+                resolve: {
+                    loggedin: checkCurrentUser
+                }
+
             })
             .when('/form/:formId/fields', {
                 controller: 'FieldController',
                 templateUrl: "views/forms/fields.view.html",
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkCurrentUser
+                }
             })
             .when('/admin', {
                 controller: 'AdminController',
