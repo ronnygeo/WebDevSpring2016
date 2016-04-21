@@ -15,7 +15,7 @@ module.exports = function (app, userModel, passport) {
 
     // GET /api/assignment/user/:id
     // responds with a single user whose id property is equal to the id path parameter
-    app.get('/api/assignment/user/:id', passport.authenticate('local'),getUser);
+    app.get('/api/assignment/user/:id', passport.authenticate('local'), getUser);
 
     // // GET /api/assignment/user?username=username
     // //     responds with a single user whose username property is equal to the username path parameter

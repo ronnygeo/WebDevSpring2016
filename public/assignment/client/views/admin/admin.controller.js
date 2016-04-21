@@ -45,8 +45,9 @@
         function updateUser() {
             vm.user.roles = convertRoles(vm.user.roles);
 
+            // console.log(vm.user);
             UserService.adminUpdateUser(vm.user._id, vm.user).then(function(data){
-                //console.log(data.data);
+                // console.log(data.data);
                 vm.user = {};
             });
         }
@@ -63,7 +64,10 @@
         }
 
         function convertRoles(a) {
+            if (a)
             return a.split(",");
+            else
+                return [];
         }
         }
 })();
