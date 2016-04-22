@@ -72,6 +72,7 @@
         //If found, updates user with new user properties
         //Calls back with updated user
         function updateUser(userId, user) {
+            // console.log(user);
             return $http.put('/api/assignment/user/'+userId, user);
         }
 

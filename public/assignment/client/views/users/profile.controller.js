@@ -12,17 +12,25 @@
         var vm = this;
 
         vm.user = $rootScope.user;
+        vm.update = update;
         // console.log("in scope: ", vm.user);
-        vm.user.email = vm.user.emails[0];
 
-        vm.update = function () {
+        function update() {
             //console.log($scope.user);
+            // console.log(vm.user.emails);
+            if (vm.user.emails) {
+                vm.user.emails = vm.user.emails.split(',');
+            }
+
+            if (vm.user.phones !== undefined) {
+                vm.user.phones = vm.user.phones.split(',');
+            }
             UserService.updateUser(vm.user._id, vm.user).
                 then(render);
         };
 
         function render(data) {
-            // $rootScope.user = data.data;
+            $rootScope.user = vm.user;
             // console.log("returned:", data);
             // console.log(data.roles);
         }

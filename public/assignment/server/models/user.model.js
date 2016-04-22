@@ -59,10 +59,7 @@ module.exports = function (mongoose) {
     //Update - should take an ID and object instance as arguments, find the object instance in the corresponding collection whose ID property is equal to the ID argument, update the found instance with property values in the argument instance object
     function update(id, obj) {
         var deferred = q.defer();
-        var email = obj.email;
-        if (!(email in obj.emails)){
-        obj.emails.push(email);
-        }
+        // console.log(obj);
            UserModel.update({_id: id}, obj).then(function(data){
                 // console.log(data);
                 deferred.resolve(data);

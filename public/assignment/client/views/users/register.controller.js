@@ -17,6 +17,8 @@
         vm.register = register;
 
         function register() {
+            
+            vm.user
 
             if(vm.user.password != vm.verifyPassword || !vm.user.password || !vm.verifyPassword)
             {
